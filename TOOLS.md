@@ -7,72 +7,80 @@ authoritative_source: https://innovationhub.ai.cornell.edu/tools-resources/
 
 # AI Tools at Cornell — Inventory
 
-A living inventory of AI tools approved, in pilot, or under review for Cornell staff. Maintained by the AI Innovation Hub team. The **Claude Training** site pulls from this file. Grouped by vendor.
+A living inventory of AI tools approved, in pilot, or under review for Cornell staff. Maintained by the AI Innovation Hub team. The **Claude Training** site pulls from this file.
+
+This file has two layers:
+
+- [**Full inventory**](#full-inventory) — the maintainer-facing spec with status, audience, data ceiling, and Hub links. The canonical source.
+- [**At a glance — for sharing**](#at-a-glance--for-sharing) — the short, user-centered version for emails, Teams, slides, and orientation.
 
 ---
 
-## Tools
+## Full inventory
 
-| Vendor | Tool | Status | Audience | Data approved | Best for | Hub |
-|---|---|---|---|---|---|---|
-| **Adobe** | Adobe Firefly | Live · General | All staff | Low risk (public) | Image generation and simple edits. | [Hub](https://innovationhub.ai.cornell.edu/tool/adobe-firefly/) |
-| **Anthropic** | Claude 3P (Cowork) | Live · Specialized | Approved units (currently research admin) | Up to moderate risk | Confidential research admin work, desktop file workflows, multi-step tasks. Also fine for non-confidential. | [Hub](https://innovationhub.ai.cornell.edu/tool/claude/) |
-| **Anthropic** | Claude Enterprise / Edu | Under review | Faculty / staff / students (planned) | Up to moderate risk (planned) | Full Anthropic SaaS — general chat, Projects, Artifacts, mobile. Cowork habits carry over. | [Hub](https://innovationhub.ai.cornell.edu/tool/claude/) |
-| **Cornell** | Cornell AI Platform (n8n + LiteLLM) | Live · Pilot | Builders / developers | Up to moderate risk | Custom workflows and automation. n8n orchestrates; LiteLLM proxies model calls (AWS Bedrock, Vertex AI, Foundry). Powers Claude 3P. | [Hub](https://innovationhub.ai.cornell.edu/tool/cornell-ai-platform/) |
-| **Microsoft** | Microsoft 365 Copilot Chat | Live · General | All staff | Low risk (public) | Day-to-day web chat. Sign in with your Cornell account. | [Hub](https://innovationhub.ai.cornell.edu/tool/microsoft-365-copilot-chat/) |
-| **Microsoft** | Copilot Chat → moderate-risk approval | In flight | All staff | Low → Moderate (in flight) | Extends Copilot Chat's data ceiling. Approval in progress. | — |
-| **OpenAI** | ChatGPT Edu | Under review | Faculty / staff / students (planned) | Up to moderate risk (planned) | Full OpenAI chat experience when live. | [Hub](https://innovationhub.ai.cornell.edu/tool/openai-chatgpt-edu/) |
-| **Zoom** | Zoom AI Companion | Live · General | All staff | Per Zoom approvals | Meeting summaries and transcripts. Built into Zoom. | [Hub](https://innovationhub.ai.cornell.edu/tool/zoom-ai-companion/) |
+### Tools
 
-### Cost & licensing
+*Ordered by vendor (Adobe, Anthropic, Cornell, Microsoft, OpenAI, Zoom).*
 
-- **Free to staff at point of use today:** Microsoft 365 Copilot Chat (base Microsoft offering, included with Cornell M365), Adobe Firefly (Cornell Adobe license), Zoom AI Companion (Cornell Zoom license), Claude 3P (runs on Cornell&rsquo;s pay-per-use cloud contracts &mdash; AWS Bedrock, Vertex AI, Foundry), Cornell AI Platform (Cornell-built and maintained).
-- **Paid Cornell-wide subscription, under review:** OpenAI ChatGPT Edu and Claude Enterprise / Edu. These are the &ldquo;upgrade&rdquo; tier &mdash; they unlock the full vendor experience above the Microsoft baseline.
+| Tool | Cost to use | Status | Audience | Data approved | Best for |
+| :---- | :---- | :---- | :---- | :---- | :---- |
+| **Adobe Firefly** | Free · Cornell Adobe license | Live · General | All staff | Low risk (public) | Image generation and simple edits. |
+| **Claude 3P (Cowork)** | Paid · per use | Live · Specialized | Approved units | Up to moderate risk | Confidential admin work, desktop file workflows, multi-step tasks. Also fine for non-confidential. |
+| **Claude Enterprise / Edu** | Paid · subscription (planned) | Under review | Faculty / staff / students (planned) | Up to moderate risk (planned) | Full Claude product - general chat, Projects, Artifacts, mobile. |
+| **Cornell AI Platform (n8n + LiteLLM)** | Paid · per use | Live · Pilot | Builders / developers | Up to moderate risk | Custom workflows and automation. n8n orchestrates; LiteLLM proxies model calls (AWS Bedrock, Vertex AI, Foundry). Powers Claude 3P. |
+| **Microsoft 365 Copilot Chat** | Free · Cornell M365 license | Live · General | All staff | Low risk (public) | Day-to-day web chat. Sign in with your Cornell account. |
+| **Copilot Chat → moderate-risk approval** | Same as Copilot Chat (free) | In flight | All staff | Low → Moderate (in flight) | Extends Copilot Chat's data ceiling. Approval in progress. |
+| **ChatGPT Edu** | Paid · subscription (planned) | Under review | Faculty / staff / students (planned) | Up to moderate risk (planned) | Full OpenAI chat experience when live. |
+| **Zoom AI Companion** | Free · Cornell Zoom license | Live · General | All staff | Per Zoom approvals | Meeting summaries and transcripts. Built into Zoom. |
 
----
+**Note on cost:**
 
-## Quick rule (for users)
-
-| If your work involves... | Use |
-|---|---|
-| Confidential / moderate-risk data | **Claude 3P** (only approved tool today for moderate risk) |
-| Day-to-day general chat (public data) | **Microsoft 365 Copilot Chat** |
-| Meetings | **Zoom AI Companion** |
-| Images | **Adobe Firefly** |
-| Custom workflows or automation | **Cornell AI Platform** (pilot) |
-| HIPAA, export-controlled, FERPA, or other high-risk data | **Not allowed in any of these tools** |
-
-Claude 3P also handles non-confidential work. When in doubt, the [AI Innovation Hub](https://innovationhub.ai.cornell.edu/tools-resources/) is the source of truth.
+- **Free** — included in an existing Cornell-wide license (M365, Adobe, Zoom). No additional cost to use.
+- **Paid · per use** — usage-based cost (typically tokens / cloud spend), billed back to the using unit or program. Claude 3P and the Cornell AI Platform fall here.
+- **Paid · subscription (planned)** — a Cornell-wide subscription agreement currently under review. The Edu offerings (ChatGPT Edu, Claude Enterprise/Edu) are the "upgrade" tier above the Microsoft baseline.
 
 ---
 
-## Tools we don't have (yet) or won't
+## At a glance — for sharing
 
-| Tool | Status at Cornell |
-|---|---|
-| ChatGPT consumer / ChatGPT Plus | Not approved. Use ChatGPT Edu when live. |
-| Claude.ai consumer / Claude Pro | Not approved. Use Claude 3P, or wait for Claude Enterprise/Edu. |
-| Gemini consumer | Not approved. |
-| Microsoft 365 Copilot (in-app) | Cornell does not license the paid in-Word/Excel/Outlook integration. Only the free Copilot Chat web version is available. |
-| Free public AI tools | Do **not** enter moderate-risk or higher Cornell data into any free or paid public tool not on the Hub. |
+### The one-liner
 
----
+**Copilot for chat. Claude for confidential and advanced use. Zoom for meetings. Firefly for images.**
 
-## How to update this file
+A sticky-note-sized memory aid. Use it as a header, a closing line, or a quick verbal answer to "which one do I use?"
 
-- One row per tool, grouped by vendor (vendors sort A&rarr;Z; keep related rows together).
-- **Status values:** `Live · General` &middot; `Live · Specialized` &middot; `Live · Pilot` &middot; `Under review` &middot; `In flight`.
-- **Data approved values** use [Cornell IT&rsquo;s data risk levels](https://it.cornell.edu/security-and-policy/data-types-high-risk-moderate-risk-low-risk):
-  - **Low risk (public)** &mdash; public-facing or directory information
-  - **Moderate risk** &mdash; confidential Cornell data (protocols, awards, proposals, IP, internal financials)
-  - **High risk** &mdash; HIPAA, PCI, FERPA, export-controlled, government-restricted
-- A tool&rsquo;s `Data approved` should be the highest risk level allowed *today*. &ldquo;Up to moderate risk&rdquo; = low and moderate both fine; high is not.
-- Update `last_reviewed` in the front-matter at the top whenever you edit.
+### What each tool is for
 
----
+| Tool | What it's for |
+| :---- | :---- |
+| **Microsoft 365 Copilot Chat** | Your everyday AI assistant. Free with your Cornell account. Public data only today. |
+| **Claude 3P (Cowork)** | The tool for confidential administration work. Per-use cost. Also fine for non-confidential. |
+| **Zoom AI Companion** | Meeting summaries and transcripts. Built into Zoom. |
+| **Adobe Firefly** | Image generation and simple edits. |
+| **Cornell AI Platform** | Custom workflows and automation, for builders. *(n8n + LiteLLM, pilot, per-use)* |
 
-## Maintainers
+### If your work involves...
 
-- AI Innovation Hub team
-- Issues / additions: `ai-support@cornell.edu`
-- This file lives in the [`zj52/claude-training`](https://github.com/zj52/claude-training) repo. Pull requests welcome, or send edits to the email above.
+| If your work involves... | Reach for |
+| :---- | :---- |
+| Confidential / moderate-risk Cornell data | **Claude 3P** |
+| Everyday questions on public information | **Microsoft 365 Copilot Chat** |
+| A meeting you want to recap | **Zoom AI Companion** |
+| An image you want to generate | **Adobe Firefly** |
+| A custom workflow or automation | **Cornell AI Platform** *(pilot, for builders)* |
+| HIPAA, FERPA, export-controlled, or other high-risk data | **None of these tools.** Talk to [ai-support@cornell.edu](mailto:ai-support@cornell.edu). |
+
+### Sharable blurb
+
+Paste into an email, a Teams post, or an orientation slide:
+
+Cornell has five AI tools live today, each for a different job. **Microsoft 365 Copilot Chat** is the everyday assistant — free with your Cornell account, public data only for now. **Claude 3P** is for confidential administration work is currently approved for moderate-risk Cornell data (per-use cost) - it is replacing Sandbox AI. **Zoom AI Companion** handles meeting summaries. **Adobe Firefly** generates images. The **Cornell AI Platform** (n8n + LiteLLM, pilot, per-use) supports custom workflows for builders. Two paid Edu subscriptions — ChatGPT Edu and Claude Enterprise/Edu — are under review. Full picture: [AI Innovation Hub](https://innovationhub.ai.cornell.edu/tools-resources/).
+
+### Talking points (for managers and Hub staff)
+
+- **There is no single "AI tool" at Cornell.** Each tool does a different job. Pick by task, not by brand preference.
+- **Confidential data has a clear rule:** Claude 3P today; Copilot Chat once its moderate-risk approval lands; never a free public tool.
+- **High-risk data (HIPAA, FERPA, export-controlled)** never goes in any of these tools.
+- **Cost models differ.** Copilot, Firefly, and Zoom Companion are free at point of use (existing licenses). Claude 3P and the Cornell AI Platform are per-use. The Edu subscriptions would be Cornell-wide paid agreements.
+- **Edu subscriptions are coming, not here yet.** Don't commit a workflow to ChatGPT Edu or Claude Enterprise/Edu — they're under review.
+- **The Hub is the source of truth.** Approvals change; this file lags by a few days at most.
