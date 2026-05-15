@@ -209,6 +209,32 @@
       font-weight: 600;
     }
 
+    /* ─── Tighter list inside col-cards ─── */
+    .slide.content .col-card ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .slide.content .col-card li {
+      position: relative;
+      padding-left: 1.1rem;
+      font-size: 0.95rem;
+      line-height: 1.45;
+      color: var(--ink);
+    }
+    .slide.content .col-card li::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 0.55rem;
+      width: 0.4rem; height: 0.4rem;
+      border-radius: 50%;
+      background: var(--carnelian);
+    }
+    .slide.content .col-card.accent li::before { background: var(--carnelian); }
+
     /* ─── 3-part prompt visualization ─── */
     .prompt-block {
       padding: 1.4rem 1.6rem;
@@ -377,22 +403,31 @@
     <!-- ─── Slide 3 · The Cornell ecosystem ─── -->
     <section class="slide content" data-bg="light">
       <p class="slide-eyebrow">The ecosystem</p>
-      <h2>Where Cornell sits today.</h2>
+      <h2>What&rsquo;s live today, and what&rsquo;s coming.</h2>
       <div class="slide-body">
-        <p>Claude is one model. What changes is the surface you use and the inference that hosts it.</p>
+        <p>Cornell offers a baseline AI tool to all staff, plus specialized tools for specific kinds of work. Match the tool to the job.</p>
         <div class="col-2">
           <article class="col-card accent">
-            <span class="step">&#x2605; Today &middot; Third-party inference</span>
-            <h3>Cowork on Cornell&rsquo;s cloud</h3>
-            <p>Same Claude models, served from the cloud platform Cornell already governs. No Anthropic subscription needed. Cowork mode &amp; Claude Code &mdash; no general chat, Projects, or Artifacts yet.</p>
+            <span class="step">&#x2605; Live today</span>
+            <h3>Available now</h3>
+            <ul>
+              <li><strong>Microsoft 365 Copilot Chat</strong> &mdash; web chat assistant. Baseline for all staff. Public data only today (confidential approval in flight).</li>
+              <li><strong>Claude 3P (Cowork)</strong> &mdash; on the Cornell AI Platform. Confidential research admin work, and fine for non-confidential too. &#x2605; Today&rsquo;s workshop.</li>
+              <li><strong>Zoom AI Companion</strong> &mdash; meeting summaries and transcripts.</li>
+              <li><strong>Adobe Firefly</strong> &mdash; image generation.</li>
+            </ul>
           </article>
           <article class="col-card">
-            <span class="step">Coming &middot; Anthropic SaaS</span>
-            <h3>Claude Enterprise / Edu</h3>
-            <p>Anthropic-hosted. The full Claude experience &mdash; general chat, Projects, Artifacts &mdash; pending the right contract and protections.</p>
+            <span class="step">Coming &middot; Under review</span>
+            <h3>On the way</h3>
+            <ul>
+              <li><strong>Copilot &rarr; confidential expansion</strong> &mdash; approval in progress.</li>
+              <li><strong>OpenAI ChatGPT Edu</strong> &mdash; full OpenAI subscription. Under review.</li>
+              <li><strong>Claude Enterprise / Edu</strong> &mdash; full Claude with general chat, Projects, Artifacts. Under review.</li>
+            </ul>
           </article>
         </div>
-        <p class="footnote">Why this matters: the Cowork habits we build on 3P today carry over directly to the Enterprise/Edu SaaS when it lands.</p>
+        <p class="footnote"><strong>Quick rule:</strong> Confidential data &rarr; <strong>Claude 3P</strong> (only approved tool today). General chat (public data) &rarr; <strong>Copilot Chat</strong>. Meetings &rarr; <strong>Zoom Companion</strong>. Images &rarr; <strong>Firefly</strong>. Claude 3P also handles non-confidential work. Full list: <a class="link-accent" href="https://innovationhub.ai.cornell.edu/tools-resources/" target="_blank" rel="noopener">AI Innovation Hub</a>.</p>
       </div>
     </section>
 
