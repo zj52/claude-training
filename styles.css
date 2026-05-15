@@ -341,7 +341,8 @@ a.content-card { color: inherit; }
 }
 
 .content-card .card-actions {
-  margin-top: 1.25rem;
+  margin-top: auto;
+  padding-top: 1.25rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
