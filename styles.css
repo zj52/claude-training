@@ -489,6 +489,45 @@ a.content-card { color: inherit; }
 /* ─── 3-col compact grid variant ─── */
 .compact-grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 
+/* ─── 4-col card grid variant ─── */
+.card-grid.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+/* ─── Inline accent link ─── */
+.link-accent { color: var(--carnelian-dark); font-weight: 600; }
+.link-accent:hover { color: var(--carnelian); }
+
+/* ─── Stack utilities ─── */
+.stack-1 { margin-top: 1rem; }
+.stack-2 { margin-top: 1.25rem; }
+.stack-3 { margin-top: 1.5rem; }
+
+/* ─── Section subheading (used in modules between groups of cards) ─── */
+.section-subheading {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--carnelian-dark);
+  font-weight: 700;
+  margin: 1.5rem 0 0.75rem;
+}
+
+/* ─── Status pill (for placeholder/future cards) ─── */
+.status-pill {
+  display: inline-flex;
+  align-self: flex-start;
+  margin-top: 0.85rem;
+  padding: 0.22rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(25, 25, 25, 0.06);
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
 /* ─── Prose helper for module pages ─── */
 .module-prose {
   max-width: 68ch;
@@ -517,8 +556,12 @@ a.content-card { color: inherit; }
 @media (max-width: 880px) {
   .hero-panel { grid-template-columns: 1fr; padding: 1.75rem; }
   .path-grid, .compact-grid, .card-grid { grid-template-columns: 1fr; }
+  .card-grid.four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .community-strip { grid-template-columns: 1fr; }
   .compact-grid.three { grid-template-columns: 1fr; }
   .site-header .shell { flex-direction: column; align-items: flex-start; padding: 0.75rem 0 0.6rem; }
   .nav-list { width: 100%; }
+}
+@media (max-width: 560px) {
+  .card-grid.four { grid-template-columns: 1fr; }
 }
