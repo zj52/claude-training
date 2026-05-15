@@ -209,6 +209,58 @@
       font-weight: 600;
     }
 
+    /* ─── 3-part prompt visualization ─── */
+    .prompt-block {
+      padding: 1.4rem 1.6rem;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: var(--ink);
+      max-width: 70ch;
+      margin-top: 0.5rem;
+    }
+    .prompt-block.weak { color: var(--muted); font-style: italic; }
+    .prompt-block .stage,
+    .prompt-block .task,
+    .prompt-block .rules {
+      padding: 0.05rem 0.2rem;
+      border-radius: 3px;
+    }
+    .prompt-block .stage { background: rgba(48, 100, 145, 0.18); border-bottom: 2px solid #306491; }
+    .prompt-block .task  { background: rgba(94, 116, 56, 0.18); border-bottom: 2px solid #5E7438; }
+    .prompt-block .rules { background: rgba(193, 96, 64, 0.18); border-bottom: 2px solid #C16040; }
+
+    .prompt-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      color: var(--ink);
+    }
+    .prompt-legend .lg {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-weight: 600;
+    }
+    .prompt-legend .dot {
+      width: 0.85rem;
+      height: 0.85rem;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    .prompt-legend .lg.stage .dot { background: #306491; }
+    .prompt-legend .lg.task  .dot { background: #5E7438; }
+    .prompt-legend .lg.rules .dot { background: #C16040; }
+
+    .miss-list {
+      margin-top: 1.25rem !important;
+    }
+    .miss-list li strong { color: var(--carnelian-dark); }
+
     /* ─── Navigation ─── */
     .back-pill {
       position: fixed;
@@ -314,7 +366,7 @@
 
     <!-- ─── Slide 2 · The goal ─── -->
     <section class="slide content" data-bg="light">
-      <p class="slide-eyebrow">Slide 2 &middot; The goal</p>
+      <p class="slide-eyebrow">The goal</p>
       <h2>Our goal is to help create efficiency by automating tedious work.</h2>
       <div class="slide-body">
         <p>Not replace your judgment. Not write the parts that need you. The parts that take time and don&rsquo;t take thought.</p>
@@ -324,7 +376,7 @@
 
     <!-- ─── Slide 3 · The Cornell ecosystem ─── -->
     <section class="slide content" data-bg="light">
-      <p class="slide-eyebrow">Slide 3 &middot; The ecosystem</p>
+      <p class="slide-eyebrow">The ecosystem</p>
       <h2>Where Cornell sits today.</h2>
       <div class="slide-body">
         <p>Claude is one model. What changes is the surface you use and the inference that hosts it.</p>
@@ -346,7 +398,7 @@
 
     <!-- ─── Slide 4 · Data rules ─── -->
     <section class="slide content" data-bg="light">
-      <p class="slide-eyebrow">Slide 4 &middot; Data rules</p>
+      <p class="slide-eyebrow">Data rules</p>
       <h2>Same rules as Sandbox AI.</h2>
       <div class="slide-body">
         <ul>
@@ -361,7 +413,7 @@
 
     <!-- ─── Slide 5 · Probabilistic AI ─── -->
     <section class="slide content" data-bg="light">
-      <p class="slide-eyebrow">Slide 5 &middot; How AI works</p>
+      <p class="slide-eyebrow">How AI works</p>
       <h2>Probabilistic, not deterministic.</h2>
       <div class="slide-body">
         <p>An LLM builds its answer one token at a time, picking among plausible next words by probability. There is no fixed right answer &mdash; only what&rsquo;s most likely given what came before.</p>
@@ -383,33 +435,68 @@
 
     <!-- ─── Slide 6 · The 3-part prompt ─── -->
     <section class="slide content" data-bg="light">
-      <p class="slide-eyebrow">Slide 6 &middot; The 3-part prompt</p>
-      <h2>Set the stage. Give the task. Specify the output.</h2>
+      <p class="slide-eyebrow">The 3-part prompt</p>
+      <h2>Set Stage. Define Task. Specify Rules.</h2>
       <div class="slide-body">
+        <p>A simple frame that lifts almost any prompt. Every great prompt has these three parts &mdash; sometimes implicitly, sometimes in any order.</p>
         <div class="col-3">
           <article class="col-card">
             <span class="step">1 &middot; Stage</span>
-            <h3>Set the stage</h3>
-            <p>Who you are, what you&rsquo;re doing, what success looks like. Attach reference files if useful.</p>
+            <h3>Set Stage</h3>
+            <p>Who you are, what you&rsquo;re working on, who the output is for. The context Claude needs.</p>
           </article>
           <article class="col-card">
             <span class="step">2 &middot; Task</span>
-            <h3>Give the task</h3>
-            <p>One clear, specific ask. Break compound work into numbered steps.</p>
+            <h3>Define Task</h3>
+            <p>What you want Claude to do, broken into specifics. Numbered lists for compound work.</p>
           </article>
           <article class="col-card">
-            <span class="step">3 &middot; Output</span>
-            <h3>Specify the output</h3>
-            <p>Format, length, audience, tone. Paste an example if you have one.</p>
+            <span class="step">3 &middot; Rules</span>
+            <h3>Specify Rules</h3>
+            <p>Format, length, sources, tone, constraints. The &ldquo;how,&rdquo; not the &ldquo;what.&rdquo;</p>
           </article>
         </div>
-        <p class="footnote">Same frame we&rsquo;ll reach for in every exercise on this site.</p>
+        <p class="footnote">Adapted from Anthropic&rsquo;s AI Fluency materials.</p>
+      </div>
+    </section>
+
+    <!-- ─── Slide 7 · Weak prompt ─── -->
+    <section class="slide content" data-bg="light">
+      <p class="slide-eyebrow">The 3-part prompt &middot; Weak</p>
+      <h2>This won&rsquo;t get you what you want.</h2>
+      <div class="slide-body">
+        <div class="prompt-block weak">
+          Write a market analysis report about streaming.
+        </div>
+        <ul class="miss-list">
+          <li><strong>No stage</strong> &mdash; whose market? For what audience? What kind of streaming?</li>
+          <li><strong>Vague task</strong> &mdash; what should the report cover? What sections?</li>
+          <li><strong>No rules</strong> &mdash; how long? What format? What sources?</li>
+        </ul>
+        <p class="footnote">Claude will produce something, but it&rsquo;ll be generic and you&rsquo;ll spend the next hour re-prompting.</p>
+      </div>
+    </section>
+
+    <!-- ─── Slide 8 · Strong prompt ─── -->
+    <section class="slide content" data-bg="light">
+      <p class="slide-eyebrow">The 3-part prompt &middot; Strong</p>
+      <h2>All three parts. Same task, different result.</h2>
+      <div class="slide-body">
+        <div class="prompt-block">
+          <span class="task">Create a market analysis report on the US indie film streaming opportunity. Include market size, growth trends, key competitors, consumer preferences, revenue models, and market gaps.</span> <span class="rules">Use current web research with citations. Structure as a professional report</span> <span class="stage">for an investor deck for a new indie streaming app.</span>
+        </div>
+        <div class="prompt-legend">
+          <span class="lg stage"><span class="dot"></span>1. Set Stage</span>
+          <span class="lg task"><span class="dot"></span>2. Define Task</span>
+          <span class="lg rules"><span class="dot"></span>3. Specify Rules</span>
+        </div>
+        <p class="footnote">Stage, Task, and Rules don&rsquo;t have to appear in order &mdash; they just have to all be present.</p>
       </div>
     </section>
 
     <!-- ─── Slide 7 · Success stories ─── -->
     <section class="slide content" data-bg="light">
-      <p class="slide-eyebrow">Slide 7 &middot; Wow moments</p>
+      <p class="slide-eyebrow">Wow moments</p>
       <h2>What it can already do.</h2>
       <div class="slide-body">
         <div class="col-3">
@@ -435,7 +522,7 @@
 
     <!-- ─── Slide 8 · The interface ─── -->
     <section class="slide content" data-bg="light">
-      <p class="slide-eyebrow">Slide 8 &middot; The interface</p>
+      <p class="slide-eyebrow">The interface</p>
       <h2>What you see when you open Claude 3P.</h2>
       <div class="slide-body">
         <ul>
@@ -450,7 +537,7 @@
 
     <!-- ─── Slide 9 · Today's exercises ─── -->
     <section class="slide content" data-bg="light">
-      <p class="slide-eyebrow">Slide 9 &middot; Today&rsquo;s exercises</p>
+      <p class="slide-eyebrow">Today&rsquo;s exercises</p>
       <h2>Two real tasks.</h2>
       <div class="slide-body">
         <div class="col-2">
@@ -471,7 +558,7 @@
 
     <!-- ─── Slide 10 · Homework + links ─── -->
     <section class="slide content" data-bg="light">
-      <p class="slide-eyebrow">Slide 10 &middot; Before next week</p>
+      <p class="slide-eyebrow">Before next week</p>
       <h2>Homework, then keep the site close.</h2>
       <div class="slide-body">
         <div class="col-2">
