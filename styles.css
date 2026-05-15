@@ -411,10 +411,114 @@ a.content-card { color: inherit; }
 }
 .site-footer a { color: var(--carnelian-dark); font-weight: 600; }
 
+/* ─── Exercise / code blocks ─── */
+.exercise-block {
+  position: relative;
+  margin: 1rem 0 0;
+  background: var(--charcoal);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.exercise-block pre {
+  margin: 0;
+  padding: 1.25rem 1.4rem;
+  padding-right: 5.5rem;
+  color: #f0f1f3;
+  font-family: var(--mono);
+  font-size: 0.86rem;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+.exercise-block pre code { font: inherit; color: inherit; background: none; padding: 0; }
+.exercise-block .copy-btn {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  padding: 0.32rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 140ms ease, border-color 140ms ease;
+}
+.exercise-block .copy-btn:hover,
+.exercise-block .copy-btn.copied {
+  background: var(--carnelian);
+  border-color: var(--carnelian);
+}
+
+/* ─── Community strip ─── */
+.community-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.community-card {
+  padding: 1.25rem;
+  border-radius: var(--radius-md);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.community-card .label {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--carnelian-dark);
+  font-weight: 700;
+}
+.community-card h3 { font-size: 1.05rem; margin: 0; }
+.community-card p {
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.5;
+  margin: 0;
+}
+.community-card a { color: var(--carnelian-dark); font-weight: 600; }
+
+/* ─── 3-col compact grid variant ─── */
+.compact-grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+/* ─── Prose helper for module pages ─── */
+.module-prose {
+  max-width: 68ch;
+  color: var(--ink);
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+.module-prose p { margin: 0 0 0.85rem; }
+.module-prose strong { color: var(--ink); }
+
+/* ─── Anonymity / fine-print note ─── */
+.fine-note {
+  margin-top: 1.25rem;
+  padding: 0.85rem 1.1rem;
+  border-left: 3px solid var(--carnelian);
+  background: var(--carnelian-dim);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--ink);
+  max-width: 70ch;
+}
+.fine-note strong { color: var(--carnelian-dark); }
+
 /* ─── Responsive ─── */
 @media (max-width: 880px) {
   .hero-panel { grid-template-columns: 1fr; padding: 1.75rem; }
   .path-grid, .compact-grid, .card-grid { grid-template-columns: 1fr; }
+  .community-strip { grid-template-columns: 1fr; }
+  .compact-grid.three { grid-template-columns: 1fr; }
   .site-header .shell { flex-direction: column; align-items: flex-start; padding: 0.75rem 0 0.6rem; }
   .nav-list { width: 100%; }
 }

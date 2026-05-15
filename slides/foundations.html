@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#B31B1B" />
+  <title>Foundations · Slide deck | Claude Training</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    /* ─── Deck framework ─── */
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      background: #000;
+      overflow: hidden;
+      font-family: var(--sans);
+    }
+    .deck {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+    }
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: none;
+      flex-direction: column;
+      padding: 5rem 6rem;
+      overflow-y: auto;
+      animation: fade-in 280ms ease;
+    }
+    .slide.is-active { display: flex; }
+    @keyframes fade-in {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    /* ─── Cornell-style title / end slides ─── */
+    .slide.cornell-bg {
+      background: var(--carnelian);
+      color: #fff;
+      justify-content: flex-end;
+      padding: 5rem 6rem 5rem 6rem;
+    }
+    .slide.cornell-bg::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 10px;
+      background: #fff;
+    }
+    .slide.cornell-bg .seal-top {
+      position: absolute;
+      top: 5rem;
+      left: 6rem;
+      width: 120px;
+      height: 120px;
+      color: #fff;
+    }
+    .slide.cornell-bg .seal-bottom {
+      position: absolute;
+      bottom: 5rem;
+      right: 6rem;
+      width: 180px;
+      height: 180px;
+      color: #fff;
+    }
+    .slide.cornell-bg .eyebrow-light {
+      font-size: 1.05rem;
+      font-weight: 400;
+      letter-spacing: 0;
+      color: rgba(255, 255, 255, 0.92);
+      margin: 0 0 0.5rem;
+    }
+    .slide.cornell-bg h1 {
+      font-size: clamp(3.2rem, 7.5vw, 6rem);
+      letter-spacing: -0.03em;
+      font-weight: 800;
+      color: #fff;
+      margin: 0;
+      line-height: 1;
+    }
+    .slide.cornell-bg .byline {
+      margin-top: 1.25rem;
+      font-size: 1.05rem;
+      color: rgba(255, 255, 255, 0.78);
+      max-width: 60ch;
+    }
+
+    /* ─── Content slides ─── */
+    .slide.content {
+      background: linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
+      color: var(--ink);
+      justify-content: center;
+    }
+    .slide.content .slide-eyebrow {
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--carnelian);
+      font-weight: 700;
+      margin: 0 0 1.25rem;
+    }
+    .slide.content h2 {
+      font-size: clamp(2rem, 4.2vw, 3.1rem);
+      letter-spacing: -0.02em;
+      max-width: 22ch;
+      margin: 0 0 1.5rem;
+      color: var(--ink);
+    }
+    .slide.content .slide-body {
+      max-width: 70ch;
+      font-size: 1.1rem;
+      line-height: 1.55;
+      color: var(--ink);
+    }
+    .slide.content .slide-body p { margin: 0 0 0.85rem; max-width: 70ch; }
+    .slide.content .slide-body p:last-child { margin-bottom: 0; }
+    .slide.content .slide-body ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .slide.content .slide-body li {
+      position: relative;
+      padding-left: 1.4rem;
+      font-size: 1.05rem;
+      line-height: 1.5;
+    }
+    .slide.content .slide-body li::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 0.62rem;
+      width: 0.45rem; height: 0.45rem;
+      border-radius: 50%;
+      background: var(--carnelian);
+    }
+    .slide.content .footnote {
+      margin-top: 1.5rem;
+      font-size: 0.86rem;
+      color: var(--muted);
+      max-width: 60ch;
+    }
+
+    .slide.content .col-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+    .slide.content .col-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+    .slide.content .col-card {
+      padding: 1.25rem 1.4rem;
+      border-radius: var(--radius-md);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .slide.content .col-card .step {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--carnelian-dark);
+      font-weight: 700;
+    }
+    .slide.content .col-card h3 {
+      font-size: 1.15rem;
+      margin: 0;
+      letter-spacing: -0.01em;
+    }
+    .slide.content .col-card p { font-size: 0.95rem; color: var(--muted); margin: 0; }
+    .slide.content .col-card.accent {
+      background: var(--carnelian-dim);
+      border-color: rgba(179, 27, 27, 0.30);
+    }
+    .slide.content .col-card.accent .step { color: var(--carnelian); }
+
+    .slide.content .token-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .slide.content .token-row .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      font-size: 0.9rem;
+    }
+    .slide.content .token-row .pill.accent {
+      background: var(--carnelian);
+      color: #fff;
+      border-color: var(--carnelian);
+      font-weight: 600;
+    }
+
+    /* ─── Navigation ─── */
+    .back-pill {
+      position: fixed;
+      top: 1.25rem;
+      left: 1.25rem;
+      z-index: 30;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.55rem 1.1rem;
+      background: #fff;
+      color: var(--ink);
+      border-radius: 999px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+      transition: transform 80ms ease, background-color 140ms ease;
+    }
+    .back-pill:hover { transform: translateY(-1px); background: var(--carnelian); color: #fff; }
+
+    .deck-nav {
+      position: fixed;
+      bottom: 1.25rem;
+      right: 1.25rem;
+      z-index: 30;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .deck-nav button {
+      width: 2.6rem;
+      height: 2.6rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.95);
+      color: var(--ink);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      font-size: 1.2rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+      transition: background-color 140ms ease, color 140ms ease, transform 80ms ease;
+    }
+    .deck-nav button:hover {
+      background: var(--carnelian);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+    .deck-nav button:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .slide-counter {
+      position: fixed;
+      bottom: 1.6rem;
+      right: 9rem;
+      z-index: 30;
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.92);
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+    }
+    body[data-active-bg="cornell"] .slide-counter {
+      background: rgba(0, 0, 0, 0.18);
+      color: #fff;
+    }
+    body[data-active-bg="cornell"] .back-pill {
+      background: #fff;
+      color: var(--ink);
+    }
+
+    @media (max-width: 760px) {
+      .slide { padding: 4.5rem 1.5rem 5.5rem; }
+      .slide.cornell-bg { padding: 4.5rem 1.5rem 4rem; }
+      .slide.cornell-bg .seal-top { width: 80px; height: 80px; top: 4.5rem; left: 1.5rem; }
+      .slide.cornell-bg .seal-bottom { width: 120px; height: 120px; bottom: 4rem; right: 1.5rem; }
+      .slide.content .col-3, .slide.content .col-2 { grid-template-columns: 1fr; }
+      .slide-counter { right: 7.5rem; }
+    }
+  </style>
+</head>
+<body data-active-bg="cornell">
+
+  <a class="back-pill" href="../module-foundations.html">&larr; Back to module</a>
+
+  <main class="deck">
+
+    <!-- ─── Slide 1 · Title (Cornell-style) ─── -->
+    <section class="slide cornell-bg is-active" data-bg="cornell">
+      <img class="seal-top" src="assets/cornell-seal.png" alt="Cornell University seal" />
+      <p class="eyebrow-light">Module 1 &middot; Claude Training at Cornell</p>
+      <h1>Foundations.</h1>
+      <p class="byline">What Claude is, where it lives at Cornell, and your first two real exercises &mdash; eCFR and contract review.</p>
+    </section>
+
+    <!-- ─── Slide 2 · The goal ─── -->
+    <section class="slide content" data-bg="light">
+      <p class="slide-eyebrow">Slide 2 &middot; The goal</p>
+      <h2>Our goal is to help create efficiency by automating tedious work.</h2>
+      <div class="slide-body">
+        <p>Not replace your judgment. Not write the parts that need you. The parts that take time and don&rsquo;t take thought.</p>
+        <p>Today is about getting Claude installed, knowing what it&rsquo;s safe to give it, and running two real tasks before you leave.</p>
+      </div>
+    </section>
+
+    <!-- ─── Slide 3 · The Cornell ecosystem ─── -->
+    <section class="slide content" data-bg="light">
+      <p class="slide-eyebrow">Slide 3 &middot; The ecosystem</p>
+      <h2>Where Cornell sits today.</h2>
+      <div class="slide-body">
+        <p>Claude is one model. What changes is the surface you use and the inference that hosts it.</p>
+        <div class="col-2">
+          <article class="col-card accent">
+            <span class="step">&#x2605; Today &middot; Third-party inference</span>
+            <h3>Cowork on Cornell&rsquo;s cloud</h3>
+            <p>Same Claude models, served from the cloud platform Cornell already governs. No Anthropic subscription needed. Cowork mode &amp; Claude Code &mdash; no general chat, Projects, or Artifacts yet.</p>
+          </article>
+          <article class="col-card">
+            <span class="step">Coming &middot; Anthropic SaaS</span>
+            <h3>Claude Enterprise / Edu</h3>
+            <p>Anthropic-hosted. The full Claude experience &mdash; general chat, Projects, Artifacts &mdash; pending the right contract and protections.</p>
+          </article>
+        </div>
+        <p class="footnote">Why this matters: the Cowork habits we build on 3P today carry over directly to the Enterprise/Edu SaaS when it lands.</p>
+      </div>
+    </section>
+
+    <!-- ─── Slide 4 · Data rules ─── -->
+    <section class="slide content" data-bg="light">
+      <p class="slide-eyebrow">Slide 4 &middot; Data rules</p>
+      <h2>Same rules as Sandbox AI.</h2>
+      <div class="slide-body">
+        <ul>
+          <li><strong>OK to use:</strong> confidential Cornell data used in research administration &mdash; protocols, awards, proposals, IP.</li>
+          <li><strong>Not allowed:</strong> HIPAA data (we shouldn&rsquo;t encounter it) and export-controlled or government-restricted information.</li>
+          <li>Claude 3P is a different front end pointing at the <strong>same infrastructure</strong> as Sandbox AI &mdash; the LiteLLM gateway to the cloud models Cornell already has data-protection contracts with.</li>
+          <li>Web search, when used, runs through Gemini&rsquo;s <strong>enterprise</strong> grounding &mdash; your prompt is not logged.</li>
+        </ul>
+        <p class="footnote">If you can put it in Sandbox AI, you can put it in Claude 3P. Same gateway, same contracted infrastructure.</p>
+      </div>
+    </section>
+
+    <!-- ─── Slide 5 · Probabilistic AI ─── -->
+    <section class="slide content" data-bg="light">
+      <p class="slide-eyebrow">Slide 5 &middot; How AI works</p>
+      <h2>Probabilistic, not deterministic.</h2>
+      <div class="slide-body">
+        <p>An LLM builds its answer one token at a time, picking among plausible next words by probability. There is no fixed right answer &mdash; only what&rsquo;s most likely given what came before.</p>
+        <p>That&rsquo;s why two runs of the same prompt can come back worded differently, and occasionally with different substance. It&rsquo;s a feature, not a bug &mdash; but it&rsquo;s why you read every answer critically and spot-check the things that matter.</p>
+        <div class="token-row" aria-hidden="true">
+          <span class="pill">The</span>
+          <span class="pill">model</span>
+          <span class="pill">picks</span>
+          <span class="pill">each</span>
+          <span class="pill">next</span>
+          <span class="pill accent">word</span>
+          <span class="pill">by</span>
+          <span class="pill">probability</span>
+          <span class="pill">&hellip;</span>
+        </div>
+        <p class="footnote">Adapted from AI4RA &mdash; REACH Workshop 2026.</p>
+      </div>
+    </section>
+
+    <!-- ─── Slide 6 · The 3-part prompt ─── -->
+    <section class="slide content" data-bg="light">
+      <p class="slide-eyebrow">Slide 6 &middot; The 3-part prompt</p>
+      <h2>Set the stage. Give the task. Specify the output.</h2>
+      <div class="slide-body">
+        <div class="col-3">
+          <article class="col-card">
+            <span class="step">1 &middot; Stage</span>
+            <h3>Set the stage</h3>
+            <p>Who you are, what you&rsquo;re doing, what success looks like. Attach reference files if useful.</p>
+          </article>
+          <article class="col-card">
+            <span class="step">2 &middot; Task</span>
+            <h3>Give the task</h3>
+            <p>One clear, specific ask. Break compound work into numbered steps.</p>
+          </article>
+          <article class="col-card">
+            <span class="step">3 &middot; Output</span>
+            <h3>Specify the output</h3>
+            <p>Format, length, audience, tone. Paste an example if you have one.</p>
+          </article>
+        </div>
+        <p class="footnote">Same frame we&rsquo;ll reach for in every exercise on this site.</p>
+      </div>
+    </section>
+
+    <!-- ─── Slide 7 · Success stories ─── -->
+    <section class="slide content" data-bg="light">
+      <p class="slide-eyebrow">Slide 7 &middot; Wow moments</p>
+      <h2>What it can already do.</h2>
+      <div class="slide-body">
+        <div class="col-3">
+          <article class="col-card">
+            <span class="step">Award narrative</span>
+            <h3>150-word case for an NSF supplement</h3>
+            <p>Drafted from the program description + original abstract in under 2 minutes.</p>
+          </article>
+          <article class="col-card">
+            <span class="step">Policy review</span>
+            <h3>Plain-English summary of a 30-page memo</h3>
+            <p>One paragraph for a PI, plus a bulleted action list. From 45 minutes to 5.</p>
+          </article>
+          <article class="col-card">
+            <span class="step">Contract triage</span>
+            <h3>Top 3 risks in a vendor SaaS contract</h3>
+            <p>Flagged clauses, suggested redlines, plain-English summary. Hand to legal.</p>
+          </article>
+        </div>
+        <p class="footnote">Placeholder examples &mdash; replace with real Cornell stories as the cohort runs.</p>
+      </div>
+    </section>
+
+    <!-- ─── Slide 8 · The interface ─── -->
+    <section class="slide content" data-bg="light">
+      <p class="slide-eyebrow">Slide 8 &middot; The interface</p>
+      <h2>What you see when you open Claude 3P.</h2>
+      <div class="slide-body">
+        <ul>
+          <li><strong>Chat box.</strong> Where you type your prompt and drop in files.</li>
+          <li><strong>Model picker (bottom).</strong> Sonnet for most work, Opus for hard reasoning, Haiku for quick lookups.</li>
+          <li><strong>File drop.</strong> Drag and drop &mdash; PDFs, images, Word, Excel, CSV, code files all work.</li>
+          <li><strong>Sidebar.</strong> Your previous chats, stored on your local machine until you delete them.</li>
+        </ul>
+        <p class="footnote">Live walkthrough during the workshop. Screenshots and a UI tour will live on this slide after.</p>
+      </div>
+    </section>
+
+    <!-- ─── Slide 9 · Today's exercises ─── -->
+    <section class="slide content" data-bg="light">
+      <p class="slide-eyebrow">Slide 9 &middot; Today&rsquo;s exercises</p>
+      <h2>Two real tasks.</h2>
+      <div class="slide-body">
+        <div class="col-2">
+          <article class="col-card accent">
+            <span class="step">Exercise A</span>
+            <h3>Look up federal cost principles</h3>
+            <p>Use the eCFR skill to pull current text from 2 CFR 200, then summarize it for a non-expert PI.</p>
+          </article>
+          <article class="col-card accent">
+            <span class="step">Exercise B</span>
+            <h3>Contract review with the legal skill</h3>
+            <p>Walk a vendor SaaS contract against Cornell positions and produce a plain-English risk summary.</p>
+          </article>
+        </div>
+        <p class="footnote">Copy-pasteable prompts on the <a href="../module-foundations.html" style="color:var(--carnelian-dark); font-weight:600;">module page</a>.</p>
+      </div>
+    </section>
+
+    <!-- ─── Slide 10 · Homework + links ─── -->
+    <section class="slide content" data-bg="light">
+      <p class="slide-eyebrow">Slide 10 &middot; Before next week</p>
+      <h2>Homework, then keep the site close.</h2>
+      <div class="slide-body">
+        <div class="col-2">
+          <article class="col-card">
+            <span class="step">1 &middot; Homework</span>
+            <h3>Take AI Fluency for Non-Profits</h3>
+            <p>Anthropic&rsquo;s free course. Frames everything we&rsquo;ll discuss in Module 2.</p>
+          </article>
+          <article class="col-card">
+            <span class="step">2 &middot; Homework</span>
+            <h3>Three short reflections</h3>
+            <p>Your workplace, your values, and &ldquo;If AI could help me ___, I would spend more time ___.&rdquo;</p>
+          </article>
+        </div>
+        <p style="margin-top: 1.25rem;">
+          <strong>Links:</strong>
+          <a href="../index.html" style="color:var(--carnelian-dark); font-weight:600;">this site</a> &middot;
+          <a href="https://innovationhub.ai.cornell.edu/tools-resources/" target="_blank" rel="noopener" style="color:var(--carnelian-dark); font-weight:600;">AI Innovation Hub</a> &middot;
+          AI4RA &middot; Teams cohort channel &middot;
+          <a href="mailto:ai-support@cornell.edu" style="color:var(--carnelian-dark); font-weight:600;">ai-support@cornell.edu</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ─── Slide 11 · End (Cornell-style closing) ─── -->
+    <section class="slide cornell-bg" data-bg="cornell">
+      <img class="seal-bottom" src="assets/cornell-seal.png" alt="Cornell University seal" />
+    </section>
+
+  </main>
+
+  <div class="slide-counter" id="slide-counter">1 / 11</div>
+  <nav class="deck-nav" aria-label="Slide navigation">
+    <button class="nav-prev" type="button" aria-label="Previous slide">&larr;</button>
+    <button class="nav-next" type="button" aria-label="Next slide">&rarr;</button>
+  </nav>
+
+  <script>
+    (function () {
+      var slides   = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+      var counter  = document.getElementById('slide-counter');
+      var prevBtn  = document.querySelector('.nav-prev');
+      var nextBtn  = document.querySelector('.nav-next');
+      var total    = slides.length;
+
+      function currentFromHash() {
+        var m = (window.location.hash || '').match(/^#\/(\d+)/);
+        var n = m ? parseInt(m[1], 10) : 1;
+        return Math.max(1, Math.min(total, n));
+      }
+
+      function setSlide(n, replace) {
+        n = Math.max(1, Math.min(total, n));
+        slides.forEach(function (s, i) {
+          s.classList.toggle('is-active', i + 1 === n);
+        });
+        var active = slides[n - 1];
+        document.body.dataset.activeBg = active.dataset.bg || 'light';
+        counter.textContent = n + ' / ' + total;
+        prevBtn.disabled = n === 1;
+        nextBtn.disabled = n === total;
+        var target = '#/' + n;
+        if (window.location.hash !== target) {
+          if (replace && window.history.replaceState) {
+            window.history.replaceState(null, '', target);
+          } else {
+            window.location.hash = target;
+          }
+        }
+      }
+
+      prevBtn.addEventListener('click', function () { setSlide(currentFromHash() - 1); });
+      nextBtn.addEventListener('click', function () { setSlide(currentFromHash() + 1); });
+
+      window.addEventListener('keydown', function (e) {
+        if (e.target && /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)) return;
+        if (e.key === 'ArrowLeft' || e.key === 'PageUp')   { e.preventDefault(); setSlide(currentFromHash() - 1); }
+        if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
+          e.preventDefault(); setSlide(currentFromHash() + 1);
+        }
+        if (e.key === 'Home') { e.preventDefault(); setSlide(1); }
+        if (e.key === 'End')  { e.preventDefault(); setSlide(total); }
+      });
+
+      window.addEventListener('hashchange', function () { setSlide(currentFromHash()); });
+
+      setSlide(currentFromHash(), true);
+    })();
+  </script>
+</body>
+</html>

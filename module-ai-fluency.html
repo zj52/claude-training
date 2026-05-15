@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#191919" />
+  <title>Module 2 · AI Fluency | Claude Training</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .word-cloud-placeholder {
+      margin-top: 1rem;
+      padding: 3rem 1.5rem;
+      border-radius: var(--radius-md);
+      background: var(--carnelian-dim);
+      border: 1px dashed rgba(179, 27, 27, 0.32);
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    .word-cloud-placeholder strong { color: var(--carnelian-dark); }
+  </style>
+</head>
+<body>
+  <div class="page-frame">
+
+    <header class="site-header">
+      <div class="shell">
+        <div class="brand-lockup">
+          <a class="brand-home" href="index.html">
+            <span class="brand-mark" aria-hidden="true">CU</span>
+            <span class="brand-line"><strong>Claude Training</strong> &middot; Cornell AI Innovation Hub</span>
+          </a>
+        </div>
+        <nav aria-label="Primary">
+          <ul class="nav-list">
+            <li><a class="nav-link" href="index.html">Home</a></li>
+            <li><a class="nav-link" href="module-foundations.html">Foundations</a></li>
+            <li><a class="nav-link is-active" href="module-ai-fluency.html">AI Fluency</a></li>
+            <li><a class="nav-link" href="module-cowork.html">Cowork</a></li>
+            <li><a class="nav-link" href="faq.html">FAQ</a></li>
+            <li><a class="nav-link" href="tips.html">Tips</a></li>
+            <li><a class="nav-link" href="learning.html">Learning</a></li>
+            <li><a class="nav-link" href="https://innovationhub.ai.cornell.edu/tools-resources/" target="_blank" rel="noopener">Tool status &rarr;</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+
+      <section class="page-intro">
+        <div class="page-intro-panel">
+          <p class="eyebrow">Module 2 &middot; Workshop &amp; reference</p>
+          <h1>AI Fluency.</h1>
+          <p>
+            How to collaborate with Claude well &mdash; effectively,
+            efficiently, ethically, and safely. We&rsquo;ll review the
+            framework, share the cohort&rsquo;s word cloud from this
+            week&rsquo;s homework, and run an advanced example together.
+          </p>
+        </div>
+      </section>
+
+      <section class="content-block">
+        <p class="eyebrow">The framework</p>
+        <h2 class="section-heading section-heading-wide">4 dimensions &middot; 4 Ds.</h2>
+
+        <h3 style="margin-top: 1.5rem; font-size: 1rem; font-family: var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--carnelian-dark);">4 Dimensions</h3>
+        <div class="card-grid" style="margin-top: 0.75rem;">
+          <article class="content-card">
+            <span class="tag">Effective</span>
+            <h3>Get the result</h3>
+            <p>Use Claude to produce work that actually meets your goal.</p>
+          </article>
+          <article class="content-card">
+            <span class="tag">Efficient</span>
+            <h3>Save the time</h3>
+            <p>Pick tasks where Claude actually saves effort over doing it yourself.</p>
+          </article>
+          <article class="content-card">
+            <span class="tag">Ethical</span>
+            <h3>Mind the people</h3>
+            <p>Use Claude in ways that respect the people whose work and data are involved.</p>
+          </article>
+          <article class="content-card">
+            <span class="tag">Safe</span>
+            <h3>Mind the data</h3>
+            <p>Match the data classification to what the tool is approved for. No HIPAA. No export-controlled.</p>
+          </article>
+        </div>
+
+        <h3 style="margin-top: 2rem; font-size: 1rem; font-family: var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--carnelian-dark);">4 Ds</h3>
+        <div class="card-grid" style="margin-top: 0.75rem;">
+          <article class="content-card">
+            <span class="tag">Delegation</span>
+            <h3>What to hand over</h3>
+            <p>Decide what goes to Claude vs. web search vs. spreadsheet vs. you.</p>
+          </article>
+          <article class="content-card">
+            <span class="tag">Description</span>
+            <h3>How to ask</h3>
+            <p>Set the stage, give the task, specify the output. The Anthropic 3-part prompt.</p>
+          </article>
+          <article class="content-card">
+            <span class="tag">Discernment</span>
+            <h3>How to read it</h3>
+            <p>Read the output critically. Spot-check facts, numbers, and citations.</p>
+          </article>
+          <article class="content-card">
+            <span class="tag">Diligence</span>
+            <h3>How to follow up</h3>
+            <p>Iterate, revise, and verify before sharing.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="content-block">
+        <p class="eyebrow">The cohort, in their own words</p>
+        <h2 class="section-heading section-heading-wide">Word cloud from this week&rsquo;s reflections.</h2>
+        <div class="word-cloud-placeholder">
+          <p><strong>The word cloud appears here after the cohort submits.</strong></p>
+          <p style="margin-top: 0.5rem;">Built from your responses to: workplace situation, core values, and &ldquo;If AI could help me ___, I would spend more time ___.&rdquo;</p>
+        </div>
+      </section>
+
+      <section class="content-block">
+        <p class="eyebrow">Today&rsquo;s exercise</p>
+        <h2 class="section-heading section-heading-wide">Advanced example &mdash; building.</h2>
+        <article class="content-card future">
+          <span class="tag muted">Coming</span>
+          <h3>Multi-step research-administration task</h3>
+          <p>A drafted memo that pulls from a document, looks up the relevant CFR, and produces a plain-English output with citations. Live walkthrough during the workshop &mdash; copy-pasteable prompt added here after.</p>
+        </article>
+      </section>
+
+      <section class="content-block" id="homework">
+        <p class="eyebrow">Homework before Module 3</p>
+        <h2 class="section-heading section-heading-wide">One thing to do this week.</h2>
+        <div class="compact-grid">
+
+          <article class="content-card">
+            <span class="tag">1</span>
+            <h3>Take Introduction to Claude Cowork</h3>
+            <p>Anthropic&rsquo;s Skilljar course on Cowork &mdash; the desktop mode we&rsquo;ll use in Module 3. ~30 minutes.</p>
+            <div class="card-actions">
+              <a class="button" href="https://anthropic.skilljar.com/introduction-to-claude-cowork" target="_blank" rel="noopener">Open the course &rarr;</a>
+            </div>
+          </article>
+
+          <article class="content-card">
+            <span class="tag">2</span>
+            <h3>Quick reflection</h3>
+            <p>One task you&rsquo;d want Cowork to handle, and one concern or question you have about it.</p>
+            <div class="card-actions">
+              <a class="button-secondary" href="#" target="_blank" rel="noopener">Open the form &rarr;</a>
+            </div>
+          </article>
+
+        </div>
+
+        <p class="fine-note">
+          <strong>Anonymity:</strong> We collect your name and department for our records. On the site we display only your first name + department, or &ldquo;Anonymous&rdquo; if you prefer. Nothing is shared outside Cornell.
+        </p>
+      </section>
+
+      <section class="callout-band">
+        <div class="callout-panel">
+          <p class="eyebrow">Up next</p>
+          <h2 class="section-heading section-heading-wide">Module 3 &mdash; Working with Cowork.</h2>
+          <p>End-to-end real work: files, skills, and reusable context. Plus office hours, the AI roadmap, and how to keep getting help.</p>
+          <div class="cta-row">
+            <a class="button-secondary" href="module-cowork.html">Preview Module 3 &rarr;</a>
+            <a class="button-secondary" href="module-foundations.html">&larr; Module 1</a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell">
+        <span>&copy; 2026 Cornell University</span>
+        <a href="https://innovationhub.ai.cornell.edu/" target="_blank" rel="noopener">AI Innovation Hub</a>
+        <a href="https://support.claude.com/" target="_blank" rel="noopener">Claude support</a>
+        <a href="mailto:ai-support@cornell.edu">ai-support@cornell.edu</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

@@ -22,8 +22,11 @@
           <ul class="nav-list">
             <li><a class="nav-link" href="index.html">Home</a></li>
             <li><a class="nav-link is-active" href="module-foundations.html">Foundations</a></li>
-            <li><a class="nav-link" href="index.html#fluency">AI Fluency</a></li>
-            <li><a class="nav-link" href="index.html#homework">Homework</a></li>
+            <li><a class="nav-link" href="module-ai-fluency.html">AI Fluency</a></li>
+            <li><a class="nav-link" href="module-cowork.html">Cowork</a></li>
+            <li><a class="nav-link" href="faq.html">FAQ</a></li>
+            <li><a class="nav-link" href="tips.html">Tips</a></li>
+            <li><a class="nav-link" href="learning.html">Learning</a></li>
             <li><a class="nav-link" href="https://innovationhub.ai.cornell.edu/tools-resources/" target="_blank" rel="noopener">Tool status &rarr;</a></li>
           </ul>
         </nav>
@@ -34,60 +37,129 @@
 
       <section class="page-intro">
         <div class="page-intro-panel">
-          <p class="eyebrow">Module 1</p>
-          <h1>Foundations</h1>
+          <p class="eyebrow">Module 1 &middot; Workshop &amp; reference</p>
+          <h1>Foundations.</h1>
           <p>
-            What Claude is, where it lives in the Cornell ecosystem, and
-            how to set up Cowork on third-party inference.
+            Our goal is to help create efficiency by automating tedious
+            work. In this first session: what Claude is, where it lives
+            in the Cornell ecosystem, how to write a prompt that works,
+            and two real exercises &mdash; an eCFR query and a contract
+            review.
           </p>
         </div>
       </section>
 
       <section class="content-block">
-        <p class="eyebrow">Lessons</p>
-        <h2 class="section-heading">Three lessons in this module.</h2>
-        <div class="card-grid">
+        <p class="eyebrow">Workshop deck</p>
+        <h2 class="section-heading section-heading-wide">11 slides we walk through together.</h2>
+        <div class="compact-grid">
 
-          <article class="content-card future">
-            <span class="tag muted">Lesson 1</span>
-            <h3>What is Claude?</h3>
-            <p>A short overview of Claude as a model and product family. <em>Coming soon.</em></p>
-            <div class="card-actions">
-              <span class="button-secondary">Slides &middot; planned</span>
-            </div>
-          </article>
-
-          <a class="content-card" href="slides/ecosystem.html">
-            <span class="tag">Lesson 2</span>
-            <h3>The Claude ecosystem at Cornell</h3>
-            <p>Surfaces (web, desktop, mobile, browser) vs. inference (Anthropic SaaS vs. third-party). Where Cornell sits today.</p>
-            <div class="card-actions">
-              <span class="button">Open slide &rarr;</span>
-            </div>
+          <a class="content-card" href="slides/foundations.html">
+            <span class="tag">Full deck</span>
+            <h3>Foundations &mdash; open the deck</h3>
+            <p>Mission &middot; ecosystem &middot; data rules &middot; probabilistic AI &middot; 3-part prompt &middot; success stories &middot; UI tour &middot; exercises &middot; homework. Arrow keys to navigate.</p>
+            <div class="card-actions"><span class="button">Open deck &rarr;</span></div>
           </a>
 
-          <article class="content-card future">
-            <span class="tag muted">Lesson 3</span>
-            <h3>Setting up Cowork</h3>
-            <p>Install Claude Desktop, point it at Cornell's third-party inference, run your first task. <em>Coming soon.</em></p>
-            <div class="card-actions">
-              <span class="button-secondary">Walkthrough &middot; planned</span>
-            </div>
-          </article>
+          <a class="content-card" href="slides/foundations.html#/3">
+            <span class="tag">Jump to</span>
+            <h3>Slide 3 &mdash; The ecosystem</h3>
+            <p>Surfaces vs. inference. Where Cornell sits today. A representative content slide.</p>
+            <div class="card-actions"><span class="button-secondary">Open slide &rarr;</span></div>
+          </a>
 
         </div>
       </section>
 
+      <section class="content-block">
+        <p class="eyebrow">Today&rsquo;s exercises</p>
+        <h2 class="section-heading section-heading-wide">Real work, not &ldquo;try a prompt.&rdquo;</h2>
+
+        <article class="content-card">
+          <span class="tag">Exercise A</span>
+          <h3>Look up federal cost principles</h3>
+          <p class="module-prose">Use the eCFR skill to pull current text from 2 CFR 200 (Cost Principles), then summarize it for a non-expert.</p>
+          <div class="exercise-block">
+<pre><code>I'm preparing a budget for an NIH-funded research project at Cornell.
+Look up 2 CFR 200, Subpart E (Cost Principles) using the eCFR skill —
+don't rely on memory — and answer:
+
+1. What is the federal rule on charging administrative and clerical
+   salaries as direct costs on a federal award?
+2. What documented exceptions allow administrative or clerical salaries
+   to be charged directly to a federal award?
+3. Cite the specific section number(s) for each answer.
+
+After you answer, give me a one-paragraph plain-English summary that I
+could share with a PI who has no familiarity with the regulations.</code></pre>
+            <button class="copy-btn" type="button">Copy</button>
+          </div>
+        </article>
+
+        <article class="content-card" style="margin-top: 1rem;">
+          <span class="tag">Exercise B</span>
+          <h3>Contract review with the legal skill</h3>
+          <p class="module-prose">Walk through a vendor SaaS agreement against typical Cornell positions and produce a plain-English risk summary.</p>
+          <div class="exercise-block">
+<pre><code>I'm reviewing a vendor contract for a SaaS service Cornell plans to
+procure. Use the contract-review skill to walk through the attached
+agreement against typical Cornell positions.
+
+Specifically:
+1. Flag any clauses that deviate from standard positions on data
+   protection, indemnification, and termination.
+2. For each flagged clause, give me: (a) what the clause says in plain
+   English, (b) why it might be a concern for Cornell, (c) suggested
+   redline language.
+3. Summarize the top 3 risks in a single paragraph at the end —
+   something I could send to a non-lawyer business owner.
+
+[Attach: sample-vendor-saas-agreement.pdf]</code></pre>
+            <button class="copy-btn" type="button">Copy</button>
+          </div>
+        </article>
+      </section>
+
+      <section class="content-block" id="homework">
+        <p class="eyebrow">Homework before Module 2</p>
+        <h2 class="section-heading section-heading-wide">Two things to do this week.</h2>
+        <div class="compact-grid">
+
+          <article class="content-card">
+            <span class="tag">1</span>
+            <h3>Take AI Fluency for Non-Profits</h3>
+            <p>Anthropic&rsquo;s free course on collaborating well with AI. Frames everything we discuss next week.</p>
+            <div class="card-actions">
+              <a class="button" href="#" target="_blank" rel="noopener">Open the course &rarr;</a>
+            </div>
+          </article>
+
+          <article class="content-card">
+            <span class="tag">2</span>
+            <h3>Reflect &mdash; three short questions</h3>
+            <p>Your workplace situation, your values, and &ldquo;If AI could help me ___, I would spend more time ___.&rdquo;</p>
+            <div class="card-actions">
+              <a class="button-secondary" href="#" target="_blank" rel="noopener">Open the form &rarr;</a>
+            </div>
+          </article>
+
+        </div>
+
+        <p class="fine-note">
+          <strong>Anonymity:</strong> We collect your name and department for our records. On the site we display only your first name + department, or &ldquo;Anonymous&rdquo; if you prefer. Nothing is shared outside Cornell.
+        </p>
+      </section>
+
       <section class="callout-band">
         <div class="callout-panel">
-          <p class="eyebrow">After this module</p>
-          <h2 class="section-heading section-heading-wide">You'll know where Cornell sits in the Claude ecosystem &mdash; and what's coming.</h2>
+          <p class="eyebrow">Up next</p>
+          <h2 class="section-heading section-heading-wide">Module 2 &mdash; AI Fluency.</h2>
           <p>
-            Next up: AI Fluency. Define the values, mission, and objectives
-            that guide how you collaborate with Claude on your work.
+            We&rsquo;ll review the fluency framework, share the cohort&rsquo;s
+            word cloud, and run an advanced example. One week from today.
           </p>
           <div class="cta-row">
-            <a class="button-secondary" href="index.html#fluency">Preview Module 2 &rarr;</a>
+            <a class="button-secondary" href="module-ai-fluency.html">Preview Module 2 &rarr;</a>
             <a class="button-secondary" href="index.html">&larr; All modules</a>
           </div>
         </div>
@@ -100,8 +172,30 @@
         <span>&copy; 2026 Cornell University</span>
         <a href="https://innovationhub.ai.cornell.edu/" target="_blank" rel="noopener">AI Innovation Hub</a>
         <a href="https://support.claude.com/" target="_blank" rel="noopener">Claude support</a>
+        <a href="mailto:ai-support@cornell.edu">ai-support@cornell.edu</a>
       </div>
     </footer>
   </div>
+
+  <script>
+    document.querySelectorAll('.copy-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var pre = btn.parentElement.querySelector('pre code') || btn.parentElement.querySelector('pre');
+        if (!pre) return;
+        var text = pre.textContent || pre.innerText;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function () {
+            var original = btn.textContent;
+            btn.textContent = 'Copied';
+            btn.classList.add('copied');
+            setTimeout(function () {
+              btn.textContent = original;
+              btn.classList.remove('copied');
+            }, 1600);
+          });
+        }
+      });
+    });
+  </script>
 </body>
 </html>

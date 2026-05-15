@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#191919" />
+  <title>Claude 3P · New User Q&amp;A | Claude Training</title>
+  <meta name="description" content="Common questions from first-time Claude 3P users at Cornell — security, the desktop app, models, files, and more." />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ─── FAQ-specific styles (additive, keeps shared sheet clean) ─── */
+    .faq-panel {
+      padding: 2.5rem 2.75rem 2.75rem;
+      border-radius: var(--radius-lg);
+      background: var(--paper);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line-soft);
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .faq-item {
+      padding: 1.75rem 0;
+      border-top: 1px solid var(--line-soft);
+    }
+    .faq-item:first-child {
+      padding-top: 0.5rem;
+      border-top: none;
+    }
+    .faq-item:last-child { padding-bottom: 0.5rem; }
+
+    .faq-item h2 {
+      font-size: clamp(1.2rem, 2vw, 1.55rem);
+      letter-spacing: -0.015em;
+      font-weight: 800;
+      margin-bottom: 0.85rem;
+      max-width: 56ch;
+    }
+
+    .faq-item h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: -0.005em;
+      color: var(--ink);
+      margin-top: 1.1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .faq-item p,
+    .faq-item ul {
+      color: var(--ink);
+      font-size: 0.98rem;
+      line-height: 1.6;
+      max-width: 68ch;
+    }
+
+    .faq-item p { margin: 0 0 0.85rem; }
+    .faq-item p:last-child { margin-bottom: 0; }
+
+    .faq-item ul {
+      margin: 0 0 0.85rem;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .faq-item li {
+      position: relative;
+      padding-left: 1.1rem;
+    }
+    .faq-item li::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 0.62rem;
+      width: 0.38rem; height: 0.38rem;
+      border-radius: 50%;
+      background: var(--carnelian);
+    }
+
+    .faq-item code {
+      font-family: var(--mono);
+      font-size: 0.88em;
+      padding: 0.08rem 0.32rem;
+      border-radius: 4px;
+      background: var(--carnelian-dim);
+      color: var(--carnelian-dark);
+    }
+
+    .faq-item .lead-yes {
+      display: inline-block;
+      font-weight: 800;
+      color: var(--carnelian-dark);
+      letter-spacing: -0.01em;
+      font-size: 1.05rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .faq-item .bottom-line {
+      margin-top: 1rem;
+      padding: 0.85rem 1.1rem;
+      border-left: 3px solid var(--carnelian);
+      background: var(--carnelian-dim);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: var(--ink);
+      max-width: none;
+    }
+    .faq-item .bottom-line strong { color: var(--carnelian-dark); }
+
+    .faq-meta {
+      margin-bottom: 1.25rem;
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+    }
+
+    /* ─── Search ─── */
+    .faq-search {
+      position: relative;
+      margin-bottom: 1.75rem;
+    }
+    .faq-search input {
+      width: 100%;
+      padding: 0.85rem 2.6rem 0.85rem 2.6rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      font-family: inherit;
+      font-size: 1rem;
+      color: var(--ink);
+      transition: border-color 140ms ease, box-shadow 140ms ease;
+    }
+    .faq-search input::placeholder { color: var(--muted); }
+    .faq-search input:focus {
+      outline: none;
+      border-color: var(--carnelian);
+      box-shadow: 0 0 0 4px var(--carnelian-dim);
+    }
+    .faq-search .search-icon {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      pointer-events: none;
+      width: 1rem;
+      height: 1rem;
+    }
+    .faq-search .clear-btn {
+      position: absolute;
+      right: 0.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1.85rem;
+      height: 1.85rem;
+      border-radius: 50%;
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 140ms ease, color 140ms ease;
+    }
+    .faq-search .clear-btn:hover {
+      background: var(--carnelian-dim);
+      color: var(--carnelian-dark);
+    }
+    .faq-search.has-value .clear-btn { display: inline-flex; }
+
+    .faq-item[hidden] { display: none; }
+
+    .faq-item mark {
+      background: var(--carnelian-dim);
+      color: var(--carnelian-dark);
+      padding: 0 0.12em;
+      border-radius: 3px;
+    }
+
+    .faq-empty {
+      display: none;
+      padding: 2rem 0 0.5rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+    .faq-empty strong { color: var(--ink); }
+
+    @media (max-width: 760px) {
+      .faq-panel { padding: 1.5rem 1.25rem 1.75rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-frame">
+
+    <header class="site-header">
+      <div class="shell">
+        <div class="brand-lockup">
+          <a class="brand-home" href="index.html">
+            <span class="brand-mark" aria-hidden="true">CU</span>
+            <span class="brand-line"><strong>Claude Training</strong> &middot; Cornell AI Innovation Hub</span>
+          </a>
+        </div>
+        <nav aria-label="Primary">
+          <ul class="nav-list">
+            <li><a class="nav-link" href="index.html">Home</a></li>
+            <li><a class="nav-link" href="module-foundations.html">Foundations</a></li>
+            <li><a class="nav-link" href="module-ai-fluency.html">AI Fluency</a></li>
+            <li><a class="nav-link" href="module-cowork.html">Cowork</a></li>
+            <li><a class="nav-link is-active" href="faq.html">FAQ</a></li>
+            <li><a class="nav-link" href="tips.html">Tips</a></li>
+            <li><a class="nav-link" href="learning.html">Learning</a></li>
+            <li><a class="nav-link" href="https://innovationhub.ai.cornell.edu/tools-resources/" target="_blank" rel="noopener">Tool status &rarr;</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+
+      <section class="page-intro">
+        <div class="page-intro-panel">
+          <p class="eyebrow">Q&amp;A &middot; New users</p>
+          <h1>Claude 3P: New User Q&amp;A.</h1>
+          <p>
+            Notes from first installs of Claude third-party inference
+            (Claude 3P). Common questions, plain answers &mdash; useful
+            before, during, and after the first few sessions.
+          </p>
+        </div>
+      </section>
+
+      <section class="content-block">
+        <div class="faq-panel">
+          <p class="faq-meta" id="faq-meta">14 questions &middot; updated for the 3P rollout</p>
+
+          <div class="faq-search" id="faq-search-wrap">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="7"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input
+              type="search"
+              id="faq-search"
+              placeholder="Search questions and answers&hellip;"
+              aria-label="Search the FAQ"
+              autocomplete="off" />
+            <button type="button" class="clear-btn" id="faq-clear" aria-label="Clear search">&times;</button>
+          </div>
+
+          <p class="faq-empty" id="faq-empty">
+            No matches. Try a different word &mdash; or check the
+            <a href="https://innovationhub.ai.cornell.edu/tools-resources/" target="_blank" rel="noopener" style="color:var(--carnelian-dark); font-weight:600;">Innovation Hub</a>.
+          </p>
+
+          <div class="faq-list" id="faq-list">
+
+            <!-- 1 -->
+            <article class="faq-item">
+              <h2>Is this as secure as sandbox AI?</h2>
+              <p class="lead-yes">Yes.</p>
+              <p>
+                Same safety tier, same data rules. Good for Cornell data
+                used in research administration (protocols, awards,
+                proposals, IP). Exceptions: HIPAA data, which we
+                shouldn&rsquo;t encounter, and regulated data such as
+                export-controlled information.
+              </p>
+              <p>
+                Claude 3P is a different front end pointing at the
+                <strong>same infrastructure</strong> as sandbox AI. Your
+                prompts go through our LiteLLM gateway to the cloud
+                models we already have data-protection contracts with
+                (AWS, Azure, GCP). Nothing about Claude 3P routes your
+                data outside that envelope.
+              </p>
+
+              <h3>What about web search?</h3>
+              <p>
+                The <code>/gemini-search</code> skill uses Gemini&rsquo;s
+                <strong>enterprise</strong> web grounding, not regular
+                Google search. Concretely:
+              </p>
+              <ul>
+                <li>Your query stays inside the contracted Vertex AI environment.</li>
+                <li>Gemini matches it against a curated web index Google maintains for regulated industries (finance, healthcare, public sector).</li>
+                <li><strong>Google does not log your prompt.</strong> The standard Google Search grounding tool would log for 30 days; we explicitly use the enterprise tool instead, which contractually removes that logging.</li>
+                <li>The trade-off: the enterprise index is narrower and refreshes every few hours, so it occasionally misses things you&rsquo;d find on public Google.</li>
+              </ul>
+
+              <p class="bottom-line">
+                <strong>Bottom line:</strong> the data path for a Claude
+                3P chat, with or without search, is the same path your
+                sandbox AI chats already take. Same gateway, same
+                contracted infrastructure, same rules about what to put in.
+              </p>
+            </article>
+
+            <!-- 2 -->
+            <article class="faq-item">
+              <h2>Is Claude 3P the same as the regular desktop app?</h2>
+              <p>
+                Yes. It&rsquo;s the same app, but with a different
+                configuration enabled by our IT team. That configuration
+                lets us route through our own secure infrastructure
+                contracts already in place.
+              </p>
+            </article>
+
+            <!-- 3 -->
+            <article class="faq-item">
+              <h2>Claude 3P is asking me if I want to use the Chrome extension. Is that part of Claude 3P?</h2>
+              <p>
+                No. Claude 3P only includes the desktop application,
+                configured by our IT team. It does not include the web
+                interface, the browser extension, or the mobile application.
+              </p>
+            </article>
+
+            <!-- 4 -->
+            <article class="faq-item">
+              <h2>Can Claude read a file if I paste in a file path from my machine?</h2>
+              <p>
+                No, Claude can&rsquo;t read a file that way. Drag and
+                drop the file into the chat instead.
+              </p>
+            </article>
+
+            <!-- 5 -->
+            <article class="faq-item">
+              <h2>How long before chats are archived or deleted?</h2>
+              <p>
+                Chats are stored indefinitely, until you delete them.
+                They&rsquo;re kept on your local machine.
+              </p>
+            </article>
+
+            <!-- 6 -->
+            <article class="faq-item">
+              <h2>Which Claude model should I pick?</h2>
+              <p>
+                For most work, <strong>Sonnet</strong> is the default.
+                It&rsquo;s fast, capable, and what the app uses unless
+                you change it.
+              </p>
+              <p>
+                Reach for <strong>Opus</strong> on harder reasoning
+                &mdash; long documents, multi-step analysis, anything
+                where a wrong answer is expensive. It&rsquo;s slower and
+                counts more against your usage window.
+              </p>
+              <p>
+                Reach for <strong>Haiku</strong> when you want a quick
+                answer and don&rsquo;t need depth &mdash; short rewrites,
+                classification, simple lookups.
+              </p>
+              <p>
+                You can switch in the model picker at the bottom of the
+                chat. If you&rsquo;re not sure, start with Sonnet and
+                only move up if the answer isn&rsquo;t good enough.
+              </p>
+            </article>
+
+            <!-- 7 -->
+            <article class="faq-item">
+              <h2>Does Claude remember our previous chats?</h2>
+              <p>
+                No, not by default. Each new chat starts blank. Claude
+                doesn&rsquo;t know what you said in yesterday&rsquo;s
+                conversation, or even in the chat right next to this one.
+              </p>
+              <p>Two things change that:</p>
+              <ul>
+                <li><strong>Projects</strong> carry a shared instruction and a set of files that every chat inside the project can see.</li>
+                <li>A single long chat keeps everything visible up to its context window &mdash; eventually the oldest messages get pushed out.</li>
+              </ul>
+              <p>
+                If you want Claude to remember something across chats,
+                put it in a Project&rsquo;s instructions or in a file the
+                Project can read.
+              </p>
+            </article>
+
+            <!-- 8 -->
+            <article class="faq-item">
+              <h2>What&rsquo;s a Project, and when should I use one?</h2>
+              <p>
+                A Project is a folder of chats that share the same
+                instructions and uploaded files.
+              </p>
+              <p>Use one when:</p>
+              <ul>
+                <li>You&rsquo;re going to have many chats on the same topic (e.g., reviewing IRB protocols, drafting award narratives, working through a specific RFP).</li>
+                <li>You have reference material &mdash; a style guide, a list of acronyms, a template &mdash; that every chat should know about.</li>
+                <li>You want to set the tone or role once instead of re-explaining it each time.</li>
+              </ul>
+              <p>Don&rsquo;t bother with a Project for one-off questions. A regular chat is fine.</p>
+            </article>
+
+            <!-- 9 -->
+            <article class="faq-item">
+              <h2>Can Claude be wrong?</h2>
+              <p>
+                Yes. Claude can sound confident and still be wrong,
+                especially about specific facts, numbers, citations,
+                names, and anything recent. Treat its output the way
+                you&rsquo;d treat a sharp but unverified intern: a useful
+                first draft, not a final answer.
+              </p>
+              <p>Two practical habits:</p>
+              <ul>
+                <li>For anything that matters, ask Claude to show its source or quote the passage it&rsquo;s relying on. If it can&rsquo;t, assume it might be making it up.</li>
+                <li>Spot-check numbers and direct quotes against the original.</li>
+              </ul>
+            </article>
+
+            <!-- 10 -->
+            <article class="faq-item">
+              <h2>Can I upload files? What kinds?</h2>
+              <p>Yes. Drag and drop into the chat. Claude handles:</p>
+              <ul>
+                <li>Text-like files: <code>.md</code>, <code>.txt</code>, <code>.csv</code>, <code>.html</code>, code files</li>
+                <li>PDFs and images (it can read the contents)</li>
+                <li>Word docs (<code>.docx</code>), Excel (<code>.xlsx</code>), PowerPoint (<code>.pptx</code>)</li>
+              </ul>
+              <p>
+                There&rsquo;s a per-chat size limit, so very large PDFs
+                or spreadsheets may need to be split. For files
+                you&rsquo;ll reference repeatedly, attach them to a
+                Project instead of re-uploading every chat.
+              </p>
+            </article>
+
+            <!-- 11 -->
+            <article class="faq-item">
+              <h2>Why did I get a different answer when I asked the same question again?</h2>
+              <p>
+                Claude isn&rsquo;t deterministic &mdash; by design it
+                picks among plausible next words probabilistically, so
+                two runs of the same prompt can come back worded
+                differently, and occasionally with different substance.
+              </p>
+              <p>If you need consistency:</p>
+              <ul>
+                <li>Be more specific in the prompt (constraints, format, length).</li>
+                <li>Give Claude a template to follow.</li>
+                <li>For factual lookups, ask it to quote the source.</li>
+              </ul>
+            </article>
+
+            <!-- 12 -->
+            <article class="faq-item">
+              <h2>Is there a usage limit?</h2>
+              <p>
+                Yes. There&rsquo;s a rolling cap on how much you can
+                send to the bigger models in a given window. Most people
+                never hit it during normal work. If you do, you&rsquo;ll
+                see a message and can either wait out the window or
+                switch to a lighter model (Sonnet &rarr; Haiku) to keep going.
+              </p>
+            </article>
+
+            <!-- 13 -->
+            <article class="faq-item">
+              <h2>Can I share a chat with a colleague?</h2>
+              <p>
+                Not directly through Claude 3P. Chats are stored on your
+                machine, not in a shared cloud. To share, copy the
+                relevant content into an email, a doc, or a Teams
+                message, or export the chat as text.
+              </p>
+            </article>
+
+            <!-- 14 -->
+            <article class="faq-item">
+              <h2>How do I get better answers?</h2>
+              <p>Three things help more than anything else:</p>
+              <ul>
+                <li><strong>Give context up front.</strong> &ldquo;I&rsquo;m drafting a justification for an NSF supplement; here&rsquo;s the program description and the original proposal &mdash; write a 150-word case for the supplement&rdquo; beats &ldquo;write a justification.&rdquo;</li>
+                <li><strong>Show, don&rsquo;t just tell.</strong> Paste an example of the style or format you want. Claude matches an example more closely than any adjective (&ldquo;formal,&rdquo; &ldquo;concise&rdquo;) will get you.</li>
+                <li><strong>Iterate.</strong> First drafts rarely land. Tell Claude what&rsquo;s wrong with it &mdash; &ldquo;too generic, make it specific to our award,&rdquo; &ldquo;cut the marketing language&rdquo; &mdash; and it&rsquo;ll fix that part without losing the rest.</li>
+              </ul>
+              <p>For more, see the <a href="index.html#fluency" style="color:var(--carnelian-dark); font-weight:600;">AI Fluency materials</a> linked in the deck.</p>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <section class="callout-band">
+        <div class="callout-panel">
+          <p class="eyebrow">Missing something?</p>
+          <h2 class="section-heading section-heading-wide">This is a living list &mdash; built from real questions.</h2>
+          <p>
+            If a new user asks something not covered here, send it to the
+            Innovation Hub team. The next session usually has the answer
+            added.
+          </p>
+          <div class="cta-row">
+            <a class="button-secondary" href="index.html">&larr; Back to home</a>
+            <a class="button-secondary" href="https://innovationhub.ai.cornell.edu/tools-resources/" target="_blank" rel="noopener">Tool status &rarr;</a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell">
+        <span>&copy; 2026 Cornell University</span>
+        <a href="https://innovationhub.ai.cornell.edu/" target="_blank" rel="noopener">AI Innovation Hub</a>
+        <a href="https://support.claude.com/" target="_blank" rel="noopener">Claude support</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      var input   = document.getElementById('faq-search');
+      var wrap    = document.getElementById('faq-search-wrap');
+      var clear   = document.getElementById('faq-clear');
+      var list    = document.getElementById('faq-list');
+      var meta    = document.getElementById('faq-meta');
+      var empty   = document.getElementById('faq-empty');
+      if (!input || !list) return;
+
+      var items = Array.prototype.slice.call(list.querySelectorAll('.faq-item'));
+      var total = items.length;
+
+      // Cache each item's lowercase text + original HTML for highlight restore.
+      var cache = items.map(function (el) {
+        return {
+          el: el,
+          text: el.textContent.toLowerCase(),
+          html: el.innerHTML
+        };
+      });
+
+      var defaultMeta = total + ' questions · updated for the 3P rollout';
+
+      function escapeHtml(s) {
+        return s.replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;');
+      }
+      function escapeReg(s) {
+        return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      }
+
+      // Highlight matches inside text nodes only (preserves existing HTML).
+      function highlightNode(node, regex) {
+        if (node.nodeType === 3) { // text node
+          var text = node.nodeValue;
+          if (!regex.test(text)) return;
+          regex.lastIndex = 0;
+          var frag = document.createDocumentFragment();
+          var last = 0, m;
+          while ((m = regex.exec(text)) !== null) {
+            if (m.index > last) {
+              frag.appendChild(document.createTextNode(text.slice(last, m.index)));
+            }
+            var mark = document.createElement('mark');
+            mark.textContent = m[0];
+            frag.appendChild(mark);
+            last = m.index + m[0].length;
+            if (m[0].length === 0) regex.lastIndex++;
+          }
+          if (last < text.length) {
+            frag.appendChild(document.createTextNode(text.slice(last)));
+          }
+          node.parentNode.replaceChild(frag, node);
+        } else if (
+          node.nodeType === 1 &&
+          node.childNodes &&
+          !/^(script|style|mark)$/i.test(node.nodeName)
+        ) {
+          // Iterate over a snapshot since we mutate children.
+          var kids = Array.prototype.slice.call(node.childNodes);
+          for (var i = 0; i < kids.length; i++) highlightNode(kids[i], regex);
+        }
+      }
+
+      function apply(q) {
+        var query = q.trim().toLowerCase();
+        wrap.classList.toggle('has-value', query.length > 0);
+        var shown = 0;
+        var regex = query ? new RegExp(escapeReg(query), 'gi') : null;
+
+        cache.forEach(function (rec) {
+          // Always restore original HTML so old <mark>s are cleared.
+          rec.el.innerHTML = rec.html;
+
+          if (!query) {
+            rec.el.hidden = false;
+            shown++;
+            return;
+          }
+          if (rec.text.indexOf(query) === -1) {
+            rec.el.hidden = true;
+            return;
+          }
+          rec.el.hidden = false;
+          shown++;
+          regex.lastIndex = 0;
+          highlightNode(rec.el, regex);
+        });
+
+        if (!query) {
+          meta.textContent = defaultMeta;
+          empty.style.display = 'none';
+        } else {
+          meta.textContent = shown === total
+            ? total + ' questions · all match'
+            : shown + ' of ' + total + ' · filtered by “' + q.trim() + '”';
+          empty.style.display = shown === 0 ? 'block' : 'none';
+        }
+      }
+
+      input.addEventListener('input', function () { apply(input.value); });
+      clear.addEventListener('click', function () {
+        input.value = '';
+        apply('');
+        input.focus();
+      });
+      // Esc clears the search.
+      input.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && input.value) {
+          input.value = '';
+          apply('');
+        }
+      });
+      // "/" anywhere on the page focuses search (skip when typing in a field).
+      document.addEventListener('keydown', function (e) {
+        if (e.key === '/' && document.activeElement !== input) {
+          var tag = (document.activeElement && document.activeElement.tagName) || '';
+          if (!/^(INPUT|TEXTAREA|SELECT)$/.test(tag)) {
+            e.preventDefault();
+            input.focus();
+          }
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
