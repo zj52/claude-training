@@ -1,0 +1,4 @@
+READ/WRITE TEST — sidecar for vm-sandbox.svg
+Written by Claude on 2026-05-15
+Purpose: confirm Claude has write access to the mounted "Claude Training" folder.
+Safe to delete.

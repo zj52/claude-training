@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hero preview · Claude Training</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ─── Hero (art piece) ───────────────────────────── */
+    .hero-art {
+      width: 100%;
+      background: linear-gradient(180deg, #fbf8f3 0%, #f6f1e8 100%);
+      border-bottom: 1px solid var(--line-soft, rgba(25, 25, 25, 0.06));
+    }
+    .hero-art__inner {
+      width: min(calc(100% - 2rem), var(--shell, 1120px));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+      gap: 3rem;
+      align-items: center;
+      padding: 5.5rem 0 6rem;
+      min-height: 540px;
+    }
+    .hero-art__text { max-width: 30rem; }
+    .hero-art__eyebrow {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      color: var(--carnelian, #B31B1B);
+      margin: 0 0 1.5rem;
+    }
+    .hero-art__title {
+      font-size: clamp(2.6rem, 5vw, 3.6rem);
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      font-weight: 700;
+      color: var(--ink, #191919);
+      margin: 0 0 1.25rem;
+    }
+    .hero-art__subtitle {
+      font-size: 1.15rem;
+      line-height: 1.5;
+      color: var(--muted, #555);
+      margin: 0 0 2.5rem;
+      max-width: 26rem;
+    }
+    .hero-art__links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .hero-art__link {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.6rem;
+      font-size: 0.95rem;
+      color: var(--ink, #191919);
+      text-decoration: none;
+      padding: 0.15rem 0;
+      transition: color 120ms ease, transform 120ms ease;
+    }
+    .hero-art__link:hover {
+      color: var(--carnelian-dark, #8C1515);
+      transform: translateX(2px);
+    }
+    .hero-art__link-bullet {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--carnelian, #B31B1B);
+      opacity: 0.85;
+      flex-shrink: 0;
+      transform: translateY(-2px);
+    }
+    .hero-art__link-bullet.is-muted { background: #9a9a9a; }
+    .hero-art__link-arrow {
+      color: var(--silver, #808080);
+      font-size: 0.9rem;
+      margin-left: 0.25rem;
+      transition: transform 120ms ease;
+    }
+    .hero-art__link:hover .hero-art__link-arrow { transform: translateX(3px); color: var(--carnelian-dark, #8C1515); }
+    .hero-art__inline-link {
+      color: inherit;
+      text-decoration: underline;
+      text-decoration-color: rgba(179, 27, 27, 0.35);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+      transition: color 120ms ease, text-decoration-color 120ms ease;
+    }
+    .hero-art__inline-link:hover {
+      color: var(--carnelian-dark, #8C1515);
+      text-decoration-color: var(--carnelian-dark, #8C1515);
+    }
+    .hero-art__svg-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero-art__svg-wrap svg {
+      width: 100%;
+      max-width: 620px;
+      height: auto;
+      display: block;
+    }
+
+    @media (max-width: 800px) {
+      .hero-art__inner {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 3rem 0 3.5rem;
+      }
+      .hero-art__svg-wrap { order: -1; }
+      .hero-art__svg-wrap svg { max-width: 420px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-frame">
+
+    <header class="site-header">
+      <div class="shell">
+        <div class="brand-lockup">
+          <a class="brand-home" href="index.html">
+            <span class="brand-mark" aria-hidden="true">CU</span>
+            <span class="brand-line"><strong>Claude Training</strong> &middot; Cornell AI Innovation Hub</span>
+          </a>
+        </div>
+        <nav aria-label="Primary">
+          <ul class="nav-list">
+            <li><a class="nav-link is-active" href="index.html">Home</a></li>
+            <li><a class="nav-link" href="module-foundations.html">Foundations</a></li>
+            <li><a class="nav-link" href="module-ai-fluency.html">AI Fluency</a></li>
+            <li><a class="nav-link" href="module-cowork.html">Cowork</a></li>
+            <li><a class="nav-link" href="faq.html">FAQ</a></li>
+            <li><a class="nav-link" href="tips.html">Tips</a></li>
+            <li><a class="nav-link" href="learning.html">Learning</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+
+      <!-- ─── Hero · art piece ─── -->
+      <section class="hero-art" aria-labelledby="hero-title">
+        <div class="hero-art__inner">
+
+          <div class="hero-art__text">
+            <p class="hero-art__eyebrow">CORNELL &middot; AI EDUCATION &amp; TOOLS</p>
+            <h1 class="hero-art__title" id="hero-title">Let&rsquo;s work together.</h1>
+            <p class="hero-art__subtitle">
+              Pick a starting place when you&rsquo;re ready. Or <a class="hero-art__inline-link" href="mailto:ai-support@cornell.edu">get in touch</a>.
+            </p>
+            <div class="hero-art__links">
+              <a class="hero-art__link" href="https://innovationhub.ai.cornell.edu/tools-resources/" target="_blank" rel="noopener">
+                <span class="hero-art__link-bullet is-muted" aria-hidden="true"></span>
+                Everyday questions &middot; Microsoft Copilot Chat
+                <span class="hero-art__link-arrow" aria-hidden="true">&rarr;</span>
+              </a>
+              <a class="hero-art__link" href="module-foundations.html">
+                <span class="hero-art__link-bullet is-muted" aria-hidden="true"></span>
+                Advanced use with confidential data &middot; Claude 3P
+                <span class="hero-art__link-arrow" aria-hidden="true">&rarr;</span>
+              </a>
+              <a class="hero-art__link" href="learning.html">
+                <span class="hero-art__link-bullet is-muted" aria-hidden="true"></span>
+                Learn AI &middot; fluency and more tools
+                <span class="hero-art__link-arrow" aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- ─── Illustration ─── -->
+          <div class="hero-art__svg-wrap" aria-hidden="true">
+            <svg viewBox="0 0 620 540" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="halo" cx="0.5" cy="0.5" r="0.5">
+                  <stop offset="0%" stop-color="#B31B1B" stop-opacity="0.10"/>
+                  <stop offset="60%" stop-color="#B31B1B" stop-opacity="0.04"/>
+                  <stop offset="100%" stop-color="#B31B1B" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+
+              <!-- Soft halo behind main spark -->
+              <circle cx="380" cy="200" r="180" fill="url(#halo)"/>
+
+              <!-- Tiny scattered dots -->
+              <circle cx="180" cy="100" r="2.5" fill="#B31B1B" opacity="0.45"/>
+              <circle cx="540" cy="120" r="2" fill="#B31B1B" opacity="0.35"/>
+              <circle cx="120" cy="280" r="2" fill="#B31B1B" opacity="0.30"/>
+              <circle cx="560" cy="320" r="3" fill="#B31B1B" opacity="0.40"/>
+              <circle cx="80" cy="180" r="1.5" fill="#B31B1B" opacity="0.30"/>
+
+              <!-- Tertiary small spark (top-left) -->
+              <g transform="translate(220, 160)" stroke="#B31B1B" stroke-width="2" stroke-linecap="round" opacity="0.55">
+                <line x1="0" y1="-14" x2="0" y2="14"/>
+                <line x1="-14" y1="0" x2="14" y2="0"/>
+                <line x1="-10" y1="-10" x2="10" y2="10"/>
+                <line x1="10" y1="-10" x2="-10" y2="10"/>
+              </g>
+
+              <!-- Secondary spark (right of main) -->
+              <g transform="translate(490, 290)" stroke="#B31B1B" stroke-width="2.5" stroke-linecap="round" opacity="0.75">
+                <line x1="0" y1="-26" x2="0" y2="26"/>
+                <line x1="-26" y1="0" x2="26" y2="0"/>
+                <line x1="-18" y1="-18" x2="18" y2="18"/>
+                <line x1="18" y1="-18" x2="-18" y2="18"/>
+              </g>
+
+              <!-- MAIN spark (Claude-style, big and bold) -->
+              <g transform="translate(380, 200)" stroke="#B31B1B" stroke-width="5" stroke-linecap="round">
+                <line x1="0" y1="-80" x2="0" y2="80"/>
+                <line x1="-80" y1="0" x2="80" y2="0"/>
+                <line x1="-56" y1="-56" x2="56" y2="56"/>
+                <line x1="56" y1="-56" x2="-56" y2="56"/>
+              </g>
+
+              <!-- Subtle chat-bubble (Copilot, quieter) -->
+              <g transform="translate(150, 380)" fill="none" stroke="#7a7a7a" stroke-width="2" stroke-linejoin="round">
+                <path d="M 0 0 Q 0 -8 8 -8 L 56 -8 Q 64 -8 64 0 L 64 22 Q 64 30 56 30 L 18 30 L 8 40 L 12 30 L 8 30 Q 0 30 0 22 Z"/>
+                <circle cx="16" cy="11" r="2" fill="#7a7a7a"/>
+                <circle cx="32" cy="11" r="2" fill="#7a7a7a"/>
+                <circle cx="48" cy="11" r="2" fill="#7a7a7a"/>
+              </g>
+
+              <!-- Very faint horizon line -->
+              <line x1="40" y1="455" x2="580" y2="455" stroke="#d6cdb9" stroke-width="1" stroke-linecap="round"/>
+
+              <!-- Person silhouette (looking up toward the spark) -->
+              <g transform="translate(310, 405)" fill="#B31B1B">
+                <!-- head -->
+                <circle cx="0" cy="0" r="13"/>
+                <!-- shoulders + torso (simple flat shape) -->
+                <path d="M -22 24 Q -22 14 -12 14 L 12 14 Q 22 14 22 24 L 22 50 L -22 50 Z"/>
+              </g>
+            </svg>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Placeholder: the rest of the page would continue here -->
+      <section class="content-block" style="padding-top: 3rem; padding-bottom: 3rem; opacity: 0.5;">
+        <p style="color: #808080; font-style: italic; text-align: center; font-size: 0.9rem;">— rest of the page continues below the fold —</p>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell">
+        <p>Cornell University &middot; AI Innovation Hub</p>
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>

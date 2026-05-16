@@ -1,0 +1,248 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif">
+  <title id="title">Cornell's AI Landscape — Where Claude 3P fits</title>
+  <desc id="desc">Diagram showing five user-facing AI tools at Cornell (Claude Desktop, Claude 3P, Sandbox AI, AI Innovation Hub custom solutions, Microsoft 365 Copilot Chat) and the three underlying platforms they connect to (Anthropic, Cornell AI Platform, Microsoft 365). The Cornell AI Platform contains the LLM API Gateway, AI Agents Studio, and data-protection contracts with GCP, AWS, and Azure. Claude 3P is the current path for confidential admin data; Sandbox AI is in phased retirement; Claude Desktop and Copilot Chat have planned moves to expand their data ceilings.</desc>
+
+  <defs>
+    <!-- Arrow markers -->
+    <marker id="arrow-carnelian" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#B31B1B"/>
+    </marker>
+    <marker id="arrow-dashed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#B31B1B" opacity="0.55"/>
+    </marker>
+    <marker id="arrow-grey" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#9a9a9a"/>
+    </marker>
+    <marker id="arrow-charcoal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2a2a2a"/>
+    </marker>
+    <marker id="arrow-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7a7a7a"/>
+    </marker>
+
+    <!-- Card filter (subtle shadow) -->
+    <filter id="card-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- ─── Title block ─── -->
+  <g>
+    <text x="40" y="48" font-size="14" font-weight="700" letter-spacing="1.5" fill="#B31B1B">CORNELL · AI LANDSCAPE</text>
+    <text x="40" y="86" font-size="32" font-weight="700" fill="#191919">Where Claude 3P fits</text>
+    <text x="40" y="140" font-size="12" font-style="italic" fill="#808080">Claude 3P = Claude Desktop w/ Third-Party (3P) Inference · the Cornell-protected version that runs through the Cornell AI Platform.</text>
+    <text x="40" y="118" font-size="16" fill="#555">User-facing tools above the line; the platforms and contracts beneath them are what makes each tool safe (or not) for confidential data.</text>
+  </g>
+
+  <!-- ─── Tier label: TOOLS ─── -->
+  <text x="40" y="172" font-size="11" font-weight="700" letter-spacing="2" fill="#808080">WHAT STAFF USE</text>
+  <line x1="200" y1="167" x2="1560" y2="167" stroke="#191919" stroke-opacity="0.08" stroke-width="1"/>
+
+  <!-- ─── TOP TIER: 5 user tools ─── -->
+  <!-- Box 1: Claude Desktop (regular) -->
+  <g filter="url(#card-shadow)">
+    <rect x="40" y="190" width="288" height="140" rx="14" fill="#ffffff" stroke="#191919" stroke-opacity="0.10" stroke-width="1.5"/>
+    <text x="60" y="222" font-size="17" font-weight="700" fill="#191919">Claude Desktop</text>
+    <text x="60" y="244" font-size="13" fill="#555">Anthropic direct</text>
+    <!-- pill: public data only -->
+    <rect x="60" y="262" width="155" height="24" rx="12" fill="#eeeef2" stroke="#191919" stroke-opacity="0.10"/>
+    <text x="138" y="278" font-size="11" font-weight="600" fill="#2a2a2a" text-anchor="middle">PUBLIC DATA TODAY</text>
+    <rect x="60" y="294" width="195" height="22" rx="11" fill="none" stroke="#B31B1B" stroke-opacity="0.55" stroke-dasharray="4 3"/>
+    <text x="158" y="309" font-size="10.5" font-weight="600" fill="#8C1515" text-anchor="middle">CONFIDENTIAL COMING</text>
+  </g>
+
+  <!-- Box 2: Claude Desktop 3P (today's tool, prominent) -->
+  <g filter="url(#card-shadow)">
+    <rect x="348" y="190" width="288" height="140" rx="14" fill="#ffffff" stroke="#B31B1B" stroke-width="2.5"/>
+    <!-- star ribbon for "today's tool" -->
+    <rect x="348" y="190" width="288" height="28" rx="14" fill="#B31B1B"/>
+    <rect x="348" y="204" width="288" height="14" fill="#B31B1B"/>
+    <text x="492" y="209" font-size="11" font-weight="700" letter-spacing="1.5" fill="#ffffff" text-anchor="middle">★ TODAY&apos;S TOOL</text>
+    <text x="368" y="248" font-size="17" font-weight="700" fill="#191919">Claude 3P</text>
+    <text x="368" y="270" font-size="13" fill="#555">Claude Desktop w/ Third-Party Inference</text>
+    <!-- pill: confidential ok -->
+    <rect x="368" y="284" width="180" height="24" rx="12" fill="#B31B1B"/>
+    <text x="458" y="300" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">CONFIDENTIAL DATA OK</text>
+    <text x="368" y="324" font-size="11" fill="#808080">Paid · advanced version of Sandbox</text>
+  </g>
+
+  <!-- Box 3: Sandbox AI (retiring, faded) -->
+  <g opacity="0.55">
+    <rect x="656" y="190" width="288" height="140" rx="14" fill="#f4f4f6" stroke="#9a9a9a" stroke-width="1.5" stroke-dasharray="6 4"/>
+    <text x="676" y="222" font-size="17" font-weight="700" fill="#555">Sandbox AI</text>
+    <text x="676" y="244" font-size="13" fill="#808080">Same routing &amp; contracts as Claude 3P</text>
+    <rect x="676" y="262" width="180" height="24" rx="12" fill="#e6e6ea" stroke="#9a9a9a"/>
+    <text x="766" y="278" font-size="11" font-weight="700" fill="#555" text-anchor="middle">PHASED RETIREMENT</text>
+    <text x="676" y="312" font-size="11.5" fill="#808080">Free · stays until Copilot covers confidential</text>
+  </g>
+
+  <!-- Box 4: AI Innovation Hub custom solutions -->
+  <g filter="url(#card-shadow)">
+    <rect x="964" y="190" width="288" height="140" rx="14" fill="#ffffff" stroke="#191919" stroke-opacity="0.10" stroke-width="1.5"/>
+    <text x="984" y="222" font-size="17" font-weight="700" fill="#191919">AI Innovation Hub</text>
+    <text x="984" y="244" font-size="13" fill="#555">Custom solutions &amp; agents</text>
+    <rect x="984" y="262" width="180" height="24" rx="12" fill="#fdecec" stroke="#B31B1B" stroke-opacity="0.35"/>
+    <text x="1074" y="278" font-size="11" font-weight="700" fill="#8C1515" text-anchor="middle">PROJECT-DEPENDENT</text>
+    <text x="984" y="312" font-size="11.5" fill="#808080">Built on Cornell AI Platform</text>
+  </g>
+
+  <!-- Box 5: MS 365 Copilot Chat -->
+  <g filter="url(#card-shadow)">
+    <rect x="1272" y="190" width="288" height="140" rx="14" fill="#ffffff" stroke="#191919" stroke-opacity="0.10" stroke-width="1.5"/>
+    <text x="1292" y="222" font-size="17" font-weight="700" fill="#191919">Microsoft 365 Copilot Chat</text>
+    <text x="1292" y="244" font-size="13" fill="#555">Baseline staff assistant</text>
+    <rect x="1292" y="262" width="155" height="24" rx="12" fill="#eeeef2" stroke="#191919" stroke-opacity="0.10"/>
+    <text x="1370" y="278" font-size="11" font-weight="600" fill="#2a2a2a" text-anchor="middle">PUBLIC DATA TODAY</text>
+    <rect x="1292" y="294" width="195" height="22" rx="11" fill="none" stroke="#B31B1B" stroke-opacity="0.55" stroke-dasharray="4 3"/>
+    <text x="1390" y="309" font-size="10.5" font-weight="600" fill="#8C1515" text-anchor="middle">MODERATE-RISK COMING</text>
+  </g>
+
+  <!-- ─── ARROWS: top tier → middle tier ─── -->
+  <!-- Claude Desktop (regular) → Anthropic (solid, muted) -->
+  <line x1="184" y1="330" x2="184" y2="408" stroke="#7a7a7a" stroke-width="2" marker-end="url(#arrow-muted)"/>
+
+  <!-- (Claude Desktop stays on Anthropic; future state is a Cornell DPA with Anthropic itself, not a re-route to the Cornell AI Platform.) -->
+
+  <!-- Claude 3P → Cornell AI Platform (solid, bold) -->
+  <line x1="492" y1="330" x2="492" y2="408" stroke="#B31B1B" stroke-width="3.5" marker-end="url(#arrow-carnelian)"/>
+
+  <!-- Sandbox AI → Cornell AI Platform (faded grey) -->
+  <line x1="800" y1="330" x2="800" y2="408" stroke="#9a9a9a" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrow-grey)"/>
+
+  <!-- AI Innovation Hub → Cornell AI Platform (solid, muted) -->
+  <line x1="1108" y1="330" x2="1108" y2="408" stroke="#7a7a7a" stroke-width="2" marker-end="url(#arrow-muted)"/>
+
+  <!-- MS Copilot → Microsoft 365 (solid, muted) -->
+  <line x1="1416" y1="330" x2="1416" y2="408" stroke="#7a7a7a" stroke-width="2" marker-end="url(#arrow-muted)"/>
+
+  <!-- MS Copilot → Cornell AI Platform — NOT shown; Copilot stays on MS infra -->
+
+  <!-- ─── Tier label: PLATFORMS ─── -->
+  <text x="40" y="396" font-size="11" font-weight="700" letter-spacing="2" fill="#808080">PLATFORMS &amp; CONTRACTED INFRASTRUCTURE</text>
+  <line x1="395" y1="391" x2="1560" y2="391" stroke="#191919" stroke-opacity="0.08" stroke-width="1"/>
+
+  <!-- ─── MIDDLE TIER: 3 platforms ─── -->
+  <!-- Platform: Anthropic -->
+  <g filter="url(#card-shadow)">
+    <rect x="40" y="410" width="288" height="320" rx="14" fill="#f9f9fb" stroke="#191919" stroke-opacity="0.12" stroke-width="1.5"/>
+    <text x="184" y="446" font-size="13" font-weight="700" letter-spacing="1.5" fill="#808080" text-anchor="middle">PROVIDER</text>
+    <text x="184" y="476" font-size="20" font-weight="700" fill="#191919" text-anchor="middle">Anthropic</text>
+    <line x1="64" y1="498" x2="304" y2="498" stroke="#191919" stroke-opacity="0.08"/>
+    <text x="184" y="528" font-size="13" fill="#555" text-anchor="middle">Anthropic-hosted Claude</text>
+    <text x="184" y="548" font-size="13" fill="#555" text-anchor="middle">consumer / pro API</text>
+    <!-- callout -->
+    <rect x="64" y="586" width="240" height="120" rx="10" fill="#ffffff" stroke="#191919" stroke-opacity="0.10"/>
+    <text x="184" y="610" font-size="12" font-weight="700" fill="#191919" text-anchor="middle">Cornell agreement in flight</text>
+    <text x="76" y="632" font-size="11.5" fill="#555">Today: consumer terms — public</text>
+    <text x="76" y="648" font-size="11.5" fill="#555">data only. A Cornell data-</text>
+    <text x="76" y="664" font-size="11.5" fill="#555">protection agreement w/ Anthropic</text>
+    <text x="76" y="680" font-size="11.5" fill="#555">would unlock confidential admin</text>
+    <text x="76" y="696" font-size="11.5" fill="#555">data — Claude Desktop stays here.</text>
+  </g>
+
+  <!-- Platform: Cornell AI Platform (LARGE — center) -->
+  <g filter="url(#card-shadow)">
+    <rect x="348" y="410" width="904" height="320" rx="16" fill="#ffffff" stroke="#B31B1B" stroke-width="2.5"/>
+    <!-- Header band -->
+    <rect x="348" y="410" width="904" height="50" rx="16" fill="#B31B1B"/>
+    <rect x="348" y="435" width="904" height="25" fill="#B31B1B"/>
+    <text x="800" y="432" font-size="11" font-weight="700" letter-spacing="2" fill="#ffffff" text-anchor="middle">CORNELL-PROTECTED INFRASTRUCTURE</text>
+    <text x="800" y="454" font-size="20" font-weight="700" fill="#ffffff" text-anchor="middle">Cornell AI Platform</text>
+
+    <!-- Three internal components -->
+    <!-- LiteLLM Gateway -->
+    <g>
+      <rect x="376" y="490" width="270" height="220" rx="10" fill="#fff7f7" stroke="#B31B1B" stroke-opacity="0.35" stroke-width="1.5"/>
+      <text x="511" y="520" font-size="13" font-weight="700" letter-spacing="1" fill="#8C1515" text-anchor="middle">ROUTING LAYER</text>
+      <text x="511" y="548" font-size="17" font-weight="700" fill="#191919" text-anchor="middle">LLM API Gateway</text>
+      <line x1="396" y1="566" x2="626" y2="566" stroke="#B31B1B" stroke-opacity="0.20"/>
+      <text x="511" y="592" font-size="12" fill="#2a2a2a" text-anchor="middle">Routes prompts to the right</text>
+      <text x="511" y="610" font-size="12" fill="#2a2a2a" text-anchor="middle">contracted model. Strips PII</text>
+      <text x="511" y="628" font-size="12" fill="#2a2a2a" text-anchor="middle">flow risks per Cornell terms.</text>
+      <text x="511" y="666" font-size="11.5" font-style="italic" fill="#808080" text-anchor="middle">Same gateway Sandbox AI</text>
+      <text x="511" y="682" font-size="11.5" font-style="italic" fill="#808080" text-anchor="middle">uses today.</text>
+    </g>
+
+    <!-- NAN / Agent Studio -->
+    <g>
+      <rect x="665" y="490" width="270" height="220" rx="10" fill="#fff7f7" stroke="#B31B1B" stroke-opacity="0.35" stroke-width="1.5"/>
+      <text x="800" y="520" font-size="13" font-weight="700" letter-spacing="1" fill="#8C1515" text-anchor="middle">BUILD LAYER</text>
+      <text x="800" y="548" font-size="17" font-weight="700" fill="#191919" text-anchor="middle">AI Agents Studio</text>
+      <line x1="685" y1="566" x2="915" y2="566" stroke="#B31B1B" stroke-opacity="0.20"/>
+      <text x="800" y="592" font-size="12" fill="#2a2a2a" text-anchor="middle">Where AI Innovation Hub</text>
+      <text x="800" y="610" font-size="12" fill="#2a2a2a" text-anchor="middle">builds custom agents and</text>
+      <text x="800" y="628" font-size="12" fill="#2a2a2a" text-anchor="middle">workflows on this same stack.</text>
+    </g>
+
+    <!-- Cloud Contracts -->
+    <g>
+      <rect x="954" y="490" width="280" height="220" rx="10" fill="#fff7f7" stroke="#B31B1B" stroke-opacity="0.35" stroke-width="1.5"/>
+      <text x="1094" y="520" font-size="13" font-weight="700" letter-spacing="1" fill="#8C1515" text-anchor="middle">DATA-PROTECTION CONTRACTS</text>
+      <text x="1094" y="548" font-size="17" font-weight="700" fill="#191919" text-anchor="middle">Contracted clouds</text>
+      <line x1="974" y1="566" x2="1214" y2="566" stroke="#B31B1B" stroke-opacity="0.20"/>
+      <!-- three logos as text chips -->
+      <g>
+        <rect x="974" y="582" width="80" height="36" rx="6" fill="#ffffff" stroke="#191919" stroke-opacity="0.18"/>
+        <text x="1014" y="606" font-size="14" font-weight="700" fill="#191919" text-anchor="middle">GCP</text>
+        <rect x="1064" y="582" width="80" height="36" rx="6" fill="#ffffff" stroke="#191919" stroke-opacity="0.18"/>
+        <text x="1104" y="606" font-size="14" font-weight="700" fill="#191919" text-anchor="middle">AWS</text>
+        <rect x="1154" y="582" width="70" height="36" rx="6" fill="#ffffff" stroke="#191919" stroke-opacity="0.18"/>
+        <text x="1189" y="606" font-size="14" font-weight="700" fill="#191919" text-anchor="middle">Azure</text>
+      </g>
+      <text x="1094" y="650" font-size="11.5" fill="#2a2a2a" text-anchor="middle">Cornell has data-protection</text>
+      <text x="1094" y="666" font-size="11.5" fill="#2a2a2a" text-anchor="middle">terms in place. Prompts and</text>
+      <text x="1094" y="682" font-size="11.5" fill="#2a2a2a" text-anchor="middle">outputs are not used to train.</text>
+    </g>
+  </g>
+
+  <!-- Platform: Microsoft 365 -->
+  <g filter="url(#card-shadow)">
+    <rect x="1272" y="410" width="288" height="320" rx="14" fill="#f9f9fb" stroke="#191919" stroke-opacity="0.12" stroke-width="1.5"/>
+    <text x="1416" y="446" font-size="13" font-weight="700" letter-spacing="1.5" fill="#808080" text-anchor="middle">PROVIDER</text>
+    <text x="1416" y="476" font-size="20" font-weight="700" fill="#191919" text-anchor="middle">Microsoft 365</text>
+    <line x1="1296" y1="498" x2="1536" y2="498" stroke="#191919" stroke-opacity="0.08"/>
+    <text x="1416" y="528" font-size="13" fill="#555" text-anchor="middle">Microsoft-hosted GPT-class</text>
+    <text x="1416" y="548" font-size="13" fill="#555" text-anchor="middle">models via Copilot</text>
+    <!-- callout -->
+    <rect x="1296" y="586" width="240" height="120" rx="10" fill="#ffffff" stroke="#191919" stroke-opacity="0.10"/>
+    <text x="1416" y="612" font-size="12" font-weight="700" fill="#191919" text-anchor="middle">Cornell M365 agreement</text>
+    <text x="1308" y="638" font-size="11.5" fill="#555">Covers public-data use today.</text>
+    <text x="1308" y="654" font-size="11.5" fill="#555">Expanded terms in flight for</text>
+    <text x="1308" y="670" font-size="11.5" fill="#555">moderate-risk / confidential data</text>
+    <text x="1308" y="686" font-size="11.5" fill="#555">— not yet approved.</text>
+  </g>
+
+  <!-- ─── Legend ─── -->
+  <g transform="translate(40, 770)">
+    <text x="0" y="0" font-size="11" font-weight="700" letter-spacing="2" fill="#808080">LEGEND</text>
+    <line x1="68" y1="-4" x2="1560" y2="-4" stroke="#191919" stroke-opacity="0.08"/>
+
+    <g transform="translate(0, 26)">
+      <line x1="0" y1="0" x2="44" y2="0" stroke="#B31B1B" stroke-width="3.5" marker-end="url(#arrow-carnelian)"/>
+      <text x="56" y="5" font-size="13" fill="#191919">★ Today&apos;s tool — Claude 3P</text>
+    </g>
+    <g transform="translate(320, 26)">
+      <line x1="0" y1="0" x2="44" y2="0" stroke="#7a7a7a" stroke-width="2" marker-end="url(#arrow-muted)"/>
+      <text x="56" y="5" font-size="13" fill="#191919">Other production paths</text>
+    </g>
+    <g transform="translate(600, 26)">
+      <rect x="0" y="-10" width="44" height="20" rx="10" fill="none" stroke="#B31B1B" stroke-opacity="0.55" stroke-dasharray="4 3" stroke-width="1.5"/>
+      <text x="56" y="5" font-size="13" fill="#191919">Planned / coming soon</text>
+    </g>
+    <g transform="translate(880, 26)">
+      <line x1="0" y1="0" x2="44" y2="0" stroke="#9a9a9a" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrow-grey)"/>
+      <text x="56" y="5" font-size="13" fill="#191919">Retiring</text>
+    </g>
+    <g transform="translate(1080, 26)">
+      <rect x="0" y="-10" width="20" height="20" rx="4" fill="#B31B1B"/>
+      <text x="32" y="5" font-size="13" fill="#191919">Cornell-protected path</text>
+    </g>
+  </g>
+
+  <!-- ─── Bottom note (matches muted top tones) ─── -->
+  <g transform="translate(40, 820)">
+    <text x="0" y="14" font-size="14" fill="#191919"><tspan font-weight="700">Confidential admin data?</tspan> Use Claude 3P — the only approved path in production with continued support.</text>
+    <text x="0" y="38" font-size="12.5" fill="#555">Public chat / drafts work in Copilot Chat (free). Sandbox stays running for free confidential use until Copilot&apos;s expanded version covers it. Claude Desktop&apos;s Cornell agreement is also in flight.</text>
+    <text x="0" y="62" font-size="11.5" font-style="italic" fill="#808080">Cornell also offers more specialist tools like Zoom AI Companion for meetings, and Adobe Firefly for images.</text>
+  </g>
+</svg>
