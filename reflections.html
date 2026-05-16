@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#191919" />
+  <title>Module 1 Reflections · Claude Training · Cornell</title>
+  <meta name="description" content="Module 1 reflections form for the Cornell Claude Training workshop. Based on Anthropic's AI Fluency for Non-Profits course." />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ─── Reflection form styling ─── */
+    .form-shell {
+      width: min(calc(100% - 2rem), 720px);
+      margin: 0 auto;
+      padding: 2.5rem 0 5rem;
+    }
+    .form-intro {
+      margin: 0 0 2.5rem;
+    }
+    .form-intro .eyebrow {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--carnelian);
+      font-weight: 700;
+      margin: 0 0 0.85rem;
+    }
+    .form-intro h1 {
+      font-size: clamp(2rem, 4vw, 2.7rem);
+      letter-spacing: -0.01em;
+      margin: 0 0 1rem;
+      color: var(--ink);
+    }
+    .form-intro p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin: 0 0 0.6rem;
+      max-width: 60ch;
+    }
+    .reflection-form {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .reflection-form fieldset {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--paper);
+      padding: 1.6rem 1.8rem 1.4rem;
+      margin: 0;
+    }
+    .reflection-form legend {
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--carnelian);
+      font-weight: 700;
+      padding: 0 0.5rem;
+    }
+    .reflection-form .field-help {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.55;
+      margin: 0 0 1.25rem;
+    }
+    .reflection-form label.field {
+      display: block;
+      margin: 1rem 0 0;
+    }
+    .reflection-form label.field:first-of-type {
+      margin-top: 0.4rem;
+    }
+    .reflection-form .label-text {
+      display: block;
+      font-weight: 600;
+      color: var(--ink);
+      font-size: 1rem;
+      margin: 0 0 0.4rem;
+    }
+    .reflection-form .label-helper {
+      display: block;
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.5;
+      margin: 0 0 0.55rem;
+    }
+    .reflection-form .label-required::after {
+      content: " *";
+      color: var(--carnelian);
+    }
+    .reflection-form input[type="text"],
+    .reflection-form textarea {
+      width: 100%;
+      font-family: var(--sans);
+      font-size: 1rem;
+      color: var(--ink);
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      padding: 0.7rem 0.85rem;
+      box-sizing: border-box;
+      transition: border-color 120ms ease, box-shadow 120ms ease;
+    }
+    .reflection-form textarea {
+      min-height: 6.5rem;
+      resize: vertical;
+      line-height: 1.55;
+    }
+    .reflection-form input[type="text"]:focus,
+    .reflection-form textarea:focus {
+      outline: none;
+      border-color: var(--carnelian);
+      box-shadow: 0 0 0 3px rgba(179, 27, 27, 0.12);
+    }
+    .reflection-form .form-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .reflection-form button[type="submit"] {
+      font-family: var(--sans);
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      background: var(--carnelian);
+      border: none;
+      border-radius: 999px;
+      padding: 0.75rem 1.6rem;
+      cursor: pointer;
+      transition: background-color 140ms ease, transform 80ms ease;
+    }
+    .reflection-form button[type="submit"]:hover:not(:disabled) {
+      background: var(--carnelian-dark);
+      transform: translateY(-1px);
+    }
+    .reflection-form button[type="submit"]:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .form-status {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+    .form-status.is-success {
+      color: #2a7a3d;
+      font-weight: 600;
+    }
+    .form-status.is-error {
+      color: var(--carnelian-dark);
+      font-weight: 600;
+    }
+    .form-success-panel {
+      display: none;
+      padding: 2rem 2.2rem;
+      border-radius: var(--radius-md);
+      background: #f0f7f0;
+      border: 1px solid rgba(42, 122, 61, 0.25);
+    }
+    .form-success-panel.is-visible {
+      display: block;
+    }
+    .form-success-panel h2 {
+      font-size: 1.4rem;
+      color: #1e5f30;
+      margin: 0 0 0.6rem;
+    }
+    .form-success-panel p {
+      color: var(--ink);
+      margin: 0 0 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-frame">
+
+    <header class="site-header">
+      <div class="shell">
+        <div class="brand-lockup">
+          <a class="brand-home" href="index.html">
+            <span class="brand-mark" aria-hidden="true">CU</span>
+            <span class="brand-line"><strong>Claude Training</strong> &middot; Cornell AI Innovation Hub</span>
+          </a>
+        </div>
+        <nav aria-label="Primary">
+          <ul class="nav-list">
+            <li><a class="nav-link" href="index.html">Home</a></li>
+            <li><a class="nav-link" href="module-foundations.html">Foundations</a></li>
+            <li><a class="nav-link" href="module-ai-fluency.html">AI Fluency</a></li>
+            <li><a class="nav-link" href="module-cowork.html">Cowork</a></li>
+            <li><a class="nav-link" href="faq.html">FAQ</a></li>
+            <li><a class="nav-link" href="tips.html">Tips</a></li>
+            <li><a class="nav-link" href="learning.html">Learning</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="form-shell">
+
+        <div class="form-intro">
+          <p class="eyebrow">Module 1 Homework</p>
+          <h1>Reflections.</h1>
+          <p>The four self-reflection questions from Anthropic&rsquo;s <em>AI Fluency for Non-Profits</em>, adapted for Cornell. Your answers shape what we discuss in Module 2.</p>
+          <p>Your name is <strong>optional</strong>. Leave it blank to submit anonymously &mdash; your answers still help shape the next session.</p>
+        </div>
+
+        <form id="reflection-form" class="reflection-form" novalidate>
+
+          <fieldset>
+            <legend>About you</legend>
+            <p class="field-help">All fields in this section are optional. If you&rsquo;d like to be quoted by first name during the workshop, fill them in.</p>
+
+            <label class="field">
+              <span class="label-text">Name</span>
+              <span class="label-helper">First name is fine. Leave blank to stay anonymous.</span>
+              <input type="text" name="name" autocomplete="given-name" />
+            </label>
+
+            <label class="field">
+              <span class="label-text">Department</span>
+              <span class="label-helper">Your home unit at Cornell &mdash; e.g., Office of Sponsored Programs, Research Integrity Assurance.</span>
+              <input type="text" name="department" />
+            </label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Reflections</legend>
+
+            <label class="field">
+              <span class="label-text label-required">Your team&rsquo;s mission and vision</span>
+              <span class="label-helper">What does your team or office actually do, and what&rsquo;s the larger purpose it serves? A few sentences is fine.</span>
+              <textarea name="mission" required></textarea>
+            </label>
+
+            <label class="field">
+              <span class="label-text label-required">Your role and workplace situation</span>
+              <span class="label-helper">Constraints, strengths, opportunities. Where does your time go? What gets in the way? What&rsquo;s underused?</span>
+              <textarea name="role" required></textarea>
+            </label>
+
+            <label class="field">
+              <span class="label-text label-required">Core values and philosophy</span>
+              <span class="label-helper">Principles you bring to your job &mdash; things you wouldn&rsquo;t compromise on, or care about beyond the job description.</span>
+              <textarea name="values" required></textarea>
+            </label>
+
+            <label class="field">
+              <span class="label-text label-required">&ldquo;If AI could help me ___, I would be able to spend more time ___.&rdquo;</span>
+              <span class="label-helper">The most important question. Focus on how efficiency could free you for higher-impact, human-centered work &mdash; not just &ldquo;answer email faster&rdquo; but what that lets you actually do more of.</span>
+              <textarea name="ai_hope" required></textarea>
+            </label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Anything else (optional)</legend>
+            <label class="field">
+              <span class="label-text">Open thoughts</span>
+              <span class="label-helper">Questions, observations, things on your mind after the workshop, things you want addressed in Module 2.</span>
+              <textarea name="anything_else"></textarea>
+            </label>
+          </fieldset>
+
+          <div class="form-actions">
+            <button type="submit">Submit reflection</button>
+            <span class="form-status" id="form-status" aria-live="polite"></span>
+          </div>
+        </form>
+
+        <div class="form-success-panel" id="form-success">
+          <h2>Submitted &mdash; thank you.</h2>
+          <p>Your reflection is recorded. We&rsquo;ll use the responses (anonymized as needed) to shape Module 2.</p>
+          <p>You can close this tab or <a class="link-accent" href="module-foundations.html">return to the Foundations module page</a>.</p>
+        </div>
+
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell">
+        <span>&copy; 2026 Cornell University</span>
+        <a href="https://innovationhub.ai.cornell.edu/" target="_blank" rel="noopener">AI Innovation Hub</a>
+        <a href="mailto:ai-support@cornell.edu">ai-support@cornell.edu</a>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    (function () {
+      // ─── Configure this with your deployed Apps Script web app URL ───
+      // Setup guide: forms/google-apps-script-setup.md
+      var APPS_SCRIPT_URL = 'PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE';
+
+      var form    = document.getElementById('reflection-form');
+      var status  = document.getElementById('form-status');
+      var success = document.getElementById('form-success');
+      var submitBtn = form.querySelector('button[type="submit"]');
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Native HTML5 validation for required fields
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+
+        if (APPS_SCRIPT_URL.indexOf('PASTE_YOUR') === 0) {
+          status.textContent = 'Form endpoint not configured yet — see forms/google-apps-script-setup.md.';
+          status.className = 'form-status is-error';
+          return;
+        }
+
+        var payload = {
+          submittedAt: new Date().toISOString(),
+          name:           form.name.value.trim(),
+          department:     form.department.value.trim(),
+          mission:        form.mission.value.trim(),
+          role:           form.role.value.trim(),
+          values:         form.values.value.trim(),
+          ai_hope:        form.ai_hope.value.trim(),
+          anything_else:  form.anything_else.value.trim()
+        };
+
+        submitBtn.disabled = true;
+        status.textContent = 'Submitting…';
+        status.className = 'form-status';
+
+        // text/plain avoids CORS preflight; Apps Script reads e.postData.contents
+        fetch(APPS_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify(payload)
+        })
+          .then(function () {
+            form.style.display = 'none';
+            success.classList.add('is-visible');
+            success.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          })
+          .catch(function () {
+            status.textContent = 'Something went wrong. Email ai-support@cornell.edu if it persists.';
+            status.className = 'form-status is-error';
+            submitBtn.disabled = false;
+          });
+      });
+    })();
+  </script>
+</body>
+</html>

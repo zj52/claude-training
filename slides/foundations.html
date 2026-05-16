@@ -187,6 +187,34 @@
     }
     .slide.content .col-card.accent .step { color: var(--carnelian); }
 
+    /* Clickable col-card variant — homework cards link to course / form */
+    a.col-card {
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+      transition: border-color 140ms ease, transform 100ms ease, box-shadow 140ms ease;
+    }
+    a.col-card:hover {
+      border-color: var(--carnelian);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+    }
+    a.col-card::after {
+      content: "Open \2192";
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      color: var(--carnelian);
+      margin-top: 0.4rem;
+      align-self: flex-end;
+      opacity: 0.7;
+      transition: opacity 140ms ease, transform 100ms ease;
+    }
+    a.col-card:hover::after {
+      opacity: 1;
+      transform: translateX(2px);
+    }
+
     .slide.content .token-row {
       display: flex;
       flex-wrap: wrap;
@@ -866,14 +894,14 @@
       <h2>This won&rsquo;t get you what you want.</h2>
       <div class="slide-body">
         <div class="prompt-block weak">
-          Write a market analysis report about streaming.
+          Review this vendor contract and tell me what to fix.
         </div>
         <ul class="miss-list">
-          <li><strong>No stage</strong> &mdash; whose market? For what audience? What kind of streaming?</li>
-          <li><strong>Vague task</strong> &mdash; what should the report cover? What sections?</li>
-          <li><strong>No rules</strong> &mdash; how long? What format? What sources?</li>
+          <li><strong>No stage</strong> &mdash; what kind of vendor? Whose &ldquo;standard&rdquo; should we measure against?</li>
+          <li><strong>Vague task</strong> &mdash; &ldquo;what to fix&rdquo; could be anything: data protection, IP, pricing, termination&hellip;</li>
+          <li><strong>No rules</strong> &mdash; what format? How long? Who&rsquo;s reading the output?</li>
         </ul>
-        <p class="footnote">Claude will produce something, but it&rsquo;ll be generic and you&rsquo;ll spend the next hour re-prompting.</p>
+        <p class="footnote">Claude will produce something, but it&rsquo;ll be a generic checklist and you&rsquo;ll spend the next hour re-prompting.</p>
       </div>
     </section>
 
@@ -883,7 +911,7 @@
       <h2>All three parts. Same task, different result.</h2>
       <div class="slide-body">
         <div class="prompt-block">
-          <span class="task">Create a market analysis report on the US indie film streaming opportunity. Include market size, growth trends, key competitors, consumer preferences, revenue models, and market gaps.</span> <span class="rules">Use current web research with citations. Structure as a professional report</span> <span class="stage">for an investor deck for a new indie streaming app.</span>
+          <span class="stage">I&rsquo;m reviewing a vendor SaaS contract Cornell plans to procure.</span> <span class="task">Compare the attached agreement against typical Cornell positions on data protection, indemnification, and termination. For each clause that deviates, give me: (a) what the clause says in plain English, (b) why it might be a concern for Cornell, (c) suggested redline language.</span> <span class="rules">Output as a numbered list keyed to the original clause numbers. End with a one-paragraph summary of the top 3 risks &mdash; something I could send to a non-lawyer business owner.</span>
         </div>
         <div class="prompt-legend">
           <span class="lg stage"><span class="dot"></span>1. Set Stage</span>
@@ -923,7 +951,7 @@
           </article>
           <article class="col-card accent">
             <span class="step">&#x2605; Sonnet 4.6 &middot; $$</span>
-            <h3>The default</h3>
+            <h3>The workhorse</h3>
             <p>Everyday work &mdash; drafting, summarizing, code, analysis. The right starting point for almost any task.</p>
           </article>
           <article class="col-card">
@@ -936,26 +964,26 @@
       </div>
     </section>
 
-    <!-- ─── Wow moments ─── -->
+    <!-- ─── Slide 12 · Examples (Sponsored programs + compliance) ─── -->
     <section class="slide content" data-bg="light">
-      <p class="slide-eyebrow">Wow moments</p>
+      <p class="slide-eyebrow">Examples</p>
       <h2>What it can already do.</h2>
       <div class="slide-body">
         <div class="col-3">
           <article class="col-card">
             <span class="step">Award narrative</span>
-            <h3>150-word case for an NSF supplement</h3>
-            <p>Drafted from the program description + original abstract in under 2 minutes.</p>
+            <h3>NIH R01 budget justification</h3>
+            <p>Drafted from the PI&rsquo;s budget worksheet and scope of work &mdash; on-template, accurate, ready for review in under 5 minutes.</p>
           </article>
           <article class="col-card">
-            <span class="step">Policy review</span>
-            <h3>Plain-English summary of a 30-page memo</h3>
-            <p>One paragraph for a PI, plus a bulleted action list. From 45 minutes to 5.</p>
+            <span class="step">Regulatory lookup</span>
+            <h3>2 CFR 200 cost allowability</h3>
+            <p>Plain-English answer to &ldquo;can we charge admin salaries direct?&rdquo; with the specific section citations from Subpart E.</p>
           </article>
           <article class="col-card">
-            <span class="step">Contract triage</span>
-            <h3>Top 3 risks in a vendor SaaS contract</h3>
-            <p>Flagged clauses, suggested redlines, plain-English summary. Hand to legal.</p>
+            <span class="step">Compliance check</span>
+            <h3>FCOI disclosure flagging</h3>
+            <p>Read a faculty CV against sponsor policy, flagged five potential conflicts with specific clauses to escalate.</p>
           </article>
         </div>
         <p class="footnote">Placeholder examples &mdash; replace with real Cornell stories as the cohort runs.</p>
@@ -983,30 +1011,32 @@
       </div>
     </section>
 
-    <!-- ─── Slide 11 · Homework + links ─── -->
+    <!-- ─── Slide 11 · Homework + Resources ─── -->
     <section class="slide content" data-bg="light">
       <p class="slide-eyebrow">Before next week</p>
-      <h2>Homework, then keep the site close.</h2>
+      <h2>Homework + Resources.</h2>
       <div class="slide-body">
         <div class="col-2">
-          <article class="col-card">
+          <a class="col-card" href="https://anthropic.skilljar.com/ai-fluency-for-nonprofits" target="_blank" rel="noopener">
             <span class="step">1 &middot; Homework</span>
             <h3>Take AI Fluency for Non-Profits</h3>
             <p>Anthropic&rsquo;s free course. Frames everything we&rsquo;ll discuss in Module 2.</p>
-          </article>
-          <article class="col-card">
+          </a>
+          <a class="col-card" href="../reflections.html" target="_blank" rel="noopener">
             <span class="step">2 &middot; Homework</span>
             <h3>Three short reflections</h3>
             <p>Your workplace, your values, and &ldquo;If AI could help me ___, I would spend more time ___.&rdquo;</p>
-          </article>
+          </a>
         </div>
-        <p class="stack-2">
-          <strong>Links:</strong>
-          <a class="link-accent" href="../index.html">this site</a> &middot;
-          <a class="link-accent" href="https://innovationhub.ai.cornell.edu/tools-resources/" target="_blank" rel="noopener">AI Innovation Hub</a> &middot;
-          AI4RA &middot; Teams cohort channel &middot;
-          <a class="link-accent" href="mailto:ai-support@cornell.edu">ai-support@cornell.edu</a>
-        </p>
+        <p style="font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--carnelian); font-weight: 700; margin: 1.75rem 0 0.6rem;">Resources</p>
+        <ul>
+          <li><a class="link-accent" href="https://anthropic.skilljar.com/ai-fluency-for-nonprofits" target="_blank" rel="noopener">anthropic.skilljar.com/ai-fluency-for-nonprofits</a> &mdash; the course homework above</li>
+          <li><a class="link-accent" href="../reflections.html" target="_blank" rel="noopener">Module 1 reflection form</a> &mdash; the second homework</li>
+          <li><a class="link-accent" href="https://innovationhub.ai.cornell.edu/" target="_blank" rel="noopener">innovationhub.ai.cornell.edu</a> &mdash; Cornell&rsquo;s home for AI tools and policy</li>
+          <li><a class="link-accent" href="https://ai4ra.uidaho.edu/" target="_blank" rel="noopener">ai4ra.uidaho.edu</a> &mdash; AI4RA community for research admin</li>
+          <li><a class="link-accent" href="https://teams.microsoft.com/l/channel/19%3AIUeTCw0yr0eNtarYlqyA8BsjCpgCRZHZ4yCY6xK99k41%40thread.tacv2/AI%20with%20Claude?groupId=e3f60285-546f-4656-9bc4-cc3e4f75d47b&amp;tenantId=5d7e4366-1b9b-45cf-8e79-b14b27df46e1&amp;ngc=true&amp;allowXTenantAccess=true" target="_blank" rel="noopener">AI with Claude</a> &mdash; cohort Teams channel</li>
+          <li><a class="link-accent" href="mailto:ai-support@cornell.edu">ai-support@cornell.edu</a> &mdash; direct support</li>
+        </ul>
       </div>
     </section>
 
