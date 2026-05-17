@@ -10,7 +10,7 @@ A site that **supports a three-part live workshop**, not a self-paced course tha
 
 **Mission line** (used on home + as Module 1 framing):
 
-> Our goal is to help create efficiency by automating tedious work.
+> Our goal is to help create efficiency by automating tedious work with AI.
 
 ---
 
@@ -51,7 +51,7 @@ Plus a community strip on home + footer: Teams channel link, office hours, `ai-s
 
 | # | Slide | Notes |
 |---|---|---|
-| 1 | Title + the mission line | "Our goal is to help create efficiency by automating tedious work." |
+| 1 | Title + the mission line | "Our goal is to help create efficiency by automating tedious work with AI." |
 | 2 | Where Claude 3P fits in the Cornell ecosystem | Reuse existing `slides/ecosystem.html` content as the slide |
 | 3 | Same data rules as Sandbox AI | Confidential OK · No HIPAA · No export-controlled or government-restricted |
 | 4 | How AI works — probabilistic | Adapted from AI4RA / REACH slide 9, recolored in Cornell carnelian. Credit footer: "Adapted from AI4RA — REACH Workshop 2026." |

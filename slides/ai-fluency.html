@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#B31B1B" />
+  <title>AI Fluency · Slide deck | Claude Training</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    html, body { height: 100%; }
+    body { margin: 0; background: #000; overflow: hidden; font-family: var(--sans); }
+    .deck { position: fixed; inset: 0; overflow: hidden; }
+    .slide { position: absolute; inset: 0; display: none; flex-direction: column; padding: 5rem 6rem; overflow-y: auto; animation: fade-in 280ms ease; }
+    .slide.is-active { display: flex; }
+    @keyframes fade-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+    .slide.cornell-bg { background: var(--carnelian); color: #fff; justify-content: flex-end; padding: 5rem 6rem; }
+    .slide.cornell-bg::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 10px; background: #fff; }
+    .slide.cornell-bg .seal-top { position: absolute; top: 5rem; left: 6rem; width: 120px; height: 120px; }
+    .slide.cornell-bg .seal-bottom { position: absolute; bottom: 5rem; right: 6rem; width: 180px; height: 180px; }
+    .slide.cornell-bg .eyebrow-light { font-size: 1.05rem; font-weight: 400; color: rgba(255,255,255,0.92); margin: 0 0 0.5rem; }
+    .slide.cornell-bg h1 { font-size: clamp(3.2rem, 7.5vw, 6rem); letter-spacing: -0.03em; font-weight: 800; color: #fff; margin: 0; line-height: 1; }
+    .slide.cornell-bg .byline { margin-top: 1.25rem; font-size: 1.05rem; color: rgba(255,255,255,0.78); max-width: 60ch; }
+    .slide.cornell-bg .attribution-mini { position: absolute; bottom: 1.5rem; left: 6rem; font-size: 0.78rem; color: rgba(255,255,255,0.55); max-width: 60ch; }
+
+    .slide.content { background: linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%); color: var(--ink); justify-content: center; }
+    .slide.content .slide-eyebrow { font-family: var(--mono); font-size: 0.82rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--carnelian); font-weight: 700; margin: 0 0 1.25rem; }
+    .slide.content h2 { font-size: clamp(2rem, 4.2vw, 3.1rem); letter-spacing: -0.02em; max-width: 24ch; margin: 0 0 1.5rem; color: var(--ink); }
+    .slide.content .slide-body { max-width: 70ch; font-size: 1.1rem; line-height: 1.55; color: var(--ink); }
+    .slide.content .slide-body p { margin: 0 0 0.85rem; max-width: 70ch; }
+    .slide.content .slide-body p:last-child { margin-bottom: 0; }
+    .slide.content .slide-body ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .slide.content .slide-body li { position: relative; padding-left: 1.4rem; font-size: 1.05rem; line-height: 1.5; }
+    .slide.content .slide-body li::before { content: ""; position: absolute; left: 0; top: 0.62rem; width: 0.45rem; height: 0.45rem; border-radius: 50%; background: var(--carnelian); }
+    .slide.content .footnote { margin-top: 1.5rem; font-size: 0.86rem; color: var(--muted); max-width: 60ch; }
+    .slide.content .pull-quote { font-size: 1.5rem; font-style: italic; color: var(--carnelian-dark); max-width: 55ch; margin: 0.5rem 0 1rem; line-height: 1.45; border-left: 4px solid var(--carnelian); padding-left: 1.25rem; }
+
+    .slide.content .col-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 0.5rem; }
+    .slide.content .col-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 0.5rem; }
+    .slide.content .col-4 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; margin-top: 0.5rem; }
+    .slide.content .col-card { padding: 1.1rem 1.25rem; border-radius: var(--radius-md); background: var(--paper); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 0.4rem; }
+    .slide.content .col-card .step { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--carnelian-dark); font-weight: 700; }
+    .slide.content .col-card h3 { font-size: 1.05rem; margin: 0; letter-spacing: -0.01em; }
+    .slide.content .col-card p { font-size: 0.92rem; color: var(--muted); margin: 0; line-height: 1.45; }
+    .slide.content .col-card ul { gap: 0.3rem; margin-top: 0.3rem; }
+    .slide.content .col-card li { font-size: 0.92rem; padding-left: 1rem; line-height: 1.4; }
+    .slide.content .col-card li::before { top: 0.55rem; width: 0.35rem; height: 0.35rem; }
+    .slide.content .col-card.accent { background: var(--carnelian-dim); border-color: rgba(179, 27, 27, 0.30); }
+    .slide.content .col-card.accent .step { color: var(--carnelian); }
+    .slide.content .col-card.green { background: rgba(46, 122, 61, 0.10); border-color: rgba(46, 122, 61, 0.30); }
+    .slide.content .col-card.green .step { color: #1e5f30; }
+    .slide.content .col-card.yellow { background: rgba(181, 135, 26, 0.12); border-color: rgba(181, 135, 26, 0.35); }
+    .slide.content .col-card.yellow .step { color: #8a6510; }
+    .slide.content .col-card.red { background: var(--carnelian-dim); border-color: rgba(179, 27, 27, 0.35); }
+    .slide.content .col-card.red .step { color: var(--carnelian); }
+    a.col-card { text-decoration: none; color: inherit; cursor: pointer; transition: border-color 140ms ease, transform 100ms ease; }
+    a.col-card:hover { border-color: var(--carnelian); transform: translateY(-2px); }
+
+    .back-pill { position: fixed; bottom: 1.25rem; left: 1.25rem; z-index: 30; display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.55rem 1.1rem; background: #fff; color: var(--ink); border-radius: 999px; font-size: 0.9rem; font-weight: 600; text-decoration: none; box-shadow: 0 6px 18px rgba(0,0,0,0.18); }
+    .back-pill:hover { background: var(--carnelian); color: #fff; }
+
+    .deck-nav { position: fixed; bottom: 1.25rem; right: 1.25rem; z-index: 30; display: flex; align-items: center; gap: 0.5rem; }
+    .deck-nav button { width: 2.6rem; height: 2.6rem; border-radius: 999px; background: rgba(255,255,255,0.95); color: var(--ink); border: 1px solid rgba(0,0,0,0.08); font-size: 1.2rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(0,0,0,0.18); }
+    .deck-nav button:hover { background: var(--carnelian); color: #fff; }
+    .deck-nav button:disabled { opacity: 0.35; cursor: not-allowed; }
+    .slide-counter { font-family: var(--mono); font-size: 0.82rem; color: var(--ink); background: rgba(255,255,255,0.92); padding: 0.4rem 0.85rem; border-radius: 999px; box-shadow: 0 4px 14px rgba(0,0,0,0.12); }
+    body[data-active-bg="cornell"] .slide-counter { background: rgba(0,0,0,0.18); color: #fff; }
+
+    .fs-btn svg { width: 1rem; height: 1rem; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .fs-contract { display: none; }
+    body.is-fullscreen .fs-expand { display: none; }
+    body.is-fullscreen .fs-contract { display: block; }
+
+    @media (max-width: 760px) {
+      .slide { padding: 4.5rem 1.5rem 5.5rem; }
+      .slide.content .col-3, .slide.content .col-2, .slide.content .col-4 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-frame deck">
+
+    <main>
+
+      <section class="slide cornell-bg is-active" data-bg="cornell">
+        <img class="seal-top" src="assets/cornell-seal.png" alt="Cornell University seal" />
+        <p class="eyebrow-light">Module 2 &middot; Claude Training at Cornell</p>
+        <h1>AI Fluency.</h1>
+        <p class="byline">Engaging with AI systems effectively, efficiently, ethically, and safely.</p>
+        <p class="attribution-mini">Adapted from the AI Fluency Framework by Rick Dakan, Joseph Feller, and Anthropic. CC BY-NC-SA 4.0.</p>
+      </section>
+
+      <section class="slide content" data-bg="light">
+        <p class="slide-eyebrow">Where we are</p>
+        <h2>Theory &rarr; Guide &rarr; Operational Tooling.</h2>
+        <div class="slide-body">
+          <div class="col-3">
+            <div class="col-card"><span class="step">Module 1 &middot; Done</span><h3>Foundations</h3><p>You met the tool and learned the data rules. The tour.</p></div>
+            <div class="col-card accent"><span class="step">Module 2 &middot; Today</span><h3>AI Fluency</h3><p>Learn the framework. Draft your unit&rsquo;s AI guide. The thinking.</p></div>
+            <div class="col-card"><span class="step">Module 3 &middot; Next week</span><h3>Cowork</h3><p>Your guide becomes Global Instructions. The operational artifact.</p></div>
+          </div>
+          <p style="margin-top: 1.25rem;">You are the agent. Today gives you the framework to decide what gets delegated &mdash; and the responsibility you keep.</p>
+        </div>
+      </section>
+
+      <section class="slide content" data-bg="light">
+        <p class="slide-eyebrow">Welcome back</p>
+        <h2>What you said matters.</h2>
+        <div class="slide-body">
+          <p>Last week you reflected on your team&rsquo;s mission, your role, your values, and the question: <em>&ldquo;If AI could help me ___, I would spend more time ___.&rdquo;</em></p>
+          <p>Today we work from what you said, the 4D framework from this week&rsquo;s homework, and a hands-on test you can run on data you already know.</p>
+          <p class="footnote">Word cloud and anonymized quotes from your reflections shown here when delivered live.</p>
+        </div>
+      </section>
+
+      <section class="slide content" data-bg="light">
+        <p class="slide-eyebrow">The definition</p>
+        <h2>AI Fluency.</h2>
+        <div class="slide-body">
+          <p class="pull-quote">The ability to use AI in ways that are efficient, effective, ethical, and safe.</p>
+          <p>Not a destination &mdash; an ongoing practice. Four interconnected competencies, organized into two loops.</p>
+          <p class="footnote">Definition from AI Fluency for Nonprofits (Anthropic &middot; GivingTuesday). CC BY-NC-SA 4.0.</p>
+        </div>
+      </section>
+
+      <section class="slide content" data-bg="light">
+        <p class="slide-eyebrow">Quick refresher</p>
+        <h2>Two things to know about AI itself.</h2>
+        <div class="slide-body">
+          <div class="col-2">
+            <div class="col-card">
+              <span class="step">Generative vs traditional</span>
+              <h3>Claude creates something new</h3>
+              <p>Traditional AI analyzes and classifies existing data. Generative AI (Claude) creates new text, drafts, summaries. That&rsquo;s why output isn&rsquo;t deterministic &mdash; it&rsquo;s probabilistic.</p>
+            </div>
+            <div class="col-card">
+              <span class="step">Working memory</span>
+              <h3>The context window</h3>
+              <p>Claude holds a finite amount of conversation + uploaded content at once. Long proposal? Multiple RFPs? Scope the conversation. Projects help carry context across chats.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide content" data-bg="light">
+        <p class="slide-eyebrow">The framework</p>
+        <h2>The 4 D&rsquo;s.</h2>
+        <div class="slide-body">
+          <div class="col-4">
+            <div class="col-card accent"><span class="step">Delegation</span><h3>Decide what to hand over</h3><p>Setting goals and deciding whether, when, and how to engage with AI.</p></div>
+            <div class="col-card accent"><span class="step">Description</span><h3>Communicate clearly</h3><p>Effectively describing goals to prompt useful AI behaviors and outputs.</p></div>
+            <div class="col-card accent"><span class="step">Discernment</span><h3>Evaluate critically</h3><p>Accurately assessing the usefulness of AI outputs and behaviors.</p></div>
+            <div class="col-card accent"><span class="step">Diligence</span><h3>Take responsibility</h3><p>For what we do with AI and how we do it.</p></div>
+          </div>
+          <p class="footnote">Adapted from the AI Fluency Framework by Dakan, Feller, and Anthropic. CC BY-NC-SA 4.0.</p>
+        </div>
+      </section>
+
+      <section class="slide content" data-bg="light">
+        <p class="slide-eyebrow">How they connect</p>
+        <h2>Two loops.</h2>
+        <div class="slide-body">
+          <div class="col-2">
+            <div class="col-card accent">
+              <span class="step">Loop 1</span>
+              <h3>Delegation &harr; Diligence</h3>
+              <p><em>When and whether</em> to use AI. Should I use AI here? Did I take responsibility for the result?</p>
+            </div>
+            <div class="col-card accent">
+              <span class="step">Loop 2</span>
+              <h3>Description &harr; Discernment</h3>
+              <p><em>How</em> to use AI day-to-day. Did I describe it well? Did I read what came back critically?</p>
+            </div>
+          </div>
+          <p style="margin-top: 1rem;">Today: three filters help you answer Loop 1. Then we go deep on Loop 2.</p>
+        </div>
+      </section>
+
+      <section class="slide content" data-bg="light">
+        <p class="slide-eyebrow">Filter 1 &middot; data class</p>
+        <h2>Green / Yellow / Red.</h2>
+        <div class="slide-body">
+          <p>Match the data class to the tool before anything else.</p>
+          <div class="col-3">
+            <div class="col-card green">
+              <span class="step">Green &middot; public</span>
+              <h3>Use freely</h3>
+              <p>Published RFPs, public CFR, public Cornell content. Any approved AI tool.</p>
+            </div>
+            <div class="col-card yellow">
+              <span class="step">Yellow &middot; confidential admin</span>
+              <h3>Use Claude 3P</h3>
+              <p>Internal proposal drafts, sponsor negotiation notes, unit budget drafts.</p>
+            </div>
+            <div class="col-card red">
+              <span class="step">Red &middot; regulated</span>
+              <h3>Stop and check</h3>
+              <p>FERPA, HIPAA, export-controlled, sponsor-restricted. Call your data steward.</p>
+            </div>
+          </div>
+          <p class="footnote">Anchored in Cornell&rsquo;s regulated data chart &mdash; it.cornell.edu/regulated-data-chart.</p>
+        </div>
+      </section>
+
+      <section class="slide content" data-bg="light">
+        <p class="slide-eyebrow">Filter 2 &middot; task type</p>
+        <h2>&ldquo;Should AI do this?&rdquo; &mdash; not &ldquo;Can AI do this?&rdquo;</h2>
+        <div class="slide-body">
+          <div class="col-3">
+            <div class="col-card accent">
+              <span class="step">AI handles</span>
+              <h3>Standardized work</h3>
+              <p>Documented info, clear processes. Look up a CFR section. Reformat a budget table.</p>
+            </div>
+            <div class="col-card">
+              <span class="step">AI assists</span>
+              <h3>Draft + you review</h3>
+              <p>AI drafts, you review before sending. Justification narratives, sponsor briefs, internal memos.</p>
+            </div>
+            <div class="col-card">
+              <span class="step">Human handles</span>
+              <h3>Judgment, relationships, precedent</h3>
+              <p>Sponsor calls, audit findings, allowability decisions, anything precedent-setting.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide content" data-bg="light">
+        <p class="slide-eyebrow">Filter 3 &middot; institutional level</p>
+        <h2>What Cornell decides &middot; what your unit decides.</h2>
+        <div class="slide-body">
+          <div class="col-2">
+            <div class="col-card">
+              <span class="step">Cornell decides</span>
+              <h3>You don&rsquo;t figure this out alone</h3>
+              <ul>
+                <li>Approved tool list (IT, AI Innovation Hub)</li>
+                <li>Data classification + access</li>
+                <li>Broad disclosure norms</li>
+                <li>Vendor data agreements</li>
+              </ul>
+            </div>
+            <div class="col-card accent">
+              <span class="step">Your unit decides</span>
+              <h3>Your AI guide answers this</h3>
+              <ul>
+                <li>Which tasks fall in each category</li>
+                <li>Who&rsquo;s your unit&rsquo;s AI champion</li>
+                <li>Your review cadence + escalation path</li>
+                <li>Your disclosure habits to PIs and sponsors</li>
+              </ul>
+            </div>
+          </div>
+          <p class="footnote">Liberating, not burdensome &mdash; here&rsquo;s what you don&rsquo;t have to figure out alone.</p>
+        </div>
+      </section>
+
+      <section class="slide content" data-bg="light">
+        <p class="slide-eyebrow">Loop 2 &middot; how</p>
+        <h2>Description and Discernment.</h2>
+        <div class="slide-body">
+          <p>Cornell&rsquo;s 3-part prompt from Module 1 maps cleanly to AI Fluency&rsquo;s Description triad.</p>
+          <div class="col-2">
+            <div class="col-card">
+              <span class="step">Description (how you ask)</span>
+              <h3>3-part prompt</h3>
+              <ul>
+                <li><strong>Context</strong> = Performance Description (tone, role)</li>
+                <li><strong>Task</strong> = Process Description (approach)</li>
+                <li><strong>Format</strong> = Product Description (output)</li>
+              </ul>
+            </div>
+            <div class="col-card accent">
+              <span class="step">Discernment (how you read it)</span>
+              <h3>Three critical checks</h3>
+              <ul>
+                <li>Is the output good? (Product)</li>
+                <li>Did it use the right sources? (Process)</li>
+                <li>Did it push back when uncertain? (Performance)</li>
+              </ul>
+            </div>
+          </div>
+          <p class="footnote"><strong>Foreshadow:</strong> Module 3 extends this with one more slot &mdash; <em>Inputs</em> &mdash; because Cowork can read files and connectors directly.</p>
+        </div>
+      </section>
+
+      <section class="slide content" data-bg="light">
+        <p class="slide-eyebrow">All four D&rsquo;s in motion</p>
+        <h2>Exercise A revisited.</h2>
+        <div class="slide-body">
+          <p>Last week&rsquo;s eCFR lookup was already a 4D exercise. Let&rsquo;s name the parts:</p>
+          <ul>
+            <li><strong>Delegation</strong> &mdash; Choose Claude 3P (Yellow data, Platform Awareness).</li>
+            <li><strong>Description</strong> &mdash; &ldquo;Look up 2 CFR 200, Subpart E. Cite section numbers. Plain-English summary for a non-expert PI.&rdquo;</li>
+            <li><strong>Discernment</strong> &mdash; Did the section numbers match? Did the summary cover all subparts? Anything missing?</li>
+            <li><strong>Diligence</strong> &mdash; Read the original sections before sending to a PI. Disclose AI involvement if it matters.</li>
+          </ul>
+          <p class="footnote">eCFR MCP server by Sabrina Woo and Nathan Layman / AI4RA (NSF Award 2427549).</p>
+        </div>
+      </section>
+
+      <section class="slide content" data-bg="light">
+        <p class="slide-eyebrow">Hands-on &middot; 25 min</p>
+        <h2>Test against data you already know cold.</h2>
+        <div class="slide-body">
+          <p>You brought a dataset you understand &mdash; an annual award report, a portfolio review, a closed proposal cycle, a compliance dashboard.</p>
+          <ol style="margin: 0 0 1rem 1.2rem; padding: 0; font-size: 1.05rem; line-height: 1.6;">
+            <li>Open Claude 3P with the dataset in scope.</li>
+            <li>Ask a question you already know the answer to.</li>
+            <li>Compare. If it matches, ask <em>how</em> it got there. If it doesn&rsquo;t, refine the prompt &mdash; or find the limit.</li>
+          </ol>
+          <p><strong>The takeaway:</strong> before you trust AI with new data, validate on data you already know. That&rsquo;s <strong>Deployment Diligence</strong> in practice.</p>
+          <p class="footnote">From AIF-NP Lesson 6, &ldquo;Data analysis with AI.&rdquo;</p>
+        </div>
+      </section>
+
+      <section class="slide content" data-bg="light">
+        <p class="slide-eyebrow">Diligence &middot; the values anchor</p>
+        <h2>Stand behind every word.</h2>
+        <div class="slide-body">
+          <p class="pull-quote">When AI-assisted work goes to a PI, an OSP colleague, or a sponsor, <strong>you</strong> own every claim. Not &ldquo;the AI said so.&rdquo; You.</p>
+          <p>That&rsquo;s not a new rule for sponsored programs work &mdash; it&rsquo;s the rule that&rsquo;s always applied. The framing helps name it.</p>
+          <p><strong>And the &ldquo;human in the loop&rdquo; piece:</strong> being the human in the loop means ensuring AI serves <em>your research mission</em> and the PI / sponsor / colleague relationships that define your work.</p>
+        </div>
+      </section>
+
+      <section class="slide content" data-bg="light">
+        <p class="slide-eyebrow">Examples</p>
+        <h2>What you can do that you couldn&rsquo;t before.</h2>
+        <div class="slide-body">
+          <div class="col-3">
+            <div class="col-card">
+              <span class="step">Scenario 1</span>
+              <h3>Sponsor brief from an NIH NOFO</h3>
+              <p>AI handles the structured summary. You handle the strategic call.</p>
+            </div>
+            <div class="col-card">
+              <span class="step">Scenario 2</span>
+              <h3>CFR lookup for a PI question</h3>
+              <p>AI pulls the regulation text and drafts plain-English. You verify and send.</p>
+            </div>
+            <div class="col-card">
+              <span class="step">Scenario 3</span>
+              <h3>Portfolio analysis across years</h3>
+              <p>AI surfaces patterns. You judge what they mean for the institution.</p>
+            </div>
+          </div>
+          <p class="footnote">Specific examples to be refined after cohort delivery &mdash; placeholder set illustrating the pattern.</p>
+        </div>
+      </section>
+
+      <section class="slide content" data-bg="light">
+        <p class="slide-eyebrow">Before Module 3</p>
+        <h2>Two homework asks &middot; one course.</h2>
+        <div class="slide-body">
+          <div class="col-2">
+            <a class="col-card" href="https://anthropic.skilljar.com/introduction-to-claude-cowork" target="_blank" rel="noopener">
+              <span class="step">1 &middot; Course</span>
+              <h3>Introduction to Claude Cowork</h3>
+              <p>Anthropic&rsquo;s Skilljar course &mdash; ~30 minutes. The desktop mode we use in Module 3.</p>
+            </a>
+            <a class="col-card" href="../module-ai-fluency.html#homework">
+              <span class="step">2 &middot; Build</span>
+              <h3>Draft your unit&rsquo;s AI guide</h3>
+              <p>One page. The 7-part scaffold (Platform &middot; Task &middot; Capacity &middot; Quality &middot; Transparency &middot; Values &middot; Compile).</p>
+            </a>
+          </div>
+          <p style="margin-top: 1rem;"><strong>Bridge:</strong> Cowork&rsquo;s advanced features are <strong>Skills</strong> (your recurring workflows, taught to the tool) and <strong>Plugins</strong> (bundled expertise). The guide you draft this week becomes the configuration that runs those skills. RAIS and the AI Innovation Hub help you refine.</p>
+        </div>
+      </section>
+
+      <section class="slide cornell-bg" data-bg="cornell">
+        <img class="seal-bottom" src="assets/cornell-seal.png" alt="Cornell University seal" />
+      </section>
+
+    </main>
+
+    <a class="back-pill" href="../module-ai-fluency.html">&larr; Module 2 page</a>
+
+  </div>
+
+  <nav class="deck-nav" aria-label="Slide navigation">
+    <div class="slide-counter" id="slide-counter">1 / 17</div>
+    <button class="fs-btn" id="fs-btn" type="button" aria-label="Toggle fullscreen">
+      <svg class="fs-expand" viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+      <svg class="fs-contract" viewBox="0 0 24 24" aria-hidden="true"><polyline points="4 14 10 14 10 20"/><polyline points="20 10 14 10 14 4"/><line x1="14" y1="10" x2="21" y2="3"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+    </button>
+    <button class="nav-prev" type="button" aria-label="Previous slide">&larr;</button>
+    <button class="nav-next" type="button" aria-label="Next slide">&rarr;</button>
+  </nav>
+
+  <script>
+    (function () {
+      var slides   = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+      var counter  = document.getElementById('slide-counter');
+      var prevBtn  = document.querySelector('.nav-prev');
+      var nextBtn  = document.querySelector('.nav-next');
+      var total    = slides.length;
+
+      function currentFromHash() {
+        var m = (window.location.hash || '').match(/^#\/(\d+)/);
+        var n = m ? parseInt(m[1], 10) : 1;
+        return Math.max(1, Math.min(total, n));
+      }
+
+      function show(n) {
+        n = Math.max(1, Math.min(total, n));
+        slides.forEach(function (s, i) { s.classList.toggle('is-active', i === n - 1); });
+        var bg = slides[n - 1].getAttribute('data-bg') || 'light';
+        document.body.setAttribute('data-active-bg', bg);
+        counter.textContent = n + ' / ' + total;
+        prevBtn.disabled = (n === 1);
+        nextBtn.disabled = (n === total);
+        if (window.history && history.replaceState) { history.replaceState(null, '', '#/' + n); }
+      }
+
+      function next() { show(currentFromHash() + 1); }
+      function prev() { show(currentFromHash() - 1); }
+
+      nextBtn.addEventListener('click', next);
+      prevBtn.addEventListener('click', prev);
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); next(); }
+        else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); prev(); }
+        else if (e.key === 'Home') { e.preventDefault(); show(1); }
+        else if (e.key === 'End')  { e.preventDefault(); show(total); }
+      });
+
+      window.addEventListener('hashchange', function () { show(currentFromHash()); });
+      show(currentFromHash());
+    })();
+
+    (function () {
+      var btn = document.getElementById('fs-btn');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        if (!document.fullscreenElement) {
+          (document.documentElement.requestFullscreen || document.documentElement.webkitRequestFullscreen).call(document.documentElement);
+        } else {
+          (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+        }
+      });
+      document.addEventListener('fullscreenchange', function () {
+        document.body.classList.toggle('is-fullscreen', !!document.fullscreenElement);
+      });
+    })();
+  </script>
+</body>
+</html>

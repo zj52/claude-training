@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#191919" />
-  <title>Module 3 · Working with Cowork | Claude Training</title>
+  <title>Module 3 · Cowork | Claude Training</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -38,95 +38,116 @@
           <p class="eyebrow">Module 3 &middot; Workshop</p>
           <h1>Working with Cowork.</h1>
           <p>
-            Cowork is the desktop mode that lets Claude touch files,
-            run skills, and finish multi-step tasks on your machine.
-            We&rsquo;ll review Anthropic&rsquo;s Cowork 101, run an
-            advanced example, and wrap with office hours and the
-            roadmap.
+            From <em>using</em> Cowork to <em>configuring</em> Cowork.
+            The guide you drafted last week becomes Global Instructions.
+            The folder you select becomes the persistent context. The
+            recurring tasks become Skills. Theory &rarr; Guide &rarr;
+            Operational Tooling.
           </p>
         </div>
       </section>
 
       <section class="content-block">
-        <p class="eyebrow">Cowork 101 recap</p>
-        <h2 class="section-heading section-heading-wide">Four things to remember.</h2>
-        <div class="card-grid four">
+        <p class="eyebrow">Workshop deck</p>
+        <h2 class="section-heading section-heading-wide">Slides we&rsquo;ll start with.</h2>
+        <div class="compact-grid">
 
-          <article class="content-card">
-            <span class="tag">Files</span>
-            <h3>Your folder, your data</h3>
-            <p>Cowork works inside a folder you pick. Drag-drop to add files, and Claude can read and write inside that folder only.</p>
-          </article>
+          <a class="content-card" href="slides/cowork.html">
+            <span class="tag">Full deck</span>
+            <h3>Cowork &mdash; open the deck</h3>
+            <p>Point Claude at a folder &middot; Plan / Execute / Connect &middot; the 4-part delegation &middot; the four building blocks &middot; Skills + Plugins + Evals &middot; bridges &middot; safety &middot; live build &middot; 30-day check-in. Arrow keys to navigate.</p>
+            <div class="card-actions"><span class="button">Open deck &rarr;</span></div>
+          </a>
 
-          <article class="content-card">
-            <span class="tag">Skills</span>
-            <h3>Pluggable capabilities</h3>
-            <p>Skills are reusable instructions Claude can run &mdash; for documents, PDFs, spreadsheets, contracts, and more.</p>
-          </article>
-
-          <article class="content-card">
-            <span class="tag">Tools</span>
-            <h3>Connectors &amp; the shell</h3>
-            <p>Cowork can call MCP connectors (when approved) and a sandboxed shell to run small scripts.</p>
-          </article>
-
-          <article class="content-card">
-            <span class="tag">Memory</span>
-            <h3>Reusable context</h3>
-            <p>Project instructions and a memory file let you keep institutional knowledge in one place across many sessions.</p>
-          </article>
+          <a class="content-card" href="slides/cowork.html#/8">
+            <span class="tag">Jump to</span>
+            <h3>Slide 8 &mdash; The bridge</h3>
+            <p>The slide where your AI guide becomes Global Instructions, your scope becomes a Project, and your "AI can handle" tasks become Skills.</p>
+            <div class="card-actions"><span class="button-secondary">Open slide &rarr;</span></div>
+          </a>
 
         </div>
-
-        <p class="stack-3">
-          <a class="link-accent" href="https://anthropic.skilljar.com/introduction-to-claude-cowork" target="_blank" rel="noopener">Anthropic &middot; Introduction to Claude Cowork &rarr;</a>
-        </p>
       </section>
 
       <section class="content-block">
         <p class="eyebrow">Today&rsquo;s exercise</p>
-        <h2 class="section-heading section-heading-wide">Advanced example &mdash; building.</h2>
-        <article class="content-card future">
-          <span class="tag muted">Coming</span>
-          <h3>End-to-end Cowork task</h3>
-          <p>Open a document, cross-check against a regulation lookup, save a revised version to your folder. Live walkthrough during the workshop &mdash; copy-pasteable prompt added here after.</p>
+        <h2 class="section-heading section-heading-wide">Configure &rarr; Scaffold &rarr; Run.</h2>
+
+        <article class="content-card">
+          <span class="tag">Hands-on &middot; ~25 min</span>
+          <h3>Build a working Cowork Project + first Skill, live</h3>
+          <p class="module-prose">Bring (1) your unit-level AI guide draft, (2) one specific folder you want Cowork to work in, and (3) one specific task from the "AI can handle" section of your guide. Three-part live build:</p>
+          <div class="exercise-block">
+<pre><code>(a) Configure (~7 min)
+   1. Open Claude Desktop, switch to Cowork mode.
+   2. Settings → Cowork → paste a condensed version of your AI guide as
+      Global Instructions.
+   3. Create a new Project for the chosen workstream. Initialize from
+      the local folder.
+
+(b) Scaffold (~10 min) — first Skill, rough draft
+   4. New chat: "I want to build a skill for [the specific task].
+      Walk me through what you need to know."
+   5. Answer the skill-creator's interview questions. Upload reference
+      materials.
+   6. Install the rough-draft skill via the Customize menu.
+
+(c) Run (~8 min)
+   7. Issue the task with "Ask before acting" permissions on.
+   8. Watch the Progress panel. Steer mid-run if it goes off-track.
+   9. Review the output as a draft, not as final.</code></pre>
+            <button class="copy-btn" type="button">Copy</button>
+          </div>
+          <p class="module-prose"><strong>The takeaway to land:</strong> your guide isn&rsquo;t a doc you wrote &mdash; it&rsquo;s how the tool now behaves. The scaffold you just made isn&rsquo;t yours to polish alone &mdash; bring it to RAIS / the AI Innovation Hub to refine, and it can become part of the cohort&rsquo;s shared skill library.</p>
         </article>
       </section>
 
-      <section class="content-block">
-        <p class="eyebrow">Ongoing</p>
-        <h2 class="section-heading section-heading-wide">Office hours &amp; the AI roadmap.</h2>
-        <div class="compact-grid">
+      <section class="content-block" id="homework">
+        <p class="eyebrow">After this module</p>
+        <h2 class="section-heading section-heading-wide">Pick one. Then the 30-day check-in.</h2>
+        <div class="card-grid four">
 
           <article class="content-card">
-            <span class="tag">Office hours</span>
-            <h3>Drop in for help</h3>
-            <p>Weekly Q&amp;A &mdash; schedule TBD after the first cohort. Watch the Teams channel for updates.</p>
-            <div class="card-actions">
-              <a class="button-secondary" href="#" target="_blank" rel="noopener">Open the meeting &rarr;</a>
-            </div>
+            <span class="tag">1</span>
+            <h3>Configure standing context</h3>
+            <p>Author Global Instructions, or initialize a scoped Project for a current workflow.</p>
           </article>
 
           <article class="content-card">
-            <span class="tag">Roadmap</span>
-            <h3>What&rsquo;s coming</h3>
-            <p>The source of truth lives at the Innovation Hub. Roadmap highlights surfaced here when there&rsquo;s news.</p>
-            <div class="card-actions">
-              <a class="button-secondary" href="https://innovationhub.ai.cornell.edu/tools-resources/" target="_blank" rel="noopener">Visit the Hub &rarr;</a>
-            </div>
+            <span class="tag">2</span>
+            <h3>Automate a sequence</h3>
+            <p>Set up a <code>/schedule</code> recurring task, or send an off-hours mobile Dispatch.</p>
+          </article>
+
+          <article class="content-card">
+            <span class="tag">3</span>
+            <h3>Deploy a capability</h3>
+            <p>Install a role-specific plugin, build a second skill, or use Chrome / M365 for a multi-app extraction.</p>
+          </article>
+
+          <article class="content-card">
+            <span class="tag">4</span>
+            <h3>Contribute back</h3>
+            <p>Bring your scaffolded skill to RAIS / the AI Innovation Hub for refinement. The cohort&rsquo;s skills roll up into a shared library and, eventually, Cornell-specific plugins.</p>
           </article>
 
         </div>
+
+        <p class="fine-note">
+          <strong>30-day check-in:</strong> <a class="link-accent" href="resources.html#community">RAIS office hours</a> on Wednesdays, 12&ndash;1 PM. Email <a class="link-accent" href="mailto:rais-help@cornell.edu">rais-help@cornell.edu</a> for an appointment or <a class="link-accent" href="rais-office-hours.ics" download>add to calendar</a>.
+        </p>
       </section>
 
       <section class="callout-band">
         <div class="callout-panel">
-          <p class="eyebrow">After this module</p>
-          <h2 class="section-heading section-heading-wide">Keep going.</h2>
-          <p>The site stays here. Use the FAQ when something stalls, the Tips library for prompts to lift, and the Learning page for the next courses to take.</p>
+          <p class="eyebrow">Keep going</p>
+          <h2 class="section-heading section-heading-wide">The site stays here.</h2>
+          <p>
+            FAQ for when something stalls, starter prompts in the Tips section, Anthropic Academy courses for next steps, and the cohort Teams channel for swapping what works.
+          </p>
           <div class="cta-row">
-            <a class="button" href="learning.html">Open learning &rarr;</a>
-            <a class="button-secondary" href="faq.html">Open FAQ &rarr;</a>
+            <a class="button" href="resources.html">Open resources &rarr;</a>
+            <a class="button-secondary" href="resources.html#faq">Open FAQ &rarr;</a>
           </div>
         </div>
       </section>
@@ -142,5 +163,26 @@
       </div>
     </footer>
   </div>
+
+  <script>
+    document.querySelectorAll('.copy-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var pre = btn.parentElement.querySelector('pre code') || btn.parentElement.querySelector('pre');
+        if (!pre) return;
+        var text = pre.textContent || pre.innerText;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function () {
+            var original = btn.textContent;
+            btn.textContent = 'Copied';
+            btn.classList.add('copied');
+            setTimeout(function () {
+              btn.textContent = original;
+              btn.classList.remove('copied');
+            }, 1600);
+          });
+        }
+      });
+    });
+  </script>
 </body>
 </html>

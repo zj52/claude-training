@@ -6,21 +6,6 @@
   <meta name="theme-color" content="#191919" />
   <title>Module 2 · AI Fluency | Claude Training</title>
   <link rel="stylesheet" href="styles.css" />
-  <style>
-    .word-cloud-placeholder {
-      margin-top: 1rem;
-      padding: 3rem 1.5rem;
-      border-radius: var(--radius-md);
-      background: var(--carnelian-dim);
-      border: 1px dashed rgba(179, 27, 27, 0.32);
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.95rem;
-      line-height: 1.5;
-    }
-    .word-cloud-placeholder strong { color: var(--carnelian-dark); }
-    .word-cloud-placeholder p + p { margin-top: 0.5rem; }
-  </style>
 </head>
 <body>
   <div class="page-frame">
@@ -54,94 +39,70 @@
           <h1>AI Fluency.</h1>
           <p>
             How to collaborate with Claude well &mdash; effectively,
-            efficiently, ethically, and safely. We&rsquo;ll review the
-            framework, share the cohort&rsquo;s word cloud from this
-            week&rsquo;s homework, and run an advanced example together.
+            efficiently, ethically, and safely. We&rsquo;ll work from
+            your reflections, the 4D framework from this week&rsquo;s
+            homework, and a hands-on test you can run on data you
+            already know.
           </p>
         </div>
       </section>
 
       <section class="content-block">
-        <p class="eyebrow">The framework</p>
-        <h2 class="section-heading section-heading-wide">4 dimensions &middot; 4 Ds.</h2>
+        <p class="eyebrow">Workshop deck</p>
+        <h2 class="section-heading section-heading-wide">Slides we&rsquo;ll start with.</h2>
+        <div class="compact-grid">
 
-        <h3 class="section-subheading">4 Dimensions</h3>
-        <div class="card-grid four">
-          <article class="content-card">
-            <span class="tag">Effective</span>
-            <h3>Get the result</h3>
-            <p>Use Claude to produce work that actually meets your goal.</p>
-          </article>
-          <article class="content-card">
-            <span class="tag">Efficient</span>
-            <h3>Save the time</h3>
-            <p>Pick tasks where Claude actually saves effort over doing it yourself.</p>
-          </article>
-          <article class="content-card">
-            <span class="tag">Ethical</span>
-            <h3>Mind the people</h3>
-            <p>Use Claude in ways that respect the people whose work and data are involved.</p>
-          </article>
-          <article class="content-card">
-            <span class="tag">Safe</span>
-            <h3>Mind the data</h3>
-            <p>Match the data classification to what the tool is approved for. No HIPAA. No export-controlled.</p>
-          </article>
-        </div>
+          <a class="content-card" href="slides/ai-fluency.html">
+            <span class="tag">Full deck</span>
+            <h3>AI Fluency &mdash; open the deck</h3>
+            <p>The two loops &middot; the three filters (data class, task type, what Cornell decides) &middot; how the 3-part prompt maps to the 4 Ds &middot; hands-on test against known data &middot; homework. Arrow keys to navigate.</p>
+            <div class="card-actions"><span class="button">Open deck &rarr;</span></div>
+          </a>
 
-        <h3 class="section-subheading">4 Ds</h3>
-        <div class="card-grid four">
-          <article class="content-card">
-            <span class="tag">Delegation</span>
-            <h3>What to hand over</h3>
-            <p>Decide what goes to Claude vs. web search vs. spreadsheet vs. you.</p>
-          </article>
-          <article class="content-card">
-            <span class="tag">Description</span>
-            <h3>How to ask</h3>
-            <p>Set the stage, give the task, specify the output. The Anthropic 3-part prompt.</p>
-          </article>
-          <article class="content-card">
-            <span class="tag">Discernment</span>
-            <h3>How to read it</h3>
-            <p>Read the output critically. Spot-check facts, numbers, and citations.</p>
-          </article>
-          <article class="content-card">
-            <span class="tag">Diligence</span>
-            <h3>How to follow up</h3>
-            <p>Iterate, revise, and verify before sharing.</p>
-          </article>
-        </div>
-      </section>
+          <a class="content-card" href="slides/ai-fluency.html#/3">
+            <span class="tag">Jump to</span>
+            <h3>Slide 3 &mdash; The framework</h3>
+            <p>AI Fluency in one sentence, the two loops, and the four competencies that will run through the rest of the deck.</p>
+            <div class="card-actions"><span class="button-secondary">Open slide &rarr;</span></div>
+          </a>
 
-      <section class="content-block">
-        <p class="eyebrow">The cohort, in their own words</p>
-        <h2 class="section-heading section-heading-wide">Word cloud from this week&rsquo;s reflections.</h2>
-        <div class="word-cloud-placeholder">
-          <p><strong>The word cloud appears here after the cohort submits.</strong></p>
-          <p>Built from your responses to: workplace situation, core values, and &ldquo;If AI could help me ___, I would spend more time ___.&rdquo;</p>
         </div>
       </section>
 
       <section class="content-block">
         <p class="eyebrow">Today&rsquo;s exercise</p>
-        <h2 class="section-heading section-heading-wide">Advanced example &mdash; building.</h2>
-        <article class="content-card future">
-          <span class="tag muted">Coming</span>
-          <h3>Multi-step research-administration task</h3>
-          <p>A drafted memo that pulls from a document, looks up the relevant CFR, and produces a plain-English output with citations. Live walkthrough during the workshop &mdash; copy-pasteable prompt added here after.</p>
+        <h2 class="section-heading section-heading-wide">Test against data you already know cold.</h2>
+
+        <article class="content-card">
+          <span class="tag">Hands-on &middot; ~25 min</span>
+          <h3>Validate Claude against an answer you already know</h3>
+          <p class="module-prose">Bring one dataset you understand &mdash; an annual award report, a recent portfolio review, a closed proposal cycle, or a compliance dashboard. Then run the loop: ask, compare, refine, or find the limit.</p>
+          <div class="exercise-block">
+<pre><code>I'm a research administrator at Cornell. Here is [DATASET DESCRIPTION
++ FILE] — a [dataset I already know cold].
+
+I'm going to ask you a question I already know the answer to, and we'll
+compare. This is a validation pass before I trust you with new data.
+
+Question: [your question]
+
+Show your reasoning briefly. Tell me which fields you used and how you
+combined them. If anything is ambiguous, ask before answering.</code></pre>
+            <button class="copy-btn" type="button">Copy</button>
+          </div>
+          <p class="module-prose"><strong>The takeaway to land:</strong> before you trust AI with new data, validate on data you already know. That&rsquo;s <em>Deployment Diligence</em> in practice.</p>
         </article>
       </section>
 
       <section class="content-block" id="homework">
         <p class="eyebrow">Homework before Module 3</p>
-        <h2 class="section-heading section-heading-wide">One thing to do this week.</h2>
+        <h2 class="section-heading section-heading-wide">Two things to do this week.</h2>
         <div class="compact-grid">
 
           <article class="content-card">
             <span class="tag">1</span>
             <h3>Take Introduction to Claude Cowork</h3>
-            <p>Anthropic&rsquo;s Skilljar course on Cowork &mdash; the desktop mode we&rsquo;ll use in Module 3. ~30 minutes.</p>
+            <p>Anthropic&rsquo;s Skilljar course on Cowork &mdash; the desktop mode we&rsquo;ll use in Module 3. About 30 minutes.</p>
             <div class="card-actions">
               <a class="button" href="https://anthropic.skilljar.com/introduction-to-claude-cowork" target="_blank" rel="noopener">Open the course &rarr;</a>
             </div>
@@ -149,17 +110,17 @@
 
           <article class="content-card">
             <span class="tag">2</span>
-            <h3>Quick reflection</h3>
-            <p>One task you&rsquo;d want Cowork to handle, and one concern or question you have about it.</p>
+            <h3>Draft your unit&rsquo;s AI guide</h3>
+            <p>One page. The 7-part scaffold (Platform &middot; Task &middot; Capacity &middot; Quality &middot; Transparency &middot; Values &middot; Compile). Lean on what Cornell has already decided so the unit-level work is bounded and doable. Synthesize with Claude 3P.</p>
             <div class="card-actions">
-              <a class="button-secondary" href="#" target="_blank" rel="noopener">Open the form &rarr;</a>
+              <a class="button-secondary" href="resources.html#community" target="_blank" rel="noopener">Reach out to RAIS &rarr;</a>
             </div>
           </article>
 
         </div>
 
         <p class="fine-note">
-          <strong>Anonymity:</strong> We collect your name and department for our records. On the site we display only your first name + department, or &ldquo;Anonymous&rdquo; if you prefer. Nothing is shared outside Cornell.
+          <strong>The bridge:</strong> the guide you draft this week becomes the configuration for your Cowork Project next week. Theory &rarr; Guide &rarr; Operational Tooling. RAIS and the AI Innovation Hub help you refine over time.
         </p>
       </section>
 
@@ -167,7 +128,9 @@
         <div class="callout-panel">
           <p class="eyebrow">Up next</p>
           <h2 class="section-heading section-heading-wide">Module 3 &mdash; Working with Cowork.</h2>
-          <p>End-to-end real work: files, skills, and reusable context. Plus office hours, the AI roadmap, and how to keep getting help.</p>
+          <p>
+            From <em>using</em> Cowork to <em>configuring</em> Cowork. Skills, Plugins, Scheduled tasks, the bridges &mdash; and the hands-on where your AI guide becomes Global Instructions and a real Project.
+          </p>
           <div class="cta-row">
             <a class="button-secondary" href="module-cowork.html">Preview Module 3 &rarr;</a>
             <a class="button-secondary" href="module-foundations.html">&larr; Module 1</a>
@@ -186,5 +149,26 @@
       </div>
     </footer>
   </div>
+
+  <script>
+    document.querySelectorAll('.copy-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var pre = btn.parentElement.querySelector('pre code') || btn.parentElement.querySelector('pre');
+        if (!pre) return;
+        var text = pre.textContent || pre.innerText;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function () {
+            var original = btn.textContent;
+            btn.textContent = 'Copied';
+            btn.classList.add('copied');
+            setTimeout(function () {
+              btn.textContent = original;
+              btn.classList.remove('copied');
+            }, 1600);
+          });
+        }
+      });
+    });
+  </script>
 </body>
 </html>

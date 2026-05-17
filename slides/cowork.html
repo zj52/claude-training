@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#B31B1B" />
+  <title>Cowork · Slide deck | Claude Training</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    html, body { height: 100%; }
+    body { margin: 0; background: #000; overflow: hidden; font-family: var(--sans); }
+    .deck { position: fixed; inset: 0; overflow: hidden; }
+    .slide { position: absolute; inset: 0; display: none; flex-direction: column; padding: 5rem 6rem; overflow-y: auto; animation: fade-in 280ms ease; }
+    .slide.is-active { display: flex; }
+    @keyframes fade-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+    .slide.cornell-bg { background: var(--carnelian); color: #fff; justify-content: flex-end; padding: 5rem 6rem; }
+    .slide.cornell-bg::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 10px; background: #fff; }
+    .slide.cornell-bg .seal-top { position: absolute; top: 5rem; left: 6rem; width: 120px; height: 120px; }
+    .slide.cornell-bg .seal-bottom { position: absolute; bottom: 5rem; right: 6rem; width: 180px; height: 180px; }
+    .slide.cornell-bg .eyebrow-light { font-size: 1.05rem; font-weight: 400; color: rgba(255,255,255,0.92); margin: 0 0 0.5rem; }
+    .slide.cornell-bg h1 { font-size: clamp(3.2rem, 7.5vw, 6rem); letter-spacing: -0.03em; font-weight: 800; color: #fff; margin: 0; line-height: 1; }
+    .slide.cornell-bg .byline { margin-top: 1.25rem; font-size: 1.05rem; color: rgba(255,255,255,0.78); max-width: 60ch; }
+
+    .slide.content { background: linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%); color: var(--ink); justify-content: center; }
+    .slide.content .slide-eyebrow { font-family: var(--mono); font-size: 0.82rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--carnelian); font-weight: 700; margin: 0 0 1.25rem; }
+    .slide.content h2 { font-size: clamp(2rem, 4.2vw, 3.1rem); letter-spacing: -0.02em; max-width: 24ch; margin: 0 0 1.5rem; color: var(--ink); }
+    .slide.content .slide-body { max-width: 70ch; font-size: 1.1rem; line-height: 1.55; color: var(--ink); }
+    .slide.content .slide-body p { margin: 0 0 0.85rem; max-width: 70ch; }
+    .slide.content .slide-body p:last-child { margin-bottom: 0; }
+    .slide.content .slide-body ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .slide.content .slide-body li { position: relative; padding-left: 1.4rem; font-size: 1.05rem; line-height: 1.5; }
+    .slide.content .slide-body li::before { content: ""; position: absolute; left: 0; top: 0.62rem; width: 0.45rem; height: 0.45rem; border-radius: 50%; background: var(--carnelian); }
+    .slide.content .footnote { margin-top: 1.5rem; font-size: 0.86rem; color: var(--muted); max-width: 60ch; }
+    .slide.content .pull-quote { font-size: 1.5rem; font-style: italic; color: var(--carnelian-dark); max-width: 55ch; margin: 0.5rem 0 1rem; line-height: 1.45; border-left: 4px solid var(--carnelian); padding-left: 1.25rem; }
+    .slide.content code { font-family: var(--mono); font-size: 0.88em; padding: 0.08rem 0.32rem; border-radius: 4px; background: var(--carnelian-dim); color: var(--carnelian-dark); }
+
+    .slide.content .col-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 0.5rem; }
+    .slide.content .col-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 0.5rem; }
+    .slide.content .col-4 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; margin-top: 0.5rem; }
+    .slide.content .col-card { padding: 1.1rem 1.25rem; border-radius: var(--radius-md); background: var(--paper); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 0.4rem; }
+    .slide.content .col-card .step { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--carnelian-dark); font-weight: 700; }
+    .slide.content .col-card h3 { font-size: 1.05rem; margin: 0; letter-spacing: -0.01em; }
+    .slide.content .col-card p { font-size: 0.92rem; color: var(--muted); margin: 0; line-height: 1.45; }
+    .slide.content .col-card ul { gap: 0.3rem; margin-top: 0.3rem; }
+    .slide.content .col-card li { font-size: 0.92rem; padding-left: 1rem; line-height: 1.4; }
+    .slide.content .col-card li::before { top: 0.55rem; width: 0.35rem; height: 0.35rem; }
+    .slide.content .col-card.accent { background: var(--carnelian-dim); border-color: rgba(179, 27, 27, 0.30); }
+    .slide.content .col-card.accent .step { color: var(--carnelian); }
+    .slide.content .col-card.green { background: rgba(46, 122, 61, 0.10); border-color: rgba(46, 122, 61, 0.30); }
+    .slide.content .col-card.green .step { color: #1e5f30; }
+    .slide.content .col-card.yellow { background: rgba(181, 135, 26, 0.12); border-color: rgba(181, 135, 26, 0.35); }
+    .slide.content .col-card.yellow .step { color: #8a6510; }
+    .slide.content .col-card.red { background: var(--carnelian-dim); border-color: rgba(179, 27, 27, 0.35); }
+    .slide.content .col-card.red .step { color: var(--carnelian); }
+    a.col-card { text-decoration: none; color: inherit; cursor: pointer; transition: border-color 140ms ease, transform 100ms ease; }
+    a.col-card:hover { border-color: var(--carnelian); transform: translateY(-2px); }
+
+    .back-pill { position: fixed; bottom: 1.25rem; left: 1.25rem; z-index: 30; display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.55rem 1.1rem; background: #fff; color: var(--ink); border-radius: 999px; font-size: 0.9rem; font-weight: 600; text-decoration: none; box-shadow: 0 6px 18px rgba(0,0,0,0.18); }
+    .back-pill:hover { background: var(--carnelian); color: #fff; }
+
+    .deck-nav { position: fixed; bottom: 1.25rem; right: 1.25rem; z-index: 30; display: flex; align-items: center; gap: 0.5rem; }
+    .deck-nav button { width: 2.6rem; height: 2.6rem; border-radius: 999px; background: rgba(255,255,255,0.95); color: var(--ink); border: 1px solid rgba(0,0,0,0.08); font-size: 1.2rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(0,0,0,0.18); }
+    .deck-nav button:hover { background: var(--carnelian); color: #fff; }
+    .deck-nav button:disabled { opacity: 0.35; cursor: not-allowed; }
+    .slide-counter { font-family: var(--mono); font-size: 0.82rem; color: var(--ink); background: rgba(255,255,255,0.92); padding: 0.4rem 0.85rem; border-radius: 999px; box-shadow: 0 4px 14px rgba(0,0,0,0.12); }
+    body[data-active-bg="cornell"] .slide-counter { background: rgba(0,0,0,0.18); color: #fff; }
+
+    .fs-btn svg { width: 1rem; height: 1rem; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .fs-contract { display: none; }
+    body.is-fullscreen .fs-expand { display: none; }
+    body.is-fullscreen .fs-contract { display: block; }
+
+    @media (max-width: 760px) {
+      .slide { padding: 4.5rem 1.5rem 5.5rem; }
+      .slide.content .col-3, .slide.content .col-2, .slide.content .col-4 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-frame deck">
+
+    <main>
+
+      <section class="slide cornell-bg is-active" data-bg="cornell">
+        <img class="seal-top" src="assets/cornell-seal.png" alt="Cornell University seal" />
+        <p class="eyebrow-light">Module 3 &middot; Claude Training at Cornell</p>
+        <h1>Cowork.</h1>
+        <p class="byline">Theory &rarr; Guide &rarr; Operational Tooling. Today&rsquo;s the payoff.</p>
+      </section>
+
+      <section class="slide content" data-bg="light">
+        <p class="slide-eyebrow">The arc &middot; payoff</p>
+        <h2>What you wrote becomes how the tool behaves.</h2>
+        <div class="slide-body">
+          <p>Three modules. Three deliverables. They stack.</p>
+          <ul>
+            <li><strong>Module 1 &middot; Foundations</strong> &mdash; you met the tool and learned the data rules. <em>The tour.</em></li>
+            <li><strong>Module 2 &middot; AI Fluency</strong> &mdash; you drafted your unit&rsquo;s AI guide. <em>The thinking.</em></li>
+            <li><strong>Module 3 &middot; Cowork</strong> &mdash; your guide becomes Global Instructions. Your scope becomes a Project. The &ldquo;AI can handle&rdquo; tasks become Skills. <em>The operational artifact.</em></li>
+          </ul>
+          <p>Today you go from <em>using</em> Cowork to <em>configuring</em> Cowork.</p>
+        </div>
+      </section>
+
+      <section class="slide content" data-bg="light">
+        <p class="slide-eyebrow">The paradigm shift</p>
+        <h2>Point Claude at a folder.</h2>
+        <div class="slide-body">
+          <p>The one-sentence answer to <em>&ldquo;what&rsquo;s different about Cowork?&rdquo;</em></p>
+          <p class="pull-quote">Claude can read, create, and edit files there directly &mdash; without an upload or download step.</p>
+          <p>Everything else in Module 3 &mdash; Skills, Plugins, subagents, scheduled tasks &mdash; is mechanics on top of that core affordance.</p>
+        </div>
+      </section>
+
+      <section class="slide content" data-bg="light">
+        <p class="slide-eyebrow">How Cowork moves</p>
+        <h2>Plan &middot; Execute &middot; Connect.</h2>
+        <div class="slide-body">
+          <p>The shape of the exchange: <em>you describe an outcome. Claude plans the steps, works through them, and produces the deliverable &mdash; a file on your drive, not text to paste somewhere else.</em></p>
+          <div class="col-3">
+            <div class="col-card accent">
+              <span class="step">Plan</span>
+              <h3>Claude shows its approach</h3>
+              <p>For multi-step work, you see the plan before execution. Review, adjust, approve.</p>
+            </div>
+            <div class="col-card accent">
+              <span class="step">Execute</span>
+              <h3>Work runs on your machine</h3>
+              <p>In an isolated environment. Long tasks can run while you do something else.</p>
+            </div>
+            <div class="col-card accent">
+              <span class="step">Connect</span>
+              <h3>Reaches your systems</h3>
+              <p>Email, drives, Slack, Teams, the tools you&rsquo;re already signed into.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide content" data-bg="light">
+        <p class="slide-eyebrow">When to reach for Cowork</p>
+        <h2>Three task-fit patterns.</h2>
+        <div class="slide-body">
+          <p>Cowork shines on:</p>
+          <ul>
+            <li><strong>Multi-step tasks</strong> &mdash; gather &rarr; compare &rarr; draft &rarr; format. Hand it the whole arc, watch the Progress panel.</li>
+            <li><strong>File-based tasks</strong> &mdash; inputs and outputs are real files on disk. Cowork reads, edits, saves directly.</li>
+            <li><strong>Multi-tool tasks</strong> &mdash; spans email + drive + spreadsheet + a CRM. Cowork plans across them, executes as one delegation.</li>
+          </ul>
+          <p>For a quick brainstorm or a single rewrite, reach for plain Claude Chat. For &ldquo;turn a folder of notes into a finished presentation saved to my drive&rdquo; &mdash; that&rsquo;s Cowork.</p>
+        </div>
+      </section>
+
+      <section class="slide content" data-bg="light">
+        <p class="slide-eyebrow">Description, extended</p>
+        <h2>From 3-part prompt to 4-part delegation.</h2>
+        <div class="slide-body">
+          <p>Cornell&rsquo;s 3-part prompt from Module 1 &mdash; <em>context &middot; task &middot; format</em> &mdash; still applies.</p>
+          <p>Cowork adds <strong>one slot</strong>: explicit <strong>Inputs</strong>. Because the tool can reach beyond the chat window.</p>
+          <div class="col-3">
+            <div class="col-card accent">
+              <span class="step">Deliverable</span>
+              <h3>Format</h3>
+              <p>Exact output and length &mdash; e.g., &ldquo;a four-page memo.&rdquo;</p>
+            </div>
+            <div class="col-card accent">
+              <span class="step">Inputs &middot; NEW</span>
+              <h3>Where to look</h3>
+              <p>Which folder, which files, which date range, which connector channels.</p>
+            </div>
+            <div class="col-card accent">
+              <span class="step">Nuance</span>
+              <h3>Context the tool can&rsquo;t infer</h3>
+              <p>Strategic background, judgment calls, things only you know.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide content" data-bg="light">
+        <p class="slide-eyebrow">Compounding knowledge</p>
+        <h2>Four building blocks.</h2>
+        <div class="slide-body">
+          <p>From broadest scope to most specialized:</p>
+          <div class="col-4">
+            <div class="col-card">
+              <span class="step">1 &middot; Global Instructions</span>
+              <h3>Who you are, how you work</h3>
+              <p>Every task, scheduled run, and mobile Dispatch starts pre-calibrated. Settings &rarr; Cowork.</p>
+            </div>
+            <div class="col-card">
+              <span class="step">2 &middot; Projects</span>
+              <h3>One stream of work</h3>
+              <p>Scoped workspace, selected folder, project-specific instructions, automatic memory.</p>
+            </div>
+            <div class="col-card accent">
+              <span class="step">3 &middot; Skills</span>
+              <h3>One specific process</h3>
+              <p>A folder of assets that teaches Cowork how to run a recurring task. Auto-activates.</p>
+            </div>
+            <div class="col-card accent">
+              <span class="step">4 &middot; Plugins</span>
+              <h3>Deep expertise for a role</h3>
+              <p>Multiple skills + connectors + subagents bundled into one installation.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide content" data-bg="light">
+        <p class="slide-eyebrow">The bridge</p>
+        <h2>Your guide becomes the configuration.</h2>
+        <div class="slide-body">
+          <p>The unit-level AI guide you drafted last week isn&rsquo;t a document anymore. It&rsquo;s how the tool behaves.</p>
+          <ul>
+            <li><strong>Guide &rarr; Global Instructions</strong> &mdash; role, tone, formatting rules, disclosure habits.</li>
+            <li><strong>Guide &rarr; Project init scope</strong> &mdash; data class, values, allowed task types.</li>
+            <li><strong>Guide&rsquo;s &ldquo;AI can handle&rdquo; tasks &rarr; Skill candidates</strong> &mdash; recurring work that&rsquo;s safe to delegate.</li>
+          </ul>
+          <p>Today&rsquo;s hands-on: do this with your actual guide draft.</p>
+        </div>
+      </section>
+
+      <section class="slide content" data-bg="light">
+        <p class="slide-eyebrow">Projects in practice</p>
+        <h2>Memory that stays inside the project.</h2>
+        <div class="slide-body">
+          <p>A Cornell example: a <em>Sponsor Renewal Pipeline</em> project pointed at the relevant award folder.</p>
+          <ul>
+            <li>Project-specific instructions: how this sponsor likes briefs formatted, deadline patterns, key contacts.</li>
+            <li>Files: prior submissions, sponsor announcements, internal review notes.</li>
+            <li>Memory: past decisions (&ldquo;we don&rsquo;t budget for X with this sponsor&rdquo;), persistent across many chats.</li>
+          </ul>
+          <p><strong>Privacy note:</strong> a Project&rsquo;s memory stays inside that Project. Sponsor-A workstream context doesn&rsquo;t bleed into sponsor-B work.</p>
+        </div>
+      </section>
+
+      <section class="slide content" data-bg="light">
+        <p class="slide-eyebrow">Skills &middot; the deep dive</p>
+        <h2>Your recurring workflows, taught to Cowork.</h2>
+        <div class="slide-body">
+          <p>A Skill is a folder of assets that teaches Cowork how to run a specific process. Four possible parts:</p>
+          <ul>
+            <li><strong><code>SKILL.md</code></strong> &mdash; the runbook: trigger phrases + step-by-step logic. <em>Required.</em></li>
+            <li><strong>Assets</strong> &mdash; logos, master templates, branding.</li>
+            <li><strong>References</strong> &mdash; &ldquo;what good looks like&rdquo; exemplars.</li>
+            <li><strong>Scripts</strong> &mdash; small code files for repeated technical operations.</li>
+          </ul>
+          <p><strong>Cornell example:</strong> a <code>cfr-lookup-for-pi</code> skill &mdash; trigger phrase, instructions to use the AI4RA eCFR MCP server, the plain-English summary template, sample reference doc. Auto-activates.</p>
+          <p><strong>Building one:</strong> prompt <em>&ldquo;I want to build a skill for [process]. Walk me through what you need to know.&rdquo;</em> Claude interviews you and generates the folder.</p>
+        </div>
+      </section>
+
+      <section class="slide content" data-bg="light">
+        <p class="slide-eyebrow">Plugins &middot; install today, build together over time</p>
+        <h2>Bundled expertise.</h2>
+        <div class="slide-body">
+          <p>A Plugin packages multiple skills + connectors + subagents into one role-based install.</p>
+          <div class="col-2">
+            <div class="col-card">
+              <span class="step">Pipeline</span>
+              <h3>End-to-end</h3>
+              <p>Sequences skills into a single complex delegation. E.g., a Financial Close plugin: pull data &rarr; process variances &rarr; draft executive memo.</p>
+            </div>
+            <div class="col-card">
+              <span class="step">Toolkit</span>
+              <h3>Slash commands</h3>
+              <p>Independent skills invoked by slash command. E.g., a Legal plugin with <code>/nda-review</code> and <code>/clause-library</code>.</p>
+            </div>
+          </div>
+          <p style="margin-top: 1rem;"><strong>Install today:</strong> Customize &rarr; Plugins, or <code>/setup-cowork</code> for a guided recommendation.</p>
+          <p><strong>For Cornell research admin, over time:</strong> RAIS and the AI Innovation Hub partner with the cohort to build Cornell-specific plugins &mdash; bundling contributed skills, the AI4RA prompt library, and Cornell connectors. <em>Contribute skills; RAIS publishes the plugin.</em></p>
+        </div>
+      </section>
+
+      <section class="slide content" data-bg="light">
+        <p class="slide-eyebrow">Trust your skill</p>
+        <h2>Evals before you share.</h2>
+        <div class="slide-body">
+          <p>Before publishing a skill for the cohort, validate it.</p>
+          <p>The skill-creator runs a built-in <strong>side-by-side comparison</strong>: <em>with skill</em> vs <em>without skill</em>. Verify the skill adds value over the baseline.</p>
+          <p>Tune one constraint at a time. Most skills stabilize in 1&ndash;2 rounds.</p>
+        </div>
+      </section>
+
+      <section class="slide content" data-bg="light">
+        <p class="slide-eyebrow">Reach beyond the desktop</p>
+        <h2>Bridges &middot; Chrome + Microsoft 365.</h2>
+        <div class="slide-body">
+          <div class="col-2">
+            <div class="col-card">
+              <span class="step">Claude in Chrome</span>
+              <h3>For data behind a login</h3>
+              <p>Cornell BI dashboards, Workday, internal SSO-gated tools. Cowork drives the browser session you&rsquo;ve already authenticated to.</p>
+            </div>
+            <div class="col-card">
+              <span class="step">Microsoft 365</span>
+              <h3>For deep editing in Office</h3>
+              <p>Word, Excel, PowerPoint, Outlook. Real-time formula debugging, slide-master-aware presentation builds.</p>
+            </div>
+          </div>
+          <p style="margin-top: 1rem;">Cowork plans across both bridges and the desktop in one thread.</p>
+        </div>
+      </section>
+
+      <section class="slide content" data-bg="light">
+        <p class="slide-eyebrow">Working safely</p>
+        <h2>Cornell overlay.</h2>
+        <div class="slide-body">
+          <p>Cowork&rsquo;s generic guidance: isolate folders, preserve masters, draft-and-test, avoid destructive verbs.</p>
+          <p><strong>Cornell overlay &mdash; recall the Green / Yellow / Red model:</strong></p>
+          <div class="col-3">
+            <div class="col-card green"><span class="step">Green</span><h3>Use freely</h3><p>Public data: RFPs, CFR, published policies.</p></div>
+            <div class="col-card yellow"><span class="step">Yellow</span><h3>Use with your guide</h3><p>Confidential admin data: drafts, internal memos. Run through Cowork with your guide as Global Instructions.</p></div>
+            <div class="col-card red"><span class="step">Red</span><h3>STOP</h3><p>FERPA / HIPAA / export-controlled / sponsor-restricted &mdash; requires explicit Cornell sign-off, no matter how convenient Cowork looks.</p></div>
+          </div>
+          <p class="footnote">Project memory stays inside its project. Scheduled tasks resume when the computer wakes &mdash; no anxiety about missed runs.</p>
+        </div>
+      </section>
+
+      <section class="slide content" data-bg="light">
+        <p class="slide-eyebrow">Hands-on &middot; 25 min</p>
+        <h2>Configure &rarr; Scaffold &rarr; Run.</h2>
+        <div class="slide-body">
+          <p>Three-part live build. You leave with a working Project, a working Skill, and one task delegated.</p>
+          <ul>
+            <li><strong>(a) Configure &middot; ~7 min</strong> &mdash; paste your guide as Global Instructions. Start a Project pointed at your folder.</li>
+            <li><strong>(b) Scaffold &middot; ~10 min</strong> &mdash; build a first Skill from one of the &ldquo;AI can handle&rdquo; tasks via the skill-creator interview. <em>Rough draft, not polished.</em></li>
+            <li><strong>(c) Run &middot; ~8 min</strong> &mdash; issue the task with &ldquo;Ask before acting&rdquo; on. Watch the Progress panel. Review the output as a draft.</li>
+          </ul>
+          <p>A polished, eval-tested skill takes more than 10 minutes. What you&rsquo;re doing here is scaffolding the structure and the trigger. <strong>Refinement happens later, with RAIS / AI Innovation Hub support.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide content" data-bg="light">
+        <p class="slide-eyebrow">Diligence</p>
+        <h2>A polished result can still be wrong.</h2>
+        <div class="slide-body">
+          <p class="pull-quote">Review it yourself before sending it on. A polished result can still be wrong.</p>
+          <p>Same Diligence message as Module 2&rsquo;s <em>&ldquo;stand behind every word.&rdquo;</em> Same posture Cornell already requires for sponsored programs work.</p>
+        </div>
+      </section>
+
+      <section class="slide content" data-bg="light">
+        <p class="slide-eyebrow">What to do this week</p>
+        <h2>Pick one. Then the 30-day check-in.</h2>
+        <div class="slide-body">
+          <p>Four next steps. Pick one &mdash; small, doable, real.</p>
+          <div class="col-2">
+            <div class="col-card"><span class="step">1</span><h3>Configure standing context</h3><p>Author Global Instructions, or initialize a scoped Project for one workflow.</p></div>
+            <div class="col-card"><span class="step">2</span><h3>Automate a sequence</h3><p>Set up a <code>/schedule</code> recurring task or send an off-hours mobile Dispatch.</p></div>
+            <div class="col-card"><span class="step">3</span><h3>Deploy a capability</h3><p>Install a role-specific plugin, build a second skill, or use Chrome / M365 for a multi-app extraction.</p></div>
+            <div class="col-card accent"><span class="step">4</span><h3>Contribute back</h3><p>Bring your scaffolded skill to RAIS / the AI Innovation Hub for refinement. The cohort&rsquo;s skills roll up into a shared library and, eventually, Cornell-specific plugins.</p></div>
+          </div>
+          <p class="footnote">30-day check-in: <a class="link-accent" href="../resources.html#community">RAIS office hours</a>, Wednesdays 12&ndash;1 PM.</p>
+        </div>
+      </section>
+
+      <section class="slide cornell-bg" data-bg="cornell">
+        <img class="seal-bottom" src="assets/cornell-seal.png" alt="Cornell University seal" />
+      </section>
+
+    </main>
+
+    <a class="back-pill" href="../module-cowork.html">&larr; Module 3 page</a>
+
+  </div>
+
+  <nav class="deck-nav" aria-label="Slide navigation">
+    <div class="slide-counter" id="slide-counter">1 / 18</div>
+    <button class="fs-btn" id="fs-btn" type="button" aria-label="Toggle fullscreen">
+      <svg class="fs-expand" viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+      <svg class="fs-contract" viewBox="0 0 24 24" aria-hidden="true"><polyline points="4 14 10 14 10 20"/><polyline points="20 10 14 10 14 4"/><line x1="14" y1="10" x2="21" y2="3"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+    </button>
+    <button class="nav-prev" type="button" aria-label="Previous slide">&larr;</button>
+    <button class="nav-next" type="button" aria-label="Next slide">&rarr;</button>
+  </nav>
+
+  <script>
+    (function () {
+      var slides   = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+      var counter  = document.getElementById('slide-counter');
+      var prevBtn  = document.querySelector('.nav-prev');
+      var nextBtn  = document.querySelector('.nav-next');
+      var total    = slides.length;
+
+      function currentFromHash() {
+        var m = (window.location.hash || '').match(/^#\/(\d+)/);
+        var n = m ? parseInt(m[1], 10) : 1;
+        return Math.max(1, Math.min(total, n));
+      }
+
+      function show(n) {
+        n = Math.max(1, Math.min(total, n));
+        slides.forEach(function (s, i) { s.classList.toggle('is-active', i === n - 1); });
+        var bg = slides[n - 1].getAttribute('data-bg') || 'light';
+        document.body.setAttribute('data-active-bg', bg);
+        counter.textContent = n + ' / ' + total;
+        prevBtn.disabled = (n === 1);
+        nextBtn.disabled = (n === total);
+        if (window.history && history.replaceState) { history.replaceState(null, '', '#/' + n); }
+      }
+
+      function next() { show(currentFromHash() + 1); }
+      function prev() { show(currentFromHash() - 1); }
+
+      nextBtn.addEventListener('click', next);
+      prevBtn.addEventListener('click', prev);
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); next(); }
+        else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); prev(); }
+        else if (e.key === 'Home') { e.preventDefault(); show(1); }
+        else if (e.key === 'End')  { e.preventDefault(); show(total); }
+      });
+
+      window.addEventListener('hashchange', function () { show(currentFromHash()); });
+      show(currentFromHash());
+    })();
+
+    (function () {
+      var btn = document.getElementById('fs-btn');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        if (!document.fullscreenElement) {
+          (document.documentElement.requestFullscreen || document.documentElement.webkitRequestFullscreen).call(document.documentElement);
+        } else {
+          (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+        }
+      });
+      document.addEventListener('fullscreenchange', function () {
+        document.body.classList.toggle('is-fullscreen', !!document.fullscreenElement);
+      });
+    })();
+  </script>
+</body>
+</html>
