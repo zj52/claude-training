@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#191919" />
+  <title>Resources | Claude Training</title>
+  <meta name="description" content="One place for everything outside the workshop sessions — how to get Claude 3P, further learning, starter prompts, the cohort community, and the FAQ." />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ─── In-page anchor nav (sticky) ─── */
+    .anchor-nav {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      background: var(--paper);
+      border-bottom: 1px solid var(--line-soft);
+      margin: 0 0 2.25rem;
+    }
+    .anchor-nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0.85rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 1.5rem;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .anchor-nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 700;
+      padding: 0.25rem 0;
+      border-bottom: 2px solid transparent;
+      transition: color 140ms ease, border-color 140ms ease;
+    }
+    .anchor-nav a:hover { color: var(--carnelian); border-bottom-color: var(--carnelian-dim); }
+
+    /* ─── Get Claude CTA strip ─── */
+    .get-claude {
+      padding: 1.4rem 1.7rem;
+      border-radius: var(--radius-md);
+      background: var(--carnelian-dim);
+      border-left: 4px solid var(--carnelian);
+      margin: 0 0 3rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem 1.5rem;
+      justify-content: space-between;
+    }
+    .get-claude .gc-text { max-width: 60ch; }
+    .get-claude h2 { margin: 0 0 0.3rem; font-size: 1.2rem; letter-spacing: -0.01em; }
+    .get-claude p { margin: 0; color: var(--ink); font-size: 0.98rem; }
+    .get-claude .button { background: var(--carnelian); color: #fff; }
+
+    /* ─── FAQ as <details> accordions ─── */
+    .faq-list { display: flex; flex-direction: column; gap: 0; }
+    .faq-item {
+      padding: 0;
+      border-top: 1px solid var(--line-soft);
+    }
+    .faq-item:first-child { border-top: none; }
+    .faq-item > summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 1.4rem 0;
+      font-size: clamp(1.1rem, 1.7vw, 1.32rem);
+      letter-spacing: -0.015em;
+      font-weight: 700;
+      color: var(--ink);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1.25rem;
+      transition: color 120ms ease;
+    }
+    .faq-item > summary::-webkit-details-marker { display: none; }
+    .faq-item > summary::after {
+      content: "+";
+      flex: 0 0 auto;
+      font-family: var(--mono);
+      font-size: 1.5rem;
+      line-height: 1;
+      color: var(--carnelian);
+      transition: transform 180ms ease;
+      transform-origin: 50% 50%;
+    }
+    .faq-item[open] > summary::after { content: "−"; }
+    .faq-item > summary:hover { color: var(--carnelian-dark); }
+    .faq-body {
+      padding: 0 0 1.6rem;
+      max-width: 68ch;
+    }
+    .faq-body p, .faq-body ul {
+      color: var(--ink);
+      font-size: 0.98rem;
+      line-height: 1.6;
+    }
+    .faq-body p { margin: 0 0 0.85rem; }
+    .faq-body h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: -0.005em;
+      color: var(--ink);
+      margin: 1.1rem 0 0.4rem;
+    }
+    .faq-body ul {
+      margin: 0 0 0.85rem;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .faq-body li { position: relative; padding-left: 1.1rem; }
+    .faq-body li::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 0.62rem;
+      width: 0.38rem; height: 0.38rem;
+      border-radius: 50%;
+      background: var(--carnelian);
+    }
+    .faq-body code {
+      font-family: var(--mono);
+      font-size: 0.88em;
+      padding: 0.08rem 0.32rem;
+      border-radius: 4px;
+      background: var(--carnelian-dim);
+      color: var(--carnelian-dark);
+    }
+    .faq-body .lead-yes {
+      display: inline-block;
+      font-weight: 800;
+      color: var(--carnelian-dark);
+      letter-spacing: -0.01em;
+      font-size: 1.05rem;
+      margin-bottom: 0.6rem;
+    }
+    .faq-body .bottom-line {
+      margin-top: 1rem;
+      padding: 0.85rem 1.1rem;
+      border-left: 3px solid var(--carnelian);
+      background: var(--carnelian-dim);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: var(--ink);
+    }
+    .faq-body .bottom-line strong { color: var(--carnelian-dark); }
+
+    .faq-group-label {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--carnelian);
+      font-weight: 700;
+      margin: 2rem 0 0.6rem;
+      padding-top: 1.2rem;
+      border-top: 2px solid var(--carnelian-dim);
+    }
+    .faq-group-label:first-of-type { margin-top: 0; padding-top: 0; border-top: none; }
+  </style>
+</head>
+<body>
+  <div class="page-frame">
+
+    <header class="site-header">
+      <div class="shell">
+        <div class="brand-lockup">
+          <a class="brand-home" href="index.html">
+            <span class="brand-mark" aria-hidden="true">CU</span>
+            <span class="brand-line"><strong>Claude Training</strong> &middot; Cornell AI Innovation Hub</span>
+          </a>
+        </div>
+        <nav aria-label="Primary">
+          <ul class="nav-list">
+            <li><a class="nav-link" href="index.html">Home</a></li>
+            <li><a class="nav-link" href="module-foundations.html">Foundations</a></li>
+            <li><a class="nav-link" href="module-ai-fluency.html">AI Fluency</a></li>
+            <li><a class="nav-link" href="module-cowork.html">Cowork</a></li>
+            <li><a class="nav-link is-active" href="resources.html">Resources</a></li>
+            <li><a class="nav-link" href="mailto:ai-support@cornell.edu">Get Claude &rarr;</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+
+      <section class="page-intro">
+        <div class="page-intro-panel">
+          <p class="eyebrow">Reference</p>
+          <h1>Resources.</h1>
+          <p>
+            Everything outside the three workshop sessions &mdash; how to
+            get access, paths for going deeper, starter prompts you can
+            lift, the cohort community, and the FAQ.
+          </p>
+        </div>
+      </section>
+
+      <section class="content-block">
+
+        <!-- ─── In-page anchor nav ─── -->
+        <nav class="anchor-nav" aria-label="On this page">
+          <ul>
+            <li><a href="#get-claude">Get Claude</a></li>
+            <li><a href="#learning">Keep learning</a></li>
+            <li><a href="#tips">Tips</a></li>
+            <li><a href="#community">Stay connected</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </nav>
+
+        <!-- ─── Get Claude CTA ─── -->
+        <div class="get-claude" id="get-claude">
+          <div class="gc-text">
+            <h2>Don&rsquo;t have Claude 3P yet?</h2>
+            <p>Just email <a class="link-accent" href="mailto:ai-support@cornell.edu">ai-support@cornell.edu</a> and ask for access. Mention your department and what you&rsquo;d use it for.</p>
+          </div>
+          <a class="button" href="mailto:ai-support@cornell.edu">Request access &rarr;</a>
+        </div>
+
+      </section>
+
+      <!-- ─── Keep learning ─── -->
+      <section class="content-block" id="learning">
+        <p class="eyebrow">Keep learning</p>
+        <h2 class="section-heading section-heading-wide">The paths out from here.</h2>
+        <p class="module-prose">Courses, communities, and people for going deeper after the three-module workshop. Free unless noted.</p>
+
+        <p class="eyebrow" style="margin-top:1.5rem;">Anthropic courses</p>
+        <div class="card-grid">
+
+          <a class="content-card" href="https://anthropic.skilljar.com/ai-fluency-for-nonprofits" target="_blank" rel="noopener">
+            <span class="tag">Module 1 homework</span>
+            <h3>AI Fluency for Non-Profits</h3>
+            <p>The framework we cover in Module 2 &mdash; effective, efficient, ethical, safe, plus the 4 Ds.</p>
+            <div class="card-actions"><span class="button-secondary">Open course &rarr;</span></div>
+          </a>
+
+          <a class="content-card" href="https://anthropic.skilljar.com/introduction-to-claude-cowork" target="_blank" rel="noopener">
+            <span class="tag">Module 2 homework</span>
+            <h3>Introduction to Claude Cowork</h3>
+            <p>The Cowork desktop mode we use in Module 3. Anthropic&rsquo;s Skilljar course, ~30 minutes.</p>
+            <div class="card-actions"><span class="button-secondary">Open course &rarr;</span></div>
+          </a>
+
+          <a class="content-card" href="https://anthropic.skilljar.com/" target="_blank" rel="noopener">
+            <span class="tag">Catalog</span>
+            <h3>Anthropic Academy</h3>
+            <p>Broader catalog of Anthropic courses &mdash; Claude Code, advanced prompting, MCP, and more.</p>
+            <div class="card-actions"><span class="button-secondary">Open Academy &rarr;</span></div>
+          </a>
+
+        </div>
+
+        <p class="eyebrow" style="margin-top:2rem;">Cornell community + sibling efforts</p>
+        <div class="compact-grid">
+
+          <a class="content-card" href="https://innovationhub.ai.cornell.edu/tools-resources/" target="_blank" rel="noopener">
+            <span class="tag">Reference</span>
+            <h3>AI Innovation Hub &mdash; Tools &amp; Resources</h3>
+            <p>The source of truth for currently-approved Claude surfaces at Cornell and what&rsquo;s coming next.</p>
+            <div class="card-actions"><span class="button-secondary">Open the Hub &rarr;</span></div>
+          </a>
+
+          <a class="content-card" href="https://ai4ra.uidaho.edu/" target="_blank" rel="noopener">
+            <span class="tag">Community</span>
+            <h3>AI4RA</h3>
+            <p>AI for Research Administration &mdash; NSF Award 2427549. Sibling community, shared materials, broader practice. Source of the eCFR MCP skill we use.</p>
+            <div class="card-actions"><span class="button-secondary">Open AI4RA &rarr;</span></div>
+          </a>
+
+          <a class="content-card" href="https://ui-insight.github.io/REACHWorkshop2026/" target="_blank" rel="noopener">
+            <span class="tag">Workshop</span>
+            <h3>REACH Workshop 2026</h3>
+            <p>The workshop series our visual language and several slides borrow from. Open materials.</p>
+            <div class="card-actions"><span class="button-secondary">Open REACH &rarr;</span></div>
+          </a>
+
+          <a class="content-card" href="https://aifluencyframework.org/" target="_blank" rel="noopener">
+            <span class="tag">Framework</span>
+            <h3>AI Fluency Framework</h3>
+            <p>The 4D Framework site by Dakan and Feller. Documentation, papers, all four CC-licensed OER courses.</p>
+            <div class="card-actions"><span class="button-secondary">Open the site &rarr;</span></div>
+          </a>
+
+          <a class="content-card" href="https://nate-layman.github.io/promptulus/" target="_blank" rel="noopener">
+            <span class="tag">Practice</span>
+            <h3>Promptulus</h3>
+            <p>Interactive AI literacy and prompt engineering trainer by Nathan Layman (AI4RA). Nine animal characters walk you through prompting patterns hands-on.</p>
+            <div class="card-actions"><span class="button-secondary">Try Promptulus &rarr;</span></div>
+          </a>
+
+        </div>
+      </section>
+
+      <!-- ─── Tips ─── -->
+      <section class="content-block" id="tips">
+        <p class="eyebrow">Tips</p>
+        <h2 class="section-heading section-heading-wide">Prompts you can lift.</h2>
+        <p class="module-prose">A small starter library of prompts from Cornell users. Click <strong>Copy</strong> on any prompt to grab the text, paste into Claude, edit for your context.</p>
+
+        <p class="eyebrow" style="margin-top:1.5rem;">The framework</p>
+        <h3 style="margin: 0 0 0.6rem;">The 3-part prompt.</h3>
+        <p class="module-prose">The fastest way to lift the quality of any prompt: set the stage with context, define the task, specify the rules &mdash; the format, sources, and constraints &mdash; for the output.</p>
+        <div class="card-grid">
+          <article class="content-card">
+            <span class="tag">1 &middot; Stage</span>
+            <h3>Set Stage</h3>
+            <p>Who you are, what you&rsquo;re working on, who the output is for.</p>
+          </article>
+          <article class="content-card">
+            <span class="tag">2 &middot; Task</span>
+            <h3>Define Task</h3>
+            <p>What you want Claude to do, broken into specific steps.</p>
+          </article>
+          <article class="content-card">
+            <span class="tag">3 &middot; Rules</span>
+            <h3>Specify Rules</h3>
+            <p>Format, length, sources, tone, constraints.</p>
+          </article>
+        </div>
+
+        <p class="eyebrow" style="margin-top:2rem;">Starter prompts, by task</p>
+
+        <article class="content-card">
+          <span class="tag">Award narrative</span>
+          <h3>Draft a justification paragraph</h3>
+          <p class="module-prose">Turn a program description plus existing proposal into a tight 150-word justification.</p>
+          <div class="exercise-block">
+<pre><code>I'm drafting a justification for an NSF supplement. Below is the program
+description and the original proposal abstract.
+
+[Paste program description]
+[Paste proposal abstract]
+
+Write a 150-word case for the supplement that:
+- Connects the supplement scope directly to the program priorities
+- Uses plain professional English (no marketing language)
+- Ends with one sentence on broader impact
+
+Match the voice and specificity of the abstract.</code></pre>
+            <button class="copy-btn" type="button">Copy</button>
+          </div>
+        </article>
+
+        <article class="content-card stack-1">
+          <span class="tag">Policy summary</span>
+          <h3>One-paragraph summary for a non-expert</h3>
+          <p class="module-prose">Read a long policy document and produce a plain-English summary you can send to a PI.</p>
+          <div class="exercise-block">
+<pre><code>I'm sharing this policy document with a PI who has no background in
+research administration. Read the attached document and produce:
+
+1. A single paragraph (under 100 words) that explains what the policy
+   says in plain English.
+2. A short bulleted list of any actions the PI needs to take.
+3. A one-line subject line for the email I'll send.
+
+Tone: collegial, not legalistic.
+
+[Attach: policy.pdf]</code></pre>
+            <button class="copy-btn" type="button">Copy</button>
+          </div>
+        </article>
+
+        <article class="content-card stack-1">
+          <span class="tag">Meeting prep</span>
+          <h3>Brief me on a topic before a meeting</h3>
+          <p class="module-prose">Use this when you need a focused briefing on a specific topic ahead of a meeting.</p>
+          <div class="exercise-block">
+<pre><code>I have a meeting in 30 minutes about [topic]. Brief me with:
+
+1. A 3-sentence overview of where things stand.
+2. The top 3 questions I should be ready to answer.
+3. The top 2 questions I should ask.
+4. Any obvious risks or open issues.
+
+Keep the whole brief under 200 words. Skip generic advice — assume I
+know the basics. Focus on what's specific to [topic].</code></pre>
+            <button class="copy-btn" type="button">Copy</button>
+          </div>
+        </article>
+
+        <article class="content-card future stack-1">
+          <span class="tag muted">Coming</span>
+          <h3>More prompts &mdash; submitted by the cohort</h3>
+          <p>Prompt submissions open after the first cohort runs. Got one to share? Drop it in the Teams channel or email <a class="link-accent" href="mailto:ai-support@cornell.edu">ai-support@cornell.edu</a>.</p>
+        </article>
+
+        <p class="eyebrow" style="margin-top:2rem;">Skill recipes</p>
+        <h3 style="margin: 0 0 0.6rem;">How to use Claude&rsquo;s skills well.</h3>
+        <div class="compact-grid">
+          <article class="content-card future">
+            <span class="tag muted">Coming</span>
+            <h3>Legal skill &mdash; contract redlining</h3>
+            <p>How to set up the skill, what to attach, what to expect, how to verify.</p>
+          </article>
+          <article class="content-card future">
+            <span class="tag muted">Coming</span>
+            <h3>eCFR skill &mdash; regulatory lookups</h3>
+            <p>Pull current regulation text, cite by section, summarize for non-experts. By AI4RA &mdash; Sabrina Woo &amp; Nathan Layman.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- ─── Stay connected ─── -->
+      <section class="content-block" id="community">
+        <p class="eyebrow">Stay connected</p>
+        <h2 class="section-heading section-heading-wide">Three ways to reach a human.</h2>
+        <div class="community-strip">
+
+          <article class="community-card">
+            <span class="label">Teams</span>
+            <h3>Cohort channel</h3>
+            <p>Questions between sessions, share tips, swap prompts.</p>
+            <p><a href="https://teams.microsoft.com/l/channel/19%3AIUeTCw0yr0eNtarYlqyA8BsjCpgCRZHZ4yCY6xK99k41%40thread.tacv2/AI%20with%20Claude?groupId=e3f60285-546f-4656-9bc4-cc3e4f75d47b&amp;tenantId=5d7e4366-1b9b-45cf-8e79-b14b27df46e1&amp;ngc=true&amp;allowXTenantAccess=true" target="_blank" rel="noopener">Open the channel &rarr;</a></p>
+          </article>
+
+          <article class="community-card">
+            <span class="label">Office hours</span>
+            <h3>RAIS office hours</h3>
+            <p>Research-admin focused drop-in &mdash; Claude 3P questions, prompt help, workflow troubleshooting.</p>
+            <p><strong>Wednesdays, 12&ndash;1 PM.</strong></p>
+            <p>Email <a class="link-accent" href="mailto:rais-help@cornell.edu">rais-help@cornell.edu</a> for an appointment &middot; <a class="link-accent" href="rais-office-hours.ics" download>Add to calendar</a></p>
+            <p style="font-size: 0.85rem; color: var(--muted); margin-top: 0.6rem;">Looking for general AI office hours? <a class="link-accent" href="https://innovationhub.ai.cornell.edu/event/ai-explorations/" target="_blank" rel="noopener">AI Explorations</a> covers broader Cornell AI topics.</p>
+          </article>
+
+          <article class="community-card">
+            <span class="label">Email</span>
+            <h3>Direct support</h3>
+            <p>For anything that isn&rsquo;t covered in the FAQ.</p>
+            <p><a href="mailto:ai-support@cornell.edu">ai-support@cornell.edu</a></p>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ─── FAQ ─── -->
+      <section class="content-block" id="faq">
+        <p class="eyebrow">FAQ &middot; Reference</p>
+        <h2 class="section-heading section-heading-wide">Quick answers.</h2>
+        <p class="module-prose">Common questions from first-time Claude 3P users at Cornell. Click any question to expand. Use <code style="font-family:var(--mono);font-size:0.88em;background:var(--carnelian-dim);color:var(--carnelian-dark);padding:0.05rem 0.32rem;border-radius:4px;">Ctrl+F</code> to search.</p>
+
+        <div class="faq-list">
+
+          <p class="faq-group-label">Security &amp; data</p>
+
+          <details class="faq-item">
+            <summary>Is this as secure as sandbox AI?</summary>
+            <div class="faq-body">
+              <p class="lead-yes">Yes.</p>
+              <p>Same safety tier, same data rules. Good for Cornell data used in research administration (protocols, awards, proposals, IP). Exceptions: HIPAA data, which we shouldn&rsquo;t encounter, and regulated data such as export-controlled information.</p>
+              <p>Claude 3P is a different front end pointing at the <strong>same infrastructure</strong> as sandbox AI. Your prompts go through our LiteLLM gateway to the cloud models we already have data-protection contracts with (AWS, Azure, GCP). Nothing about Claude 3P routes your data outside that envelope.</p>
+              <h3>What about web search?</h3>
+              <p>The <code>/gemini-search</code> skill uses Gemini&rsquo;s <strong>enterprise</strong> web grounding, not regular Google search. Concretely:</p>
+              <ul>
+                <li>Your query stays inside the contracted Vertex AI environment.</li>
+                <li>Gemini matches it against a curated web index Google maintains for regulated industries (finance, healthcare, public sector).</li>
+                <li><strong>Google does not log your prompt.</strong> The standard Google Search grounding tool would log for 30 days; we explicitly use the enterprise tool instead, which contractually removes that logging.</li>
+                <li>The trade-off: the enterprise index is narrower and refreshes every few hours, so it occasionally misses things you&rsquo;d find on public Google.</li>
+              </ul>
+              <p class="bottom-line"><strong>Bottom line:</strong> the data path for a Claude 3P chat, with or without search, is the same path your sandbox AI chats already take. Same gateway, same contracted infrastructure, same rules about what to put in.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Is Claude 3P the same as the regular desktop app?</summary>
+            <div class="faq-body">
+              <p>Yes. It&rsquo;s the same app, but with a different configuration enabled by our IT team. That configuration lets us route through our own secure infrastructure contracts already in place.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Claude 3P is asking me about the Chrome extension. Is that part of Claude 3P?</summary>
+            <div class="faq-body">
+              <p>No. Claude 3P only includes the desktop application, configured by our IT team. It does not include the web interface, the browser extension, or the mobile application.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>How long before chats are archived or deleted?</summary>
+            <div class="faq-body">
+              <p>Chats are stored indefinitely, until you delete them. They&rsquo;re kept on your local machine.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Can I share a chat with a colleague?</summary>
+            <div class="faq-body">
+              <p>Not directly through Claude 3P. Chats are stored on your machine, not in a shared cloud. To share, copy the relevant content into an email, a doc, or a Teams message, or export the chat as text.</p>
+            </div>
+          </details>
+
+          <p class="faq-group-label">Using the app</p>
+
+          <details class="faq-item">
+            <summary>Which Claude model should I pick?</summary>
+            <div class="faq-body">
+              <p>For most work, <strong>Sonnet</strong> is the best value &mdash; fast, capable, what most people will reach for.</p>
+              <p>Reach for <strong>Opus</strong> on harder reasoning &mdash; long documents, multi-step analysis, anything where a wrong answer is expensive. It&rsquo;s slower and counts more against your usage window.</p>
+              <p>Reach for <strong>Haiku</strong> when you want a quick answer and don&rsquo;t need depth &mdash; short rewrites, classification, simple lookups.</p>
+              <p>You can switch in the model picker at the bottom of the chat. If you&rsquo;re not sure, start with Sonnet and only move up if the answer isn&rsquo;t good enough.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Does Claude remember our previous chats?</summary>
+            <div class="faq-body">
+              <p>No, not by default. Each new chat starts blank. Claude doesn&rsquo;t know what you said in yesterday&rsquo;s conversation, or even in the chat right next to this one.</p>
+              <p>Two things change that:</p>
+              <ul>
+                <li><strong>Projects</strong> carry a shared instruction and a set of files that every chat inside the project can see.</li>
+                <li>A single long chat keeps everything visible up to its context window &mdash; eventually the oldest messages get pushed out.</li>
+              </ul>
+              <p>If you want Claude to remember something across chats, put it in a Project&rsquo;s instructions or in a file the Project can read.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>What&rsquo;s a Project, and when should I use one?</summary>
+            <div class="faq-body">
+              <p>A Project is a folder of chats that share the same instructions and uploaded files.</p>
+              <p>Use one when:</p>
+              <ul>
+                <li>You&rsquo;re going to have many chats on the same topic (e.g., reviewing IRB protocols, drafting award narratives, working through a specific RFP).</li>
+                <li>You have reference material &mdash; a style guide, a list of acronyms, a template &mdash; that every chat should know about.</li>
+                <li>You want to set the tone or role once instead of re-explaining it each time.</li>
+              </ul>
+              <p>Don&rsquo;t bother with a Project for one-off questions. A regular chat is fine.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Can Claude read a file if I paste in a file path from my machine?</summary>
+            <div class="faq-body">
+              <p>No, Claude can&rsquo;t read a file that way. Drag and drop the file into the chat instead.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Can I upload files? What kinds?</summary>
+            <div class="faq-body">
+              <p>Yes. Drag and drop into the chat. Claude handles:</p>
+              <ul>
+                <li>Text-like files: <code>.md</code>, <code>.txt</code>, <code>.csv</code>, <code>.html</code>, code files</li>
+                <li>PDFs and images (it can read the contents)</li>
+                <li>Word docs (<code>.docx</code>), Excel (<code>.xlsx</code>), PowerPoint (<code>.pptx</code>)</li>
+              </ul>
+              <p>There&rsquo;s a per-chat size limit, so very large PDFs or spreadsheets may need to be split. For files you&rsquo;ll reference repeatedly, attach them to a Project instead of re-uploading every chat.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Is there a usage limit?</summary>
+            <div class="faq-body">
+              <p>Yes. There&rsquo;s a rolling cap on how much you can send to the bigger models in a given window. Most people never hit it during normal work. If you do, you&rsquo;ll see a message and can either wait out the window or switch to a lighter model (Sonnet &rarr; Haiku) to keep going.</p>
+            </div>
+          </details>
+
+          <p class="faq-group-label">Prompting &amp; quality</p>
+
+          <details class="faq-item">
+            <summary>Can Claude be wrong?</summary>
+            <div class="faq-body">
+              <p>Yes. Claude can sound confident and still be wrong, especially about specific facts, numbers, citations, names, and anything recent. Treat its output the way you&rsquo;d treat a sharp but unverified intern: a useful first draft, not a final answer.</p>
+              <p>Two practical habits:</p>
+              <ul>
+                <li>For anything that matters, ask Claude to show its source or quote the passage it&rsquo;s relying on. If it can&rsquo;t, assume it might be making it up.</li>
+                <li>Spot-check numbers and direct quotes against the original.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Why did I get a different answer when I asked the same question again?</summary>
+            <div class="faq-body">
+              <p>Claude isn&rsquo;t deterministic &mdash; by design it picks among plausible next words probabilistically, so two runs of the same prompt can come back worded differently, and occasionally with different substance.</p>
+              <p>If you need consistency:</p>
+              <ul>
+                <li>Be more specific in the prompt (constraints, format, length).</li>
+                <li>Give Claude a template to follow.</li>
+                <li>For factual lookups, ask it to quote the source.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>How do I get better answers?</summary>
+            <div class="faq-body">
+              <p>Three things help more than anything else:</p>
+              <ul>
+                <li><strong>Give context up front.</strong> &ldquo;I&rsquo;m drafting a justification for an NSF supplement; here&rsquo;s the program description and the original proposal &mdash; write a 150-word case for the supplement&rdquo; beats &ldquo;write a justification.&rdquo;</li>
+                <li><strong>Show, don&rsquo;t just tell.</strong> Paste an example of the style or format you want. Claude matches an example more closely than any adjective (&ldquo;formal,&rdquo; &ldquo;concise&rdquo;) will get you.</li>
+                <li><strong>Iterate.</strong> First drafts rarely land. Tell Claude what&rsquo;s wrong with it &mdash; &ldquo;too generic, make it specific to our award,&rdquo; &ldquo;cut the marketing language&rdquo; &mdash; and it&rsquo;ll fix that part without losing the rest.</li>
+              </ul>
+              <p>For more, see the <a class="link-accent" href="module-ai-fluency.html">AI Fluency module</a>.</p>
+            </div>
+          </details>
+
+        </div>
+      </section>
+
+      <section class="callout-band">
+        <div class="callout-panel">
+          <p class="eyebrow">Missing something?</p>
+          <h2 class="section-heading section-heading-wide">This is a living page &mdash; built from real questions.</h2>
+          <p>Got a question, a prompt, or a tip not covered here? Drop it in the Teams channel or email the team.</p>
+          <div class="cta-row">
+            <a class="button-secondary" href="https://teams.microsoft.com/l/channel/19%3AIUeTCw0yr0eNtarYlqyA8BsjCpgCRZHZ4yCY6xK99k41%40thread.tacv2/AI%20with%20Claude?groupId=e3f60285-546f-4656-9bc4-cc3e4f75d47b&amp;tenantId=5d7e4366-1b9b-45cf-8e79-b14b27df46e1&amp;ngc=true&amp;allowXTenantAccess=true" target="_blank" rel="noopener">Teams channel &rarr;</a>
+            <a class="button-secondary" href="mailto:ai-support@cornell.edu">Email the team &rarr;</a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell">
+        <span>&copy; 2026 Cornell University</span>
+        <a href="https://innovationhub.ai.cornell.edu/" target="_blank" rel="noopener">AI Innovation Hub</a>
+        <a href="https://innovationhub.ai.cornell.edu/tools-resources/" target="_blank" rel="noopener">Tool status</a>
+        <a href="https://support.claude.com/" target="_blank" rel="noopener">Claude support</a>
+        <a href="mailto:ai-support@cornell.edu">ai-support@cornell.edu</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Copy-to-clipboard for the starter prompts
+    document.querySelectorAll('.copy-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var pre = btn.parentElement.querySelector('pre code') || btn.parentElement.querySelector('pre');
+        if (!pre) return;
+        var text = pre.textContent || pre.innerText;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function () {
+            var original = btn.textContent;
+            btn.textContent = 'Copied';
+            btn.classList.add('copied');
+            setTimeout(function () {
+              btn.textContent = original;
+              btn.classList.remove('copied');
+            }, 1600);
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

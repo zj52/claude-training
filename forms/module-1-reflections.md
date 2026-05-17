@@ -58,7 +58,12 @@ Draft form content, ready to copy into Microsoft Forms (or Google Forms / Qualtr
 - Field type: long text
 - Help text: *"This is the most important question. Focus on how AI efficiency could free you up for higher-impact, human-centered work — the parts that need your judgment, your relationships, your expertise. Not just &quot;answer email faster&quot; but what that lets you actually do more of."*
 
-### 8. *(Optional)* Anything else?
+### 8. *(Optional)* Your AI context document
+
+- Field type: long text (large textarea)
+- Help text: *"Part II of the AI Fluency homework asks you to have a conversation with Claude and synthesize it into a reusable 'context document' about your role and organization. If you did that and you're comfortable sharing the result, paste it here. It will help us tailor Module 2's examples to the room. Only share what you're comfortable having a Cornell training organizer read."*
+
+### 9. *(Optional)* Anything else?
 
 - Field type: long text
 - Help text: *"Questions, observations, things on your mind after the workshop, things you want us to address in Module 2."*

@@ -1,0 +1,36 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Cornell AI Innovation Hub//RAIS Office Hours//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+
+BEGIN:VTIMEZONE
+TZID:America/New_York
+BEGIN:STANDARD
+DTSTART:20251102T020000
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+BEGIN:DAYLIGHT
+DTSTART:20260308T020000
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+END:VTIMEZONE
+
+BEGIN:VEVENT
+UID:rais-office-hours-cornell@rais-help.cornell.edu
+DTSTAMP:20260516T210000Z
+DTSTART;TZID=America/New_York:20260520T120000
+DTEND;TZID=America/New_York:20260520T130000
+RRULE:FREQ=WEEKLY;BYDAY=WE
+SUMMARY:RAIS Office Hours — Claude 3P / AI for Research Administration
+DESCRIPTION:Cornell RAIS weekly drop-in. Claude 3P questions\, prompt help\, workflow troubleshooting. Email rais-help@cornell.edu for an appointment. Zoom link forthcoming — replace this calendar entry once published.
+LOCATION:Zoom (link forthcoming — email rais-help@cornell.edu)
+ORGANIZER;CN=Cornell RAIS:mailto:rais-help@cornell.edu
+END:VEVENT
+END:VCALENDAR

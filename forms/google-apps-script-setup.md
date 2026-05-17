@@ -52,10 +52,11 @@ function doPost(e) {
         'Role & situation',
         'Values & philosophy',
         'AI hope (if AI could help me...)',
+        'Context document (from AI conversation)',
         'Anything else'
       ]);
       // Bold the header row
-      sheet.getRange(1, 1, 1, 8).setFontWeight('bold');
+      sheet.getRange(1, 1, 1, 9).setFontWeight('bold');
       // Freeze the header
       sheet.setFrozenRows(1);
     }
@@ -68,6 +69,7 @@ function doPost(e) {
       data.role || '',
       data.values || '',
       data.ai_hope || '',
+      data.context_doc || '',
       data.anything_else || ''
     ]);
 

@@ -486,6 +486,164 @@
     }
     body.notes-locked { overflow: hidden; }
 
+    /* ─── UI Quick Reference modal (slide 10) ─── */
+    .uiref-trigger {
+      font-family: var(--sans);
+      font-size: inherit;
+      color: var(--carnelian);
+      background: none;
+      border: none;
+      border-bottom: 1px dashed var(--carnelian);
+      padding: 0 0 1px;
+      cursor: pointer;
+      transition: color 140ms ease, border-color 140ms ease;
+    }
+    .uiref-trigger:hover {
+      color: var(--carnelian-dark);
+      border-bottom-color: var(--carnelian-dark);
+    }
+    .uiref-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: 120;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      perspective: 1400px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 220ms ease;
+    }
+    .uiref-backdrop.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .uiref-modal {
+      background: #ffffff;
+      border-radius: 20px;
+      max-width: 980px;
+      width: 100%;
+      max-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+      overflow: hidden;
+      transform-origin: center center;
+      transform: translateY(20px);
+      opacity: 0;
+      transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1), opacity 220ms ease;
+    }
+    .uiref-backdrop.is-open .uiref-modal {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .uiref-backdrop,
+      .uiref-modal { transition: none; }
+      .uiref-modal { transform: none; }
+    }
+    .uiref-header {
+      padding: 1.25rem 1.75rem 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+    .uiref-eyebrow {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--carnelian);
+      font-weight: 700;
+      margin: 0;
+    }
+    .uiref-close {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 999px;
+      border: none;
+      background: transparent;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: var(--ink);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 120ms ease;
+    }
+    .uiref-close:hover { background: rgba(0, 0, 0, 0.06); }
+    .uiref-body {
+      padding: 1rem 1.75rem 1.5rem;
+      overflow-y: auto;
+    }
+    .uiref-shot-wrap {
+      position: relative;
+      display: block;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      margin: 0 0 1.25rem;
+    }
+    .uiref-shot {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .uiref-pin {
+      position: absolute;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--carnelian);
+      color: #fff;
+      border: 2px solid #fff;
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .uiref-captions {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.8rem 1.25rem;
+    }
+    .uiref-captions li {
+      display: flex;
+      gap: 0.7rem;
+      align-items: flex-start;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: var(--ink);
+    }
+    .uiref-num {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--carnelian);
+      color: #fff;
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+    body.uiref-locked { overflow: hidden; }
+
+
     /* ─── Fullscreen button ─── */
     .deck-nav button.fs-btn {
       padding: 0;
@@ -933,7 +1091,7 @@
           <li><strong>File drop.</strong> Drag and drop &mdash; PDFs, images, Word, Excel, CSV, code files all work.</li>
           <li><strong>Sidebar.</strong> Your previous chats, stored on your local machine until you delete them.</li>
         </ul>
-        <p class="footnote">Live walkthrough during the workshop. Screenshots and a UI tour will live on this slide after.</p>
+        <p class="footnote">Live walkthrough during the workshop. Need a refresher? <button class="uiref-trigger" id="open-uiref" type="button">Open the UI quick reference</button></p>
       </div>
     </section>
 
@@ -1012,10 +1170,12 @@
     </section>
 
     <!-- ─── Slide 11 · Homework + Resources ─── -->
+    <!-- ─── Slide · Homework (with lead-in to Module 2) ─── -->
     <section class="slide content" data-bg="light">
       <p class="slide-eyebrow">Before next week</p>
-      <h2>Homework + Resources.</h2>
+      <h2>You are the agent.</h2>
       <div class="slide-body">
+        <p>Next we&rsquo;ll study AI fluency &mdash; a framework to help you make the ultimate decision on what tasks you want to delegate to AI, and how to make sure it&rsquo;s used responsibly when applied.</p>
         <div class="col-2">
           <a class="col-card" href="https://anthropic.skilljar.com/ai-fluency-for-nonprofits" target="_blank" rel="noopener">
             <span class="step">1 &middot; Homework</span>
@@ -1028,19 +1188,26 @@
             <p>Your workplace, your values, and &ldquo;If AI could help me ___, I would spend more time ___.&rdquo;</p>
           </a>
         </div>
-        <p style="font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--carnelian); font-weight: 700; margin: 1.75rem 0 0.6rem;">Resources</p>
-        <ul>
-          <li><a class="link-accent" href="https://anthropic.skilljar.com/ai-fluency-for-nonprofits" target="_blank" rel="noopener">anthropic.skilljar.com/ai-fluency-for-nonprofits</a> &mdash; the course homework above</li>
-          <li><a class="link-accent" href="../reflections.html" target="_blank" rel="noopener">Module 1 reflection form</a> &mdash; the second homework</li>
-          <li><a class="link-accent" href="https://innovationhub.ai.cornell.edu/" target="_blank" rel="noopener">innovationhub.ai.cornell.edu</a> &mdash; Cornell&rsquo;s home for AI tools and policy</li>
-          <li><a class="link-accent" href="https://ai4ra.uidaho.edu/" target="_blank" rel="noopener">ai4ra.uidaho.edu</a> &mdash; AI4RA community for research admin</li>
-          <li><a class="link-accent" href="https://teams.microsoft.com/l/channel/19%3AIUeTCw0yr0eNtarYlqyA8BsjCpgCRZHZ4yCY6xK99k41%40thread.tacv2/AI%20with%20Claude?groupId=e3f60285-546f-4656-9bc4-cc3e4f75d47b&amp;tenantId=5d7e4366-1b9b-45cf-8e79-b14b27df46e1&amp;ngc=true&amp;allowXTenantAccess=true" target="_blank" rel="noopener">AI with Claude</a> &mdash; cohort Teams channel</li>
-          <li><a class="link-accent" href="mailto:ai-support@cornell.edu">ai-support@cornell.edu</a> &mdash; direct support</li>
-        </ul>
       </div>
     </section>
 
-    <!-- ─── Slide 12 · End (Cornell-style closing) ─── -->
+    <!-- ─── Slide · Resources ─── -->
+    <section class="slide content" data-bg="light">
+      <p class="slide-eyebrow">Resources</p>
+      <h2>Where to go for more.</h2>
+      <div class="slide-body">
+        <ul>
+          <li><a class="link-accent" href="https://innovationhub.ai.cornell.edu/" target="_blank" rel="noopener">innovationhub.ai.cornell.edu</a> &mdash; Cornell&rsquo;s home for AI tools, policy, and access</li>
+          <li><a class="link-accent" href="https://ai4ra.uidaho.edu/" target="_blank" rel="noopener">ai4ra.uidaho.edu</a> &mdash; AI4RA community for research administration (NSF Award 2427549)</li>
+          <li><a class="link-accent" href="https://teams.microsoft.com/l/channel/19%3AIUeTCw0yr0eNtarYlqyA8BsjCpgCRZHZ4yCY6xK99k41%40thread.tacv2/AI%20with%20Claude?groupId=e3f60285-546f-4656-9bc4-cc3e4f75d47b&amp;tenantId=5d7e4366-1b9b-45cf-8e79-b14b27df46e1&amp;ngc=true&amp;allowXTenantAccess=true" target="_blank" rel="noopener">AI with Claude</a> &mdash; cohort Teams channel</li>
+          <li><a class="link-accent" href="mailto:ai-support@cornell.edu">ai-support@cornell.edu</a> &mdash; direct support</li>
+          <li><a class="link-accent" href="../resources.html">All resources</a> &middot; <a class="link-accent" href="../resources.html#faq">FAQ</a> &middot; <a class="link-accent" href="../resources.html#tips">Tips</a> &middot; <a class="link-accent" href="../resources.html#learning">Keep learning</a></li>
+        </ul>
+        <p class="footnote"><strong>Don&rsquo;t have Claude 3P access yet?</strong> Email <a class="link-accent" href="mailto:ai-support@cornell.edu">ai-support@cornell.edu</a> or visit the <a class="link-accent" href="https://innovationhub.ai.cornell.edu/tools-resources/" target="_blank" rel="noopener">Innovation Hub tools page</a> to request it.</p>
+      </div>
+    </section>
+
+    <!-- ─── End (Cornell-style closing) ─── -->
     <section class="slide cornell-bg" data-bg="cornell">
       <img class="seal-bottom" src="assets/cornell-seal.png" alt="Cornell University seal" />
     </section>
@@ -1048,7 +1215,7 @@
   </main>
 
   <nav class="deck-nav" aria-label="Slide navigation">
-    <div class="slide-counter" id="slide-counter">1 / 11</div>
+    <div class="slide-counter" id="slide-counter">1 / 16</div>
     <button class="fs-btn" id="fs-btn" type="button" aria-label="Toggle fullscreen">
       <svg class="fs-expand" viewBox="0 0 24 24" aria-hidden="true">
         <polyline points="15 3 21 3 21 9"/>
@@ -1077,6 +1244,32 @@
       <div class="notes-modal-body" id="notes-modal-body"></div>
     </div>
   </div>
+
+  <div class="uiref-backdrop" id="uiref-backdrop" role="dialog" aria-modal="true" aria-labelledby="uiref-title">
+    <div class="uiref-modal">
+      <div class="uiref-header">
+        <p class="uiref-eyebrow" id="uiref-title">UI Quick Reference &middot; Claude 3P</p>
+        <button class="uiref-close" id="uiref-close" type="button" aria-label="Close">&times;</button>
+      </div>
+      <div class="uiref-body">
+        <div class="uiref-shot-wrap">
+          <img class="uiref-shot" src="assets/claude-3p-ui.png" alt="Claude 3P interface with four numbered markers" />
+          <span class="uiref-pin" style="top: 44%; left: 65%;">1</span>
+          <span class="uiref-pin" style="top: 47%; left: 36.5%;">2</span>
+          <span class="uiref-pin" style="top: 56.9%; left: 78.84%;">3</span>
+          <span class="uiref-pin" style="top: 57%; left: 1.5%;">4</span>
+        </div>
+        <ol class="uiref-captions">
+          <li><span class="uiref-num">1</span><div><strong>Chat box.</strong> Type a task or question. Press Enter or click the arrow to send. Drag files in too.</div></li>
+          <li><span class="uiref-num">2</span><div><strong>Attach files.</strong> The + button adds PDFs, Word, Excel, CSVs, images.</div></li>
+          <li><span class="uiref-num">3</span><div><strong>Pick a model.</strong> Sonnet is the best value for everyday work. Haiku for quick lookups, Opus for hard reasoning.</div></li>
+          <li><span class="uiref-num">4</span><div><strong>Recent tasks.</strong> Stored locally. Click any task to pick up where you left off.</div></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+
 
   <script>
     (function () {
@@ -1294,6 +1487,27 @@
         .then(function (r) { return r.ok ? r.text() : ''; })
         .then(function (md) { parseNotes(md); loaded = true; updateBtnVisibility(); })
         .catch(function () { /* notes file not reachable; button stays hidden */ });
+    })();
+  </script>
+  <script>
+    // ─── UI Quick Reference modal (slide 10) ───
+    (function () {
+      var trigger  = document.getElementById('open-uiref');
+      var backdrop = document.getElementById('uiref-backdrop');
+      var closeBtn = document.getElementById('uiref-close');
+      if (!trigger || !backdrop) return;
+
+      function open()  { backdrop.classList.add('is-open');    document.body.classList.add('uiref-locked'); }
+      function close() { backdrop.classList.remove('is-open'); document.body.classList.remove('uiref-locked'); }
+
+      trigger.addEventListener('click', open);
+      closeBtn.addEventListener('click', close);
+      backdrop.addEventListener('click', function (e) {
+        if (e.target === backdrop) close();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && backdrop.classList.contains('is-open')) close();
+      });
     })();
   </script>
 </body>

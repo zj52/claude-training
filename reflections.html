@@ -192,9 +192,8 @@
             <li><a class="nav-link" href="module-foundations.html">Foundations</a></li>
             <li><a class="nav-link" href="module-ai-fluency.html">AI Fluency</a></li>
             <li><a class="nav-link" href="module-cowork.html">Cowork</a></li>
-            <li><a class="nav-link" href="faq.html">FAQ</a></li>
-            <li><a class="nav-link" href="tips.html">Tips</a></li>
-            <li><a class="nav-link" href="learning.html">Learning</a></li>
+            <li><a class="nav-link" href="resources.html">Resources</a></li>
+            <li><a class="nav-link" href="mailto:ai-support@cornell.edu">Get Claude &rarr;</a></li>
           </ul>
         </nav>
       </div>
@@ -254,6 +253,16 @@
               <span class="label-text label-required">&ldquo;If AI could help me ___, I would be able to spend more time ___.&rdquo;</span>
               <span class="label-helper">The most important question. Focus on how efficiency could free you for higher-impact, human-centered work &mdash; not just &ldquo;answer email faster&rdquo; but what that lets you actually do more of.</span>
               <textarea name="ai_hope" required></textarea>
+            </label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Your AI context document (optional)</legend>
+            <p class="field-help">Part II of the AI Fluency homework asks you to have a conversation with Claude and synthesize it into a reusable &ldquo;context document&rdquo; about your role and organization. If you did that and you&rsquo;re comfortable sharing the result, paste it below. It will help us tailor Module 2&rsquo;s examples to the room.</p>
+            <label class="field">
+              <span class="label-text">Paste your context document</span>
+              <span class="label-helper">Only share what you&rsquo;re comfortable having a Cornell training organizer read. The same anonymity rules apply &mdash; we won&rsquo;t attach your name to it on the site.</span>
+              <textarea name="context_doc" rows="10" style="min-height: 12rem;"></textarea>
             </label>
           </fieldset>
 
@@ -325,6 +334,7 @@
           role:           form.role.value.trim(),
           values:         form.values.value.trim(),
           ai_hope:        form.ai_hope.value.trim(),
+          context_doc:    form.context_doc.value.trim(),
           anything_else:  form.anything_else.value.trim()
         };
 
