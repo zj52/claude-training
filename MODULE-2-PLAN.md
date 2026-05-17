@@ -10,11 +10,11 @@ Working notes for building `slides/ai-fluency.html` (the Module 2 deck). Pulls t
 
 ## The workshop's organizing arc
 
-The three modules form a deliberate progression — *theory → policy → operational tooling*:
+The three modules form a deliberate progression — *theory → guide → operational tooling*:
 
 - **Module 1 (Foundations)** — meet the tool, understand the data rules. *The tour.*
-- **Module 2 (AI Fluency)** — learn the framework, draft your unit's AI policy. *The thinking.*
-- **Module 3 (Cowork)** — turn the policy into a Cowork **Project** with system prompt + selected folder + saved context. *The operational artifact.*
+- **Module 2 (AI Fluency)** — learn the framework, draft your unit's AI guide. *The thinking.*
+- **Module 3 (Cowork)** — turn the guide into a Cowork **Project** with system prompt + selected folder + saved context. *The operational artifact.*
 
 State this arc explicitly in Module 1's close and Module 2's open — the cohort should see where they're headed before each step.
 
@@ -49,14 +49,14 @@ Draft order — refine after cohort reflection data is in.
 9. **Hands-on: test against data you know cold.** *(The centerpiece.)* Each participant brings one dataset they understand — an annual award report, a portfolio analysis, a past compliance dashboard, a closed proposal cycle. We spend ~10 minutes in Claude 3P running a validation test. The room watches the **Deployment Diligence** loop happen on real Cornell data. Builds the habit of *"before I trust AI with new data, I validate on data I know."*
 10. **The "stand behind every word" principle + "human in the loop" callout.** From the AIF-NP Writing lesson — the same risk posture Cornell already requires for sponsored programs work. PI ownership of every claim in a proposal narrative isn't a new rule; the framing helps name it. **Sub-anchor (Q7):** *"Being the human in the loop means ensuring AI serves your mission and maintaining the relationships that define your work."* Adapted for Cornell: ensuring AI serves the *research* mission and the PI / sponsor / colleague relationships that define our work. This is the values anchor of the whole workshop — say it plainly.
 11. **What you can do that you couldn't before.** Three Cornell-specific scenarios where the 4D's unlock something practical. (Examples TBD after cohort feedback.)
-12. **Homework + Module 3 preview.** Two-part homework (see below) + the Cowork course. Bridge: *"AIF taught you to upload context. Cowork lets your selected folder be that context, automatically. Next week we go deeper into Cowork's advanced features — **Skills** (your recurring workflows, taught to the tool) and **Plugins** (bundled expertise for a role). The policy you draft this week becomes the configuration that runs those skills."* **And:** *"Cornell's plan isn't 'each of you builds skills alone' — RAIS and the AI Innovation Hub will partner with you to refine what you scaffold, and over time the cohort's contributed skills roll up into a shared library and Cornell-specific plugins."*
+12. **Homework + Module 3 preview.** Two-part homework (see below) + the Cowork course. Bridge: *"AIF taught you to upload context. Cowork lets your selected folder be that context, automatically. Next week we go deeper into Cowork's advanced features — **Skills** (your recurring workflows, taught to the tool) and **Plugins** (bundled expertise for a role). The guide you draft this week becomes the configuration that runs those skills."* **And:** *"Cornell's plan isn't 'each of you builds skills alone' — RAIS and the AI Innovation Hub will partner with you to refine what you scaffold, and over time the cohort's contributed skills roll up into a shared library and Cornell-specific plugins."*
 
 ## Module 2 → Module 3 homework (two parts)
 
 1. **Apply the 4D framework to one real research-admin task** (from AIF-NP Lesson 9's "pick one real task" guidance). Specific PI question, sponsor research need, budget review, CFR lookup, compliance check — anything in the participant's actual queue. Loop through Delegation → Description → Discernment → Diligence. Bring a short reflection.
-2. **Draft your unit-level AI policy** (from AIF-NP Lesson 8's capstone exercise). Use the 7-part scaffold (Platform / Task / Capacity / Quality / Transparency / Values / Compile). Lean on what Cornell has already decided (slide 6's framing) so the unit-level work is bounded and doable. Synthesize the answers into a one-page draft with Claude 3P.
+2. **Draft your unit-level AI guide** (from AIF-NP Lesson 8's capstone exercise). Use the 7-part scaffold (Platform / Task / Capacity / Quality / Transparency / Values / Compile). Lean on what Cornell has already decided (slide 6's framing) so the unit-level work is bounded and doable. Synthesize the answers into a one-page draft with Claude 3P.
 
-Both pieces feed Module 3, where the policy becomes the system prompt for a Cowork Project and the real task becomes a recurring workflow.
+Both pieces feed Module 3, where the guide becomes the system prompt for a Cowork Project and the real task becomes a recurring workflow.
 
 ## Hands-on exercise specifics — "Test against known data"
 

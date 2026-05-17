@@ -100,9 +100,9 @@ You'll earn a certificate of completion in the next lesson after answering a few
 The lesson's *"choose one real task this week"* framing is exactly the pattern we want for our cohort:
 
 - Module 2 → Module 3 homework, take 1: **Apply the 4D framework to one real research-admin task.** A specific PI question, a sponsor research need, a budget review, a CFR lookup, a proposal compliance check.
-- Module 2 → Module 3 homework, take 2: **Draft your unit-level AI policy** (from Lesson 8). Bring it to Module 3.
+- Module 2 → Module 3 homework, take 2: **Draft your unit-level AI guide** (from Lesson 8). Bring it to Module 3.
 
-These two homework asks complement each other — one is bottom-up (try the framework on a real task), one is top-down (write the policy that governs how your unit uses AI). Both feed into Module 3, where we make the work operational in Claude 3P with Cowork Projects.
+These two homework asks complement each other — one is bottom-up (try the framework on a real task), one is top-down (write the guide that governs how your unit uses AI). Both feed into Module 3, where we make the work operational in Claude 3P with Cowork Projects.
 
 ### Cornell-specific blueprint opportunity
 
@@ -124,7 +124,7 @@ These blueprints could live on the training site (`learning.html` or a dedicated
 
 ### Certificate / completion framing for the workshop series
 
-The AIF-NP certificate is one thing. The **Cornell workshop series itself** could grant its own certificate or badge — completion of all three modules + homework deliverables (reflections form, AIF-NP completion, unit-level AI policy draft, Cowork Project setup). Worth discussing with the AI Innovation Hub: does Cornell already issue learning badges through some platform (Canvas, Bridge, etc.) that we could use?
+The AIF-NP certificate is one thing. The **Cornell workshop series itself** could grant its own certificate or badge — completion of all three modules + homework deliverables (reflections form, AIF-NP completion, unit-level AI guide draft, Cowork Project setup). Worth discussing with the AI Innovation Hub: does Cornell already issue learning badges through some platform (Canvas, Bridge, etc.) that we could use?
 
 ### Resources we can adopt directly
 

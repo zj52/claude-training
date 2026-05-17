@@ -94,15 +94,15 @@ Work with AI to synthesize your answers into a draft policy document:
 
 ### The capstone exercise IS the workshop's natural deliverable
 
-This lesson asks learners to draft a **unit-level AI policy**. That's exactly the artifact a research-administration unit (OSP, RIA, departmental research office) needs and currently mostly doesn't have. The 7-part structure is solid scaffolding.
+This lesson asks learners to draft a **unit-level AI guide**. That's exactly the artifact a research-administration unit (OSP, RIA, departmental research office) needs and currently mostly doesn't have. The 7-part structure is solid scaffolding.
 
-**Suggested Module 2 → Module 3 homework:** each participant drafts a unit-level AI policy using Parts I–VI as prompts, then synthesizes with Claude 3P in Part VII. They bring the draft to Module 3, where we operationalize it (see below).
+**Suggested Module 2 → Module 3 homework:** each participant drafts a unit-level AI guide using Parts I–VI as prompts, then synthesizes with Claude 3P in Part VII. They bring the draft to Module 3, where we operationalize it (see below).
 
 ### What's already decided at Cornell vs. what each unit decides
 
 Some of the 7 parts are mostly answered at the Cornell institutional level — units don't need to redo them, just adopt and reference. Others genuinely need unit-level decisions:
 
-| Policy part | Cornell-level | Unit-level |
+| Guide part | Cornell-level | Unit-level |
 |---|---|---|
 | **I. Platform awareness** | IT + AI Innovation Hub set the approved tool list and data-class rules. Reference Cornell's regulated data chart. | Which approved tools does *our* unit actively use? What's the onboarding path for new hires? |
 | **II. Task delegation** | High-level data classification (must align with Cornell policy). | Which of *our* unit's specific tasks fall in each category (AI handles / AI assists / human)? This is unit-specific. |
@@ -121,19 +121,19 @@ The lesson's "AI should free you for more human work, not less" message is criti
 
 ### Bridge to Module 3 (Cowork) — the beautiful payoff
 
-**The unit-level AI policy drafted as homework after Module 2 becomes the system prompt for a Cowork Project in Module 3.** That's the operational arc:
+**The unit-level AI guide drafted as homework after Module 2 becomes the system prompt for a Cowork Project in Module 3.** That's the operational arc:
 
 - Module 1 (Foundations): meet the tool, understand the data rules
-- Module 2 (AI Fluency): learn the framework, draft your unit's policy
-- Module 3 (Cowork): turn the policy into an operational artifact — a Project with the policy as system prompt + the unit's selected folder + saved context
+- Module 2 (AI Fluency): learn the framework, draft your unit's guide
+- Module 3 (Cowork): turn the guide into an operational artifact — a Project with the guide as system prompt + the unit's selected folder + saved context
 
-This is the conceptual through-line: *theory → policy → operational tooling*. Worth flagging in Module 2's close.
+This is the conceptual through-line: *theory → guide → operational tooling*. Worth flagging in Module 2's close.
 
 ### Add to MODULE-2-PLAN.md
 
 - "What's already decided at Cornell vs. what each unit decides" deserves its own slide — pairs naturally with the Green/Yellow/Red and three-category mental-model slides as a third "decision-rule" slide.
-- Module 2 → Module 3 homework: draft the unit-level AI policy. Bring it to Module 3 where we make it operational.
-- The arc from Theory → Policy → Operational Tooling is the workshop's organizing narrative. Consider stating it explicitly in Module 1's close *and* Module 2's open, so the cohort sees the throughline.
+- Module 2 → Module 3 homework: draft the unit-level AI guide. Bring it to Module 3 where we make it operational.
+- The arc from Theory → Guide → Operational Tooling is the workshop's organizing narrative. Consider stating it explicitly in Module 1's close *and* Module 2's open, so the cohort sees the throughline.
 
 ---
 

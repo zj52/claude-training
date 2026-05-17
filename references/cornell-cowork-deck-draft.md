@@ -37,10 +37,10 @@ The user's prior Cornell-specific Cowork training deck. Directly relevant to Mod
 The Module 2 plan's closing slide (slide 12) currently teases Cowork with *"AIF taught you to upload context. Cowork lets your selected folder be that context, automatically."* This deck supplies the language to extend that bridge into Module 3's opener:
 
 - **Module 2's "context document"** (from AIF-NP Lesson 1) → **becomes the system prompt for a Cowork Project** in Module 3.
-- **Module 2's "unit-level AI policy"** (from AIF-NP Lesson 8) → **becomes the operational rules for that Project.**
+- **Module 2's "unit-level AI guide"** (from AIF-NP Lesson 8) → **becomes the operational rules for that Project.**
 - **The selected folder** → **becomes the persistent context the Project draws on.**
 
-Theory → Policy → Operational Tooling, as we've been calling it.
+Theory → Guide → Operational Tooling, as we've been calling it.
 
 ## To do
 

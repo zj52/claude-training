@@ -187,13 +187,13 @@ Before sharing a skill or plugin, validate it.
 
 This course is **the operational backbone of Module 3**. The arc is clear:
 
-> **Module 2 closes with the unit-level AI policy draft. Module 3 makes it operational in Cowork.**
+> **Module 2 closes with the unit-level AI guide draft. Module 3 makes it operational in Cowork.**
 
 ### Mapping the four building blocks to Cornell research admin
 
 | Cowork block | Cornell-flavored example |
 |---|---|
-| **Global Instructions** | *"I'm a sponsored programs officer at Cornell. I support PIs across [departments]. When I write to PIs, my tone is professional and direct. When I cite CFR or sponsor policy, I always link the source. I never paste student records or restricted research data into Claude. The unit-level AI policy at [path] governs anything I haven't pre-approved here."* |
+| **Global Instructions** | *"I'm a sponsored programs officer at Cornell. I support PIs across [departments]. When I write to PIs, my tone is professional and direct. When I cite CFR or sponsor policy, I always link the source. I never paste student records or restricted research data into Claude. The unit-level AI guide at [path] governs anything I haven't pre-approved here."* |
 | **Project** | One per **PI group, sponsor, or recurring workflow** — e.g., "NIH Year-End Reports 2026," "Smith Lab Sub-Recipient Pipeline," "Annual Compliance Audit Prep." Selected folder = the relevant award files. Memory captures past decisions across the year. |
 | **Skill** | Reusable runbooks for Cornell-specific tasks — *"Look up a CFR section and summarize for a PI"*, *"Review a sub-recipient agreement against Cornell positions"*, *"Build a one-page sponsor brief from an NIH NOFO."* Pair with AI4RA's [prompt-library](https://github.com/AI4RA/prompt-library) for foundations. |
 | **Plugin** | A "Sponsored Programs" plugin or "Research Compliance" plugin bundling the unit's skills + relevant connectors. Future state, not Module 3 launch material — but worth showing as the destination. |
@@ -219,11 +219,11 @@ These are the points where the Cowork training's generic guidance meets Cornell-
 
 ### Bridge from Module 2 → Module 3 (the payoff)
 
-The Module 2 deliverable (unit-level AI policy draft) becomes:
+The Module 2 deliverable (unit-level AI guide draft) becomes:
 
 - **Global Instructions** for Cowork — the role identity, tone, formatting rules.
 - **Project** initialization input — the scope, the values, the data-class rules.
-- **Skill candidates** — the workflows in the unit-level policy's Task Delegation section that are "AI can handle" or "AI can assist."
+- **Skill candidates** — the workflows in the unit-level guide's Task Delegation section that are "AI can handle" or "AI can assist."
 
 Stating this arc explicitly in Module 3's opener gives the workshop its dramatic payoff: *the document you wrote last week now configures the tool that does the work.*
 

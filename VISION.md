@@ -16,11 +16,11 @@ Pieces of what we do can be encoded in these skills and plugins with access to t
 
 ## How the vision shapes the workshop
 
-This is the *why* underneath the *Theory → Policy → Operational Tooling* arc. Each module advances the vision in a specific way:
+This is the *why* underneath the *Theory → Guide → Operational Tooling* arc. Each module advances the vision in a specific way:
 
 - **Module 1 (Foundations)** establishes that Claude 3P is a tool you can trust with the right data — the precondition for treating yourself as the agent who configures it.
-- **Module 2 (AI Fluency)** gives you the framework and the **policy** that defines how *your* work happens. The unit-level AI policy is, in effect, your declaration of agency: *here's how my team uses AI; here's what stays human.*
-- **Module 3 (Cowork)** turns that policy into operational tooling. Your playbooks become skills. The cohort's skills get refined with RAIS and the AI Innovation Hub, roll up into a shared library, and eventually become Cornell-specific plugins. The work compounds.
+- **Module 2 (AI Fluency)** gives you the framework and the **guide** that defines how *your* work happens. The unit-level AI guide is, in effect, your declaration of agency: *here's how my team uses AI; here's what stays human.*
+- **Module 3 (Cowork)** turns that guide into operational tooling. Your playbooks become skills. The cohort's skills get refined with RAIS and the AI Innovation Hub, roll up into a shared library, and eventually become Cornell-specific plugins. The work compounds.
 
 ## How the vision shapes what we say
 
