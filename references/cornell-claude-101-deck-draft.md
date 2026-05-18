@@ -6,7 +6,7 @@
 
 ## Why this is in the source library
 
-The user's prior "Claude 101" training deck — a general-purpose intro to Claude products and features. Useful for the AI Innovation Hub redesign (Goal 3) and as a content quarry when we build Module 1 / Module 3 of the new workshop series. **Most useful single artifact:** the user flagged it has *"a nice list of Claude products in it that shows where 3P would fit in"* — Claude 3P is effectively the desktop slice of the broader Claude product lineup. That positioning belongs on Foundations slide 4 (the ecosystem diagram).
+The user's prior "Claude 101" training deck — a general-purpose intro to Claude products and features. Useful for the AI Innovation Hub redesign (Goal 3) and as a content quarry when we build Module 1 / Module 3 of the new workshop series. **Most useful single artifact:** the user flagged it has *"a nice list of Claude products in it that shows where 3P would fit in"* — Claude 3P is effectively the desktop slice of the broader Claude product lineup. That positioning belongs on Foundations slide 5 (the ecosystem diagram).
 
 ## Deck topics (in order, per sync)
 

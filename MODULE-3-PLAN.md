@@ -108,7 +108,7 @@ Centerpiece exercise. Modeled on Module 2's "test against data you know cold" bu
 - `references/cornell-cowork-deck-draft.md` — Cornell's existing Cowork deck (graphics, language) to harmonize with
 - `references/cornell-regulated-data.md` — Green/Yellow/Red data-class model for the safety slide overlay
 - `MODULE-2-PLAN.md` — the guide → Cowork bridge originates here
-- `slides/foundations.html` — Module 1 deck (esp. slide 5 data rules, slide 11 model picker)
+- `slides/foundations.html` — Module 1 deck (esp. slide 4 data rules, slide 11 model picker)
 - `slides/assets/aif-4d-framework.svg` — visual style precedent for the building-blocks diagram
 - `NOTES-attribution.md` — attribution lines for AIF / AI4RA / REACHWorkshop2026 / Anthropic
 

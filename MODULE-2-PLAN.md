@@ -83,13 +83,13 @@ Centerpiece exercise. From AIF-NP Lesson 6 (`course-content/AIF-NP/06-data-analy
 - `course-content/AIF-NP/05-privacy-and-data.md` — pairs with Cornell's regulated data chart
 - `course-content/AIF-NP/06-data-analysis-with-ai.md` — *source for the hands-on exercise*
 - `references/cornell-regulated-data.md` — simplified Green/Yellow/Red data-class mental model
-- `slides/foundations.html` — Module 1 deck (esp. slide 5 data rules, slide 8/9 prompt structure, Exercise A)
+- `slides/foundations.html` — Module 1 deck (esp. slide 4 data rules, slide 8/9 prompt structure, Exercise A)
 - `NOTES-attribution.md` — attribution lines for AIF / AI4RA / REACHWorkshop2026
 
 ## Open questions before building the deck
 
 1. **What did the cohort's reflections actually say?** Wait for at least a handful of submissions before designing — let the actual room shape the examples.
-2. **Claude 3P's official position on Cornell's regulated data chart.** Confirm with IT before slide 3 / 5 — affects how confidently we can claim Yellow → Claude 3P.
+2. **Claude 3P's official position on Cornell's regulated data chart.** Confirm with IT before slide 3 / 4 — affects how confidently we can claim Yellow → Claude 3P.
 3. **How many of the lesson exercises do learners actually complete?** If completion is low, Module 2 may need to do some of the work in-room.
 4. **AI4RA tooling demo time?** Is there a 5-minute slot to demo the AI4RA eCFR MCP server live in Module 2? Reinforces credit and shows the Description–Discernment loop on a real Cornell-relevant task.
 

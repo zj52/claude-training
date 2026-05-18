@@ -112,10 +112,10 @@ The lesson teaches good general AI privacy hygiene. Most of those concerns are *
 | "Is your data used to train future models?" | **No.** Cornell's enterprise agreement with Anthropic includes zero data retention for training. |
 | "What's the platform's retention policy?" | Conversations are not used for training; Cornell-controlled retention applies. |
 | "Should I use a free vs. paid tier?" | The tier is already chosen for you — Cornell Claude 3P is the configured tool. |
-| "Match the tool to the task." | Slide 5 of Foundations covers exactly this — Claude 3P for confidential admin, Sandbox AI legacy where required. |
+| "Match the tool to the task." | Slide 4 of Foundations covers exactly this — Claude 3P for confidential admin, Sandbox AI legacy where required. |
 | "Adjust your privacy settings." | Cornell admin pre-configures these — learners don't need to manage them per-conversation. |
 
-The lesson's core insight — *different tools have different rules* — IS the lesson Cornell wants taught. Our slide 5 already teaches the Cornell-specific version. Module 2 can reinforce: *"AI Fluency teaches you to evaluate every tool. At Cornell, the IT and AI Innovation Hub teams have done that evaluation for the tools you've been given. Your job is to use the right tool for the right data — not to re-evaluate each one yourself."*
+The lesson's core insight — *different tools have different rules* — IS the lesson Cornell wants taught. Our slide 4 already teaches the Cornell-specific version. Module 2 can reinforce: *"AI Fluency teaches you to evaluate every tool. At Cornell, the IT and AI Innovation Hub teams have done that evaluation for the tools you've been given. Your job is to use the right tool for the right data — not to re-evaluate each one yourself."*
 
 ### The PII-anonymization techniques still apply for highest-sensitivity data
 

@@ -2,7 +2,7 @@
 
 - **Source:** <https://it.cornell.edu/regulated-data-chart>
 - **Saved:** 2026-05-16
-- **Use:** reference for Module 1/2 data-classification slides; informs slide 5 (data rules) wording
+- **Use:** reference for Module 1/2 data-classification slides; informs slide 4 (data rules) wording
 
 > **Important context:** The chart applies to Cornell's **enterprise** versions of services. It does **not** apply to consumer/personal-account versions of the same tools. It also does not apply to faculty research data *unless that research falls under a regulation or contract*.
 
