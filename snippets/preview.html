@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preview · Cost &amp; tokens</title>
+<link rel="stylesheet" href="../styles.css">
+</head><body>
+<div class="page-frame"><main><div class="shell">
+<style>
+  .token-row { display:flex; flex-wrap:wrap; gap:.5rem; margin:1.25rem 0; }
+  .token-row .pill {
+    display:inline-flex; align-items:center;
+    padding:.35rem .8rem; border-radius:999px;
+    background:var(--paper); border:1px solid var(--line);
+    font-size:.9rem; color:var(--ink);
+  }
+  .token-row .pill.accent {
+    background:var(--carnelian); color:#fff;
+    border-color:var(--carnelian); font-weight:600;
+  }
+  .cost-tiers { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1.25rem; margin:1rem 0 0; }
+  .cost-tier { border-top:2px solid var(--line); padding-top:.65rem; }
+  .cost-tier.is-pick { border-top-color:var(--carnelian); }
+  .cost-tier .step { font-weight:600; display:block; margin-bottom:.3rem; }
+  .cost-tier p { margin:0; font-size:.92rem; color:var(--muted); }
+  @media (max-width:640px){ .cost-tiers{ grid-template-columns:1fr; } }
+</style>
+
+<section class="content-block">
+  <p class="eyebrow">Cost &amp; tokens</p>
+  <h2 class="section-heading section-heading-wide">Use is billed by tokens.</h2>
+
+  <div class="prose" style="max-width:64ch;">
+    <p>Claude bills by the <strong>token</strong> &mdash; the small chunks of text the model reads and writes as it builds an answer one token at a time. You pay for tokens <em>in</em> (your prompt, any files, and the running conversation) plus tokens <em>out</em> (Claude&rsquo;s reply). Cost flexes with the work: a quick question is a few tokens; a long thread with big attachments is many.</p>
+
+    <div class="token-row" aria-hidden="true">
+      <span class="pill">The</span>
+      <span class="pill">model</span>
+      <span class="pill">reads</span>
+      <span class="pill">and</span>
+      <span class="pill">writes</span>
+      <span class="pill">one</span>
+      <span class="pill accent">token</span>
+      <span class="pill">at</span>
+      <span class="pill">a</span>
+      <span class="pill">time</span>
+    </div>
+
+    <p>There&rsquo;s no flat per-prompt or per-session price. Two things set the bill: <strong>how many tokens</strong> move through, and <strong>which model</strong> you pick. Usage is billed to your unit through the Cornell AI Platform, and most subscription features are included.</p>
+  </div>
+
+  <h3 style="margin:2rem 0 .25rem;">Pick the model to fit the job</h3>
+  <div class="cost-tiers">
+    <div class="cost-tier">
+      <span class="step">Haiku &middot; $</span>
+      <p>Quick lookups, classification, short rewrites. Fastest and lowest cost.</p>
+    </div>
+    <div class="cost-tier is-pick">
+      <span class="step">&#9733; Sonnet &middot; $$</span>
+      <p>The workhorse &mdash; drafting, summarizing, analysis. Start here for almost any task.</p>
+    </div>
+    <div class="cost-tier">
+      <span class="step">Opus &middot; $$$</span>
+      <p>Long documents and hard reasoning. Reach for it when Sonnet falls short.</p>
+    </div>
+  </div>
+  <p class="footnote">$ / $$ / $$$ is relative cost &mdash; each tier up roughly doubles or triples your per-task spend.</p>
+
+  <h3 style="margin:2rem 0 .5rem;">Keep costs in hand</h3>
+  <ul style="max-width:64ch;">
+    <li><strong>Default to Sonnet;</strong> use Haiku for small tasks and move to Opus only when needed.</li>
+    <li><strong>Keep context lean</strong> &mdash; start a fresh chat for a new task and attach only the files Claude needs.</li>
+    <li><strong>Match the model to the job</strong> rather than running everything on the top tier.</li>
+  </ul>
+
+  <p>For current per-token rates by model, the most popular tracker is <a class="link-accent" href="https://pricepertoken.com/pricing-page/provider/anthropic">Price Per Token</a>.</p>
+</section>
+</div></main></div>
+</body></html>

@@ -44,7 +44,7 @@ Draft order — refine after cohort reflection data is in.
 4. **The data-class filter — Green / Yellow / Red.** Standalone slide for the memorable mental model. Public data → any approved tool; confidential admin → Claude 3P; regulated → stop and check the chart / call a data steward. Anchored in Cornell's regulated data chart (`references/cornell-regulated-data.md`). This is **Platform Awareness** made concrete — *"which tool fits which data?"*
 5. **"Should AI do this?" — not "Can AI do this?"** *(Title verbatim from AIF-NP Q4.)* The task-type filter, with the three categories: AI handles (standardized responses, documented info), AI assists (drafts that need human review), Human handles (high-stakes / emotional / precedent-setting). This is **Task Delegation** made concrete — *"which task fits which role?"* Pair with slide 4: together they form a quick 2-filter decision matrix.
 6. **What's already decided at Cornell vs. what your unit decides.** Third decision-rule slide, completing the trio. Some questions are answered at the Cornell institutional level (approved tool list, data-class rules, broad disclosure norms) — units don't need to redo them, just reference them. Other questions need unit-level decisions (which specific tasks fall in each category, who's our AI champion, what's our review cadence). Liberating, not burdensome — *"here's what you don't have to figure out alone."*
-7. **Description–Discernment — how.** Show Cornell's "context · task · format" 3-part prompt from Module 1 as a compression of AIF's three Description sub-components (**Product** = format, **Process** = task, **Performance** = context/role). Same teaching, different names — say it plainly. *Foreshadow:* Module 3 will extend this with one more slot (**Inputs** — where Claude should look) because Cowork can read files and connectors directly. The 3-part prompt grows into a 4-part delegation pattern when the tool can reach beyond the chat window.
+7. **Description–Discernment — how.** *Introduce* the 3-part prompt (Set Stage · Define Task · Specify Rules) here — as of 2026-07-28 it is no longer taught in Foundations (decision: with newer models and skills, the prompt itself matters much less; not worth Module 1 time). Keep it brief — one framework slide plus the weak/strong example pair, parked in the appendix at the bottom of this file. Map its parts to AIF's three Description sub-components (**Product** = format/rules, **Process** = task, **Performance** = context/stage). *Foreshadow:* Module 3 will extend this with one more slot (**Inputs** — where Claude should look) because Cowork can read files and connectors directly. The 3-part prompt grows into a 4-part delegation pattern when the tool can reach beyond the chat window.
 8. **Foundations Exercise A revisited.** Walk back through the eCFR lookup exercise from Module 1, naming the 4D's as they happen. One concrete task showing all four competencies in motion. *Borrowed pedagogical move: the AIF-NP "Researching with AI" lesson uses the same Description–Discernment loop frame on the same kind of task.*
 9. **Hands-on: test against data you know cold.** *(The centerpiece.)* Each participant brings one dataset they understand — an annual award report, a portfolio analysis, a past compliance dashboard, a closed proposal cycle. We spend ~10 minutes in Claude 3P running a validation test. The room watches the **Deployment Diligence** loop happen on real Cornell data. Builds the habit of *"before I trust AI with new data, I validate on data I know."*
 10. **The "stand behind every word" principle + "human in the loop" callout.** From the AIF-NP Writing lesson — the same risk posture Cornell already requires for sponsored programs work. PI ownership of every claim in a proposal narrative isn't a new rule; the framing helps name it. **Sub-anchor (Q7):** *"Being the human in the loop means ensuring AI serves your mission and maintaining the relationships that define your work."* Adapted for Cornell: ensuring AI serves the *research* mission and the PI / sponsor / colleague relationships that define our work. This is the values anchor of the whole workshop — say it plainly.
@@ -83,7 +83,7 @@ Centerpiece exercise. From AIF-NP Lesson 6 (`course-content/AIF-NP/06-data-analy
 - `course-content/AIF-NP/05-privacy-and-data.md` — pairs with Cornell's regulated data chart
 - `course-content/AIF-NP/06-data-analysis-with-ai.md` — *source for the hands-on exercise*
 - `references/cornell-regulated-data.md` — simplified Green/Yellow/Red data-class mental model
-- `slides/foundations.html` — Module 1 deck (esp. slide 4 data rules, slide 8/9 prompt structure, Exercise A)
+- `slides/foundations.html` — Module 1 deck (esp. the data rules slide, the how-AI-works segment, the workshop slide, and the OSP appendix). The prompt-structure slides were removed 2026-07-28; their content is parked in the appendix below.
 - `NOTES-attribution.md` — attribution lines for AIF / AI4RA / REACHWorkshop2026
 
 ## Open questions before building the deck
@@ -95,4 +95,36 @@ Centerpiece exercise. From AIF-NP Lesson 6 (`course-content/AIF-NP/06-data-analy
 
 ---
 
-*Last updated: 2026-05-16.*
+## Appendix — prompting content parked from Foundations (2026-07-28)
+
+Removed from `slides/foundations.html` when Module 1 was restructured. If prompting gets slide time anywhere, it's here in Module 2, briefly, inside the Description–Discernment segment (deck-structure item 7). Attribution: adapted from Anthropic's AI Fluency materials.
+
+### Slide: The 3-part prompt — Set Stage. Define Task. Specify Rules.
+
+A simple frame that lifts almost any prompt. Every great prompt has these three parts — sometimes implicitly, sometimes in any order.
+
+- **1 · Set Stage** — Who you are, what you're working on, who the output is for. The context Claude needs.
+- **2 · Define Task** — What you want Claude to do, broken into specifics. Numbered lists for compound work.
+- **3 · Specify Rules** — Format, length, sources, tone, constraints. The "how," not the "what."
+
+### Slide: Weak prompt — This won't get you what you want.
+
+> *Review this vendor contract and tell me what to fix.*
+
+- **No stage** — what kind of vendor? Whose "standard" should we measure against?
+- **Vague task** — "what to fix" could be anything: data protection, IP, pricing, termination…
+- **No rules** — what format? How long? Who's reading the output?
+
+Footnote: Claude will produce something, but it'll be a generic checklist and you'll spend the next hour re-prompting.
+
+### Slide: Strong prompt — All three parts. Same task, different result.
+
+> **[Stage]** I'm reviewing a vendor SaaS contract Cornell plans to procure. **[Task]** Compare the attached agreement against typical Cornell positions on data protection, indemnification, and termination. For each clause that deviates, give me: (a) what the clause says in plain English, (b) why it might be a concern for Cornell, (c) suggested redline language. **[Rules]** Output as a numbered list keyed to the original clause numbers. End with a one-paragraph summary of the top 3 risks — something I could send to a non-lawyer business owner.
+
+Footnote: Stage, Task, and Rules don't have to appear in order — they just have to all be present.
+
+*(The colored-highlight HTML/CSS treatment for these slides lives in git history: `slides/foundations.html` prior to the 2026-07-28 restructure — `.prompt-block`, `.prompt-legend`, `.miss-list`.)*
+
+---
+
+*Last updated: 2026-07-28.*

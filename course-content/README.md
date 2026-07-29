@@ -12,6 +12,7 @@ Pasted lessons from external courses we use as homework. Saved here for referenc
 | **AIF-STU** | AI Fluency for Students | [Skilljar](https://anthropic.skilljar.com/ai-fluency-for-students) | Reference |
 | **TAIF** | Teaching AI Fluency | [Skilljar](https://anthropic.skilljar.com/teaching-ai-fluency) | Reference |
 | **COWORK** | Introduction to Claude Cowork | Anthropic Academy | Module 2 → Module 3 homework |
+| **AICL** | AI Capabilities and Limitations | [Skilljar](https://anthropic.skilljar.com/ai-capabilities-and-limitations) | Reference; Capabilities & Limitations Framework diagram |
 
 ## File naming
 

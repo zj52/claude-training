@@ -75,6 +75,24 @@
       .slide { padding: 4.5rem 1.5rem 5.5rem; }
       .slide.content .col-3, .slide.content .col-2, .slide.content .col-4 { grid-template-columns: 1fr; }
     }
+    /* ── Under development banner + slide ── */
+    .wip-badge {
+      display: inline-block;
+      align-self: flex-start;
+      margin-top: 1.1rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      border: 1.5px solid rgba(255, 255, 255, 0.6);
+      color: #fff;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .slide.wip { background: linear-gradient(180deg, #FAF8F2 0%, #F3EFE6 100%); }
+    .wip-rule { width: 3.2rem; height: 4px; border-radius: 2px; background: var(--carnelian); margin: 0 0 1.3rem; }
+    .wip-list { margin-top: 1.25rem; }
   </style>
 </head>
 <body>
@@ -87,6 +105,23 @@
         <p class="eyebrow-light">Module 3 &middot; Claude Training at Cornell</p>
         <h1>Cowork.</h1>
         <p class="byline">Theory &rarr; Guide &rarr; Operational Tooling. Today&rsquo;s the payoff.</p>
+
+        <p class="wip-badge">Draft &middot; under development</p>      </section>
+
+      <!-- ─── Under development ─── -->
+      <section class="slide content wip" data-bg="light">
+        <div class="wip-rule" aria-hidden="true"></div>
+        <p class="slide-eyebrow">Status</p>
+        <h2>This module is still under development.</h2>
+        <div class="slide-body">
+          <p>What follows is a working draft. The shape is right and the material is real, but the running order, the exercises, and the timings will change before we deliver it.</p>
+          <ul class="wip-list">
+            <li><strong>Settled.</strong> The paradigm shift to pointing Claude at a folder, and the skills, plugins, and scheduled-task material.</li>
+            <li><strong>Still moving.</strong> The hands-on configuration exercise, the Cornell safety overlay, and how much of the build work happens live.</li>
+            <li><strong>Your input welcome.</strong> Tell us what would be most useful to cover, and it can still shape this module.</li>
+          </ul>
+          <p class="footnote">Module 1 (Foundations) is the finished one. Start there.</p>
+        </div>
       </section>
 
       <section class="slide content" data-bg="light">
@@ -369,7 +404,7 @@
   </div>
 
   <nav class="deck-nav" aria-label="Slide navigation">
-    <div class="slide-counter" id="slide-counter">1 / 18</div>
+    <div class="slide-counter" id="slide-counter">1 / 19</div>
     <button class="fs-btn" id="fs-btn" type="button" aria-label="Toggle fullscreen">
       <svg class="fs-expand" viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
       <svg class="fs-contract" viewBox="0 0 24 24" aria-hidden="true"><polyline points="4 14 10 14 10 20"/><polyline points="20 10 14 10 14 4"/><line x1="14" y1="10" x2="21" y2="3"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
