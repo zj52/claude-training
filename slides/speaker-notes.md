@@ -44,9 +44,9 @@ Instructor context for each slide, shown by the Notes panel in the deck. Open it
 
 ## Slide 7 - Data rules
 
-**Key framing.** The sign on the right is what people will actually remember. Feed Claude any of the documents you use day to day, which is awards, proposals, intellectual property, and other confidential material. Do not feed it DoD work, export-controlled data, or HIPAA data.
+**Key framing.** The sign on the right is what people will actually remember. Feed Claude any of the documents you use day to day, which is awards, proposals, and intellectual property. Do not feed it DoD work, CUI or export-controlled data, or HIPAA data.
 
-**The sign is the short version.** The bullets carry the full list, including CUI and other government-restricted information. If someone asks where CUI sits, it belongs on the do-not-feed side.
+**The sign is the short version.** The bullets carry the full list, including government-restricted information. Deliberately no use of the word "confidential" on the sign, since it gets read as government classified rather than Cornell confidential.
 
 **The one-line rule.** If you can put it in Sandbox AI, you can put it in Claude 3P. Same gateway, same contracted infrastructure.
 
