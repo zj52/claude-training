@@ -72,8 +72,8 @@
 
       <section class="content-block">
         <p class="eyebrow">Today&rsquo;s workshop</p>
-        <h2 class="section-heading section-heading-wide">Three live runs.</h2>
-        <p class="module-prose" style="max-width: 62ch; margin-bottom: 1.5rem;">Each one shows a different kind of capability. Live web search, which Sandbox AI never had. A connector, eCFR. And a plugin, the Legal Plugin.</p>
+        <h2 class="section-heading section-heading-wide">A few examples, live.</h2>
+        <p class="module-prose" style="max-width: 62ch; margin-bottom: 1.5rem;">We run through a few examples, each showing a different kind of capability. Web search, a connector, and a plugin.</p>
 
         <article class="content-card">
           <span class="tag">1 &middot; Web search</span>
@@ -105,23 +105,12 @@ could share with a PI who has no familiarity with the regulations.</code></pre>
         <article class="content-card stack-1">
           <span class="tag">3 &middot; Plugin</span>
           <h3>Contract review with the Legal Plugin</h3>
-          <p class="module-prose">Run the contract-review skill on a real agreement, then page through what comes back. One run produces the memo, the redline, the letter, the internal approval memo, and the issues tracker.</p>
+          <p class="module-prose">Ask Claude to review an agreement. That is genuinely the whole prompt. The plugin knows the OSP playbook and Cornell&rsquo;s standard research contract, so one run produces the memo, the redline, the letter, the internal approval memo, and the issues tracker.</p>
           <p class="module-prose"><strong>The full package is in Box.</strong> All eight files from the run we walk through, behind your Cornell login. <a class="link-accent" href="https://cornell.box.com/s/hlwskt75hgtawwljdkvgyaz2foskgusp" target="_blank" rel="noopener">Open the OSP folder &rarr;</a> Access is granted per unit, so this one is for OSP.</p>
           <div class="exercise-block">
-<pre><code>I'm reviewing a vendor contract for a SaaS service Cornell plans to
-procure. Use the contract-review skill to walk through the attached
-agreement against typical Cornell positions.
+<pre><code>Please review the attached agreement.
 
-Specifically:
-1. Flag any clauses that deviate from standard positions on data
-   protection, indemnification, and termination.
-2. For each flagged clause, give me: (a) what the clause says in plain
-   English, (b) why it might be a concern for Cornell, (c) suggested
-   redline language.
-3. Summarize the top 3 risks in a single paragraph at the end —
-   something I could send to a non-lawyer business owner.
-
-[Attach: sample-vendor-saas-agreement.pdf]</code></pre>
+[Attach the contract]</code></pre>
             <button class="copy-btn" type="button">Copy</button>
           </div>
         </article>

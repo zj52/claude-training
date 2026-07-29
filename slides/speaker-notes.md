@@ -1,127 +1,193 @@
-# Foundations — Speaker Notes
+# Foundations — Notes
 
-Instructor context for each slide, shown by the Notes panel in the deck. Open it by clicking the slide counter at the bottom right (a red dot means the current slide has notes) or by pressing **N**.
+Extra context for the slides in Module 1, written for anyone reading the deck, whether
+you attended the session or found it afterwards. These fill in background that would not
+fit on a slide.
 
-**Authoring conventions:**
-
-- One `## Slide N - Title` heading per slide. Numbers match the deck's slide positions (main deck 1-19, appendix 20-32).
-- Lead each slide with a `**Key framing.**` line, the single most important thing to land.
-- After that, anything goes. Anticipated questions, transitions, things to leave out.
-- Keep it short enough to take in at a glance.
+Open them from the slide counter at the bottom right, or press **N**. A red dot on the
+counter means the current slide has notes.
 
 ---
 
 ## Slide 5 - Cornell AI landscape
 
-**Key framing.** Today we are going to look at Claude Desktop, which is a relatively new tool. It connects to our Cornell AI Platform, the secured infrastructure we maintain together with contracted partners. It fits into that larger infrastructure and sits at the heart of the overall ecosystem.
+Claude Desktop is a relatively new tool at Cornell. It connects to the Cornell AI
+Platform, the secured infrastructure the university maintains together with contracted
+partners, so it sits inside that larger ecosystem rather than beside it.
 
-**Do not read the whole chart.** Point out a few things and keep moving.
+A few things the diagram does not spell out:
 
-- **Sandbox AI is being retired over time.** It will not be retired until we have solutions up that fully replace it.
-- **We are moving to a tiered system.** Microsoft Copilot is our base offering, and pretty soon we will be able to put moderate-risk data into it as well. We are just wrapping up that work with governance.
-- **Claude Desktop is the advanced or premium offering.** It lets us do additional things that you cannot as easily do in Copilot.
-- **More is coming.** We will likely get other products available in the future, such as OpenAI's. We may also get different contracts with Anthropic that give us more functionality.
+- **Sandbox AI is being retired gradually.** It stays running until the tools meant to
+  replace it are fully in place, so nothing disappears before there is somewhere else to
+  go.
+- **Cornell is moving to a tiered set of tools.** Microsoft Copilot is the base offering,
+  and work is wrapping up with governance that will allow moderate-risk data in Copilot
+  as well.
+- **Claude Desktop is the advanced tier.** It does things that are harder to do in
+  Copilot, which is why it exists alongside rather than instead of it.
+- **More is expected.** Other products, such as OpenAI's, may become available, and
+  different agreements with Anthropic could add functionality over time.
 
-**Transition.** Right now we have a specific version of Claude Desktop, which I will get into next.
+The particular version of Claude Desktop that Cornell uses is covered on the next slide.
 
 ---
 
 ## Slide 6 - Claude Desktop
 
-**Key framing.** Land the name once, then move past it. This is Claude Desktop with third-party inference turned on, Anthropic's shorthand is Claude 3P, and that is the last time the naming matters. Then the real shift, from *"what should I ask Claude?"* to *"what task should I have Claude do?"* Chat-Claude tells you how to redline a contract. Cowork-Claude opens the contract, marks the redlines, and saves the marked-up file. That is the biggest hurdle for people coming from claude.ai or Copilot Chat.
+The naming is worth clearing up once. This is Claude Desktop with third-party inference
+turned on. Anthropic calls that configuration Claude 3P, and you will see that shorthand
+in these materials. It is the same application either way.
 
-**Plain analogy that lands.** *"Cowork is Claude with hands, not just a mouth."* Or for this audience, think of it as an intern who can read your documents, draft responses, run lookups, and save files back to your folder, but one you still review.
+**Chat and Cowork are different modes.** Chat answers questions. Cowork carries out tasks
+against real files. That distinction is the thing most worth understanding early,
+particularly for anyone arriving from a tool where everything is a conversation. A useful
+way to picture Cowork is an assistant that can read your documents, draft responses, run
+lookups, and save files back to your folder, with you reviewing the result.
 
-**Why it matters for Cornell admin work.** Most research-administration work is task-shaped rather than question-shaped. Draft a justification, review a contract against standard positions, clean up a budget, pull citations from a regulation. Cowork is built for jobs, not for Q&A.
+Most research administration work is shaped like a task rather than a question. Drafting
+a justification, reviewing a contract against standard positions, cleaning up a budget,
+pulling citations from a regulation. Cowork is built for that shape of work.
 
-**Anticipated questions.**
+**Questions that come up:**
 
-- *"Why no general chat?"* Cowork is task-focused. Open-ended claude.ai-style chat is a separate product Cornell has not approved for confidential data yet.
-- *"Is the VM really isolated?"* Yes, architecturally. The agent cannot see files outside what has been granted.
-- *"What if I want it to use a different folder mid-task?"* It asks, you approve. Per session, not a permanent grant.
+- *Is the virtual machine really isolated?* Yes, architecturally. The agent cannot see
+  files outside what has been granted to it.
+- *What if a task needs a different folder partway through?* Claude asks and you approve.
+  That approval lasts for the session rather than permanently.
+- *Where do the files end up?* In the folder the task was pointed at, saved as ordinary
+  documents you can open in Word or Excel.
 
 ---
 
 ## Slide 7 - Data rules
 
-**Key framing.** The sign on the right is what people will actually remember. Feed Claude any of the documents you use day to day, which is awards, proposals, and intellectual property. Do not feed it DoD work, CUI or export-controlled data, or HIPAA data.
+The sign on this slide is the short version of the rule. Research administration material
+is fine, which covers awards, proposals, and intellectual property. What must not go in
+is DoD work, CUI or export-controlled data, and anything covered by HIPAA. The bullets
+carry the fuller picture, including government-restricted information.
 
-**The sign is the short version.** The bullets carry the full list, including government-restricted information. Deliberately no use of the word "confidential" on the sign, since it gets read as government classified rather than Cornell confidential.
+The word "confidential" is deliberately absent from the sign. Cornell uses it as a data
+classification tier, but it is easily misread as government classified, so the sign names
+the categories directly instead.
 
-**The one-line rule.** If you can put it in Sandbox AI, you can put it in Claude 3P. Same gateway, same contracted infrastructure.
+On web search, it is new to this tool and runs through Gemini's enterprise grounding,
+which means prompts are not logged.
 
-**If web search comes up.** It is new, and it is safe. It runs through Gemini's enterprise grounding, so your prompt is not logged.
+The underlying rule is simple. If something can go into Sandbox AI, it can go into Claude
+3P. Both point at the same gateway and the same contracted infrastructure.
 
 ---
 
 ## Slide 11 - What agents are
 
-**Key framing.** This slide is why the deck no longer spends time on prompting technique. With agentic Claude plus skills and plugins, the playbook lives in the tooling rather than in the prompt. You describe the task and the skill carries the how. If someone asks about prompt engineering, note that Module 2 touches on it briefly, and that the biggest lever now is picking the right task and reviewing the output well.
+This slide explains why the deck spends no time on prompting technique.
+
+Earlier generations of AI tools rewarded carefully engineered prompts. With an agentic
+model plus skills and plugins, the procedure lives in the tooling rather than in the
+wording of the request. You describe the task and the relevant skill supplies the method.
+The contract review later in the session is a good illustration, since the whole prompt is
+close to "please review the attached agreement."
+
+Prompting is not irrelevant, and Module 2 returns to it briefly. The larger levers now are
+choosing the right task to hand over and reviewing what comes back.
 
 ---
 
 ## Slide 13 - What comes with the RAIS setup
 
-**Key framing.** The installation is configured for 3P use and ships with a few things that are specific to our work. The distinction worth landing here is chat versus Cowork. Chat is where you ask questions. Cowork is where you ask Claude to do something for you, on real files.
+The installation is configured for third-party inference and comes with a few things
+specific to research administration work.
 
-**Keep it short.** This slide just names what is in the box. The interface walkthrough comes next and the eCFR connector and Legal Plugin both get used in the workshop.
+The distinction worth holding onto is chat versus Cowork. Chat is for questions. Cowork is
+for tasks against real files.
+
+The eCFR connector and the Legal Plugin both appear in the workshop later in the session,
+so this slide only names them.
 
 ---
 
 ## Slide 14 - The interface
 
-**Key framing.** Projects are the thing to land here. Start the chat inside the project and the right context, the Legal Plugin skills, and the eCFR connector are already loaded. On models, one sentence is enough. Sonnet for everyday work, Opus when it is genuinely hard. The UI quick reference has the same guidance if anyone wants it later.
+Projects are the part most worth understanding. A project bundles instructions and
+reference files, so a chat or task started inside one begins with the right context
+already loaded, along with the Legal Plugin skills and the eCFR connector.
+
+On models, the short version is that Sonnet handles everyday work and Opus is for
+genuinely hard problems, at higher cost per task. The UI quick reference on this slide
+covers the same ground with screenshots of all four windows.
 
 ---
 
 ## Slide 16 - Workshop
 
-**Key framing.** The three items run in order and each shows a different kind of capability. Live web search, which Sandbox AI never had. A connector, eCFR. And a plugin, the Legal Plugin contract review. Card 3 doubles as the link into the appendix walkthrough, so click it after running the exercise to page through the real output. For non-OSP audiences, skip the appendix. The main deck never flows into it on its own.
+The examples run in order, and each one demonstrates a different kind of capability.
 
-**Mechanics.** Clicking card 3 jumps to Appendix 1 of 13. Inside the appendix the red pill at bottom left comes back to this slide, and the left arrow from the first appendix slide does the same.
+1. **Web search**, which the previous tool did not have.
+2. **A connector**, eCFR, which pulls live regulation text from the official source.
+3. **A plugin**, the Legal Plugin, which runs a contract review from end to end.
+
+The third example links into the appendix, where the output of a real review is walked
+through page by page. That appendix is specific to the Office of Sponsored Programs and is
+not part of the main sequence, so reading straight through the deck ends at the closing
+slide without entering it.
 
 ---
 
 ## Slide 20 - Appendix, what the plugin produced
 
-**Key framing.** Everything in this appendix came out of one run of the plugin's contract-review skill, measured against Cornell's own materials, the OSP playbook and our standard research contract. Real award, real output, nothing staged.
+Everything in this appendix came out of a single run of the plugin's contract-review
+skill, measured against Cornell's own materials, the OSP playbook and the standard
+research contract. It is a real award and real output rather than a constructed example.
 
-**On the scrubbing.** The sponsor name, the professors, and the project topic are deliberately not shown. Only the OSP number and the review date are on the slide.
+The sponsor's name, the faculty leads, and the project topic have been removed from these
+slides and from the page images. The unredacted files are in Box, behind Cornell login,
+because they cannot be published openly.
 
 ---
 
 ## Slide 21 - Appendix, six files
 
-**Key framing.** Read them in this order. The memo explains the edits, the letter carries them to the company, the internal memo handles the Cornell side, and the spreadsheet tracks it.
+One run produced six output files, plus the contract exactly as it arrived.
+
+It may make sense to read them in the numbered order. The memo explains the edits, the
+marked-up contract carries them, the letter takes them to the company, the internal memo
+handles the Cornell approval side, and the spreadsheet tracks every issue.
 
 ---
 
 ## Slide 22 - Appendix, findings table
 
-**Key framing.** This table is the spine of the memo. The pages after it explain each row in full.
+This table is the spine of the review memo. Every issue is listed against the company's
+own section numbering, in their order, so the memo can be read side by side with the
+contract. The pages after it explain each row in full.
 
 ---
 
 ## Slide 23 - Appendix, tracked changes
 
-**Key framing.** Shown as LibreOffice renders it, with insertions underlined and deletions struck through. In Word it looks the same, with the editor name in the margin.
+The page is shown as LibreOffice renders it, with insertions underlined and deletions
+struck through. In Word it looks much the same, with the editor's name shown in the
+margin.
 
 ---
 
 ## Slide 25 - Appendix, the nine asks
 
-**Key framing.** Ask 8 is about warranties and liability. Cornell cannot promise research results will work or that they infringe nobody's patents, and the liability terms in their form were written for a supplier.
+The eighth ask concerns warranties and liability. Cornell cannot promise that research
+results will work, nor that they infringe no one's patents. The liability terms in the
+company's draft were written for a supplier relationship rather than a university
+research collaboration.
 
 ---
 
 ## Slide 31 - Appendix, sequence
 
-**Key framing.** The start-date question is the one most likely to come back quickly, because the professors want to begin work.
+Of the two questions that set the schedule, the start date is the one most likely to come
+back quickly, since the researchers want to begin work.
 
 ---
 
 ## Slide 32 - Appendix, reviewing the output
 
-**Key framing.** If all three checks hold, this is usable as a starting point for the officer on the award. It is a first pass, not a substitute for judgment.
-
----
+If all three checks hold, the output is a reasonable starting point for the officer
+handling the award. It is a first pass and not a substitute for professional judgment.

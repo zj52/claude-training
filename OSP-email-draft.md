@@ -1,36 +1,35 @@
 # Email to OSP — Claude training, Module 1
 
-**Subject:** Claude training tomorrow — what we'll cover and where the materials are
+Sent as a reply to the existing calendar invite thread, morning of the session (~8am for a 10am start).
+
+**Subject:** (reply keeps the invite subject)
 
 ---
 
-Hi all,
+Hi everyone,
 
-Looking forward to seeing you tomorrow for the first Claude training session. Here is
-what to expect and where everything lives.
+Looking forward to our training session in a couple of hours.
 
 **What we'll cover**
 
-The session runs in five parts. Why we're doing this and where Claude sits among
-Cornell's AI tools. What data can and cannot go in it. A short look at how generative
-AI actually works and where it falls short. A tour of the tool itself and what comes
-with our RAIS setup. Then we work, live, for the back half.
+This session has five parts. Why we're doing this and where Claude sits among Cornell's
+AI tools. What data can and cannot go in it. A short look at how generative AI works and
+its limitations. A tour of Claude and what comes with our RAIS setup. Then we'll have a
+small workshop.
 
 **The workshop**
 
-Three runs, each showing a different kind of capability.
+We'll run through a few different examples to show different capabilities.
 
-1. Live web search, which Sandbox AI never had. We'll look up what's new from a
-   federal sponsor and see how Claude cites what it finds.
-2. The eCFR connector, pulling current text straight from 2 CFR 200.
-3. The Legal Plugin, running a contract review end to end, then paging through the
-   real output.
+1. Live web search, which is a new feature that we didn't have in Sandbox.
+2. The eCFR connector.
+3. The Anthropic legal plugin, customized to work for OSP.
 
-**Nothing to prepare**
+**Following along**
 
-There is no pre-work and no homework. Bring a laptop if you'd like to follow along.
-If you don't have Claude installed yet, email ai-support@cornell.edu and we'll sort it
-out, but you can absolutely just watch the first time.
+Hopefully everyone has Claude installed and working, and you'll be able to follow along
+and participate. If you can't, that's fine. Just follow the presentation and we'll get
+you set up afterwards.
 
 **Materials**
 
@@ -38,9 +37,8 @@ Everything is on the training site.
 
 https://zj52.github.io/claude-training/
 
-Slides, the exact prompts we'll use in the workshop, an FAQ, and links to a couple of
-free Anthropic courses if you want to go further. Nothing confidential on it, so share
-it freely.
+Slides, an FAQ, and links to a couple of free Anthropic courses if you want to go
+further. It's intended to be shared freely within Cornell.
 
 One exception. The contract review we walk through produced a real package of eight
 documents, and those name the sponsor, both faculty leads, and the project, so they
@@ -54,27 +52,29 @@ widely.
 
 **One note on data**
 
-Same rules as Sandbox AI. Confidential research administration material is fine, so
-awards, proposals, intellectual property, and the documents you work with day to day.
-What does not go in is DoD work, CUI or export-controlled data, and anything covered
-by HIPAA. We'll spend a few minutes on this tomorrow.
+Same rules as Sandbox AI. Research administration material is fine. What does not go in
+is DoD work, CUI or export-controlled data, and anything covered by HIPAA. We'll spend a
+few minutes on this.
 
-Modules 2 and 3, on AI fluency and on the more advanced features, are still being
-built. You'll get a preview at the end of the session.
+We're also working on some follow-up training to this initial presentation, on AI
+fluency and more advanced features.
 
-See you tomorrow,
+See you at 10,
 
 Zach
 
 ---
 
-## Notes before you send
+## Notes
 
-- **Site link.** Confirmed live and current as of tonight.
-- **Box link.** The one you gave me. Worth opening in a private window first, since a
-  shared link inherits the folder's collaboration settings and may not open for OSP
-  staff even though it works for you.
-- **Session length.** I took it out rather than guess. Add it if you want it stated.
-- **Recipients.** Yours to fill in.
-- **The caution paragraph.** I'd keep it even though everyone on the list is OSP. It
-  sets the expectation for what happens when these files get forwarded on.
+- **Subject line.** Left blank since you're replying to the invite thread, which keeps
+  its own subject.
+- **"One note on data".** You said strike the second sentence, then that you wanted to
+  say research administration material is fine without the word "confidential". I kept
+  the short version and dropped the examples list (awards, proposals, IP). If you'd
+  rather keep those examples, the sentence becomes "Research administration material is
+  fine, so awards, proposals, and intellectual property."
+- **Timing.** Written to be sent the morning of, so it says "in a couple of hours" and
+  "See you at 10" rather than "tomorrow". Adjust the sign-off if the start time moves.
+- **Both links verified.** The site is live and current. The Box link opens for the 27
+  OSP staff on the folder's collaboration list.
