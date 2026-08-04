@@ -96,9 +96,9 @@ choosing the right task to hand over and reviewing what comes back.
 ## Slide 10 - Claude's characteristics
 
 This slide condenses what would otherwise be a short course on how large language models
-behave into the four characteristics that matter most in day-to-day use. Each pairs with
-a habit, because the point of knowing them is not theory but delegation. You learn a
-colleague's strengths and limits so you can brief them well, and the same applies here.
+behave into the four characteristics that matter most in day-to-day use. Each card ends
+with what to do about that characteristic, because the point of knowing them is not
+theory but better results. They shape what goes in the brief and what gets checked.
 
 Some background the cards compress.
 
