@@ -78,7 +78,7 @@ The underlying rule is simple. If something can go into Sandbox AI, it can go in
 
 ---
 
-## Slide 11 - What agents are
+## Slide 9 - What agents are
 
 This slide explains why the deck spends no time on prompting technique.
 
@@ -93,7 +93,134 @@ choosing the right task to hand over and reviewing what comes back.
 
 ---
 
-## Slide 13 - What comes with the RAIS setup
+## Slide 10 - Claude's characteristics
+
+This slide condenses what would otherwise be a short course on how large language models
+behave into the four characteristics that matter most in day-to-day use. Each pairs with
+a habit, because the point of knowing them is not theory but delegation. You learn a
+colleague's strengths and limits so you can brief them well, and the same applies here.
+
+Some background the cards compress.
+
+- **Probabilistic.** Claude builds its answer one token at a time, picking among
+  plausible next words by probability. There is no fixed right answer, only what is most
+  likely given what came before. Two runs of the same prompt can come back worded
+  differently, occasionally with different substance. And where the model has a knowledge
+  gap, prediction fills it with plausible-sounding text. That concentrates in specifics,
+  which is why names, numbers, dates, and citations get checked first.
+- **Knowledge.** Training data ends at a cutoff date. Web search closes that gap, and
+  asking for cited sources makes the result checkable. This is one of the differences
+  from Sandbox AI, which could not search.
+- **Working memory.** Everything Claude is holding for you, your instructions, the
+  files, the conversation so far, lives in one finite working memory called the context
+  window. Long documents and long chats compete for the same room, and details from the
+  middle of a long session get less attention than the start and the end.
+- **Steerability.** Rules set early lose their grip as a session runs long, which can
+  make a conversation hard to steer. Restating what matters, or starting fresh and
+  restating the task, costs little and works.
+
+---
+
+## Slide 11 - The process you run
+
+A question that keeps some people from using AI at all is whether using it makes them
+answerable for every word it produces. The practical answer is that responsibility sits
+with the process you run, which is the part you control. What brief, which files, what
+standard, and how carefully you check.
+
+The reasoning behind that framing is worth spelling out. For a small task, checking the
+output directly is easy, so just check it. For a large one, guaranteeing a perfect output
+would mean redoing the work by hand, which erases the time Claude saved. What can
+always be done well, at any scale, is the setup and a check sized to the stakes.
+
+The delegation comparison carries most of the weight here. A manager handing work to a
+capable new colleague learns their strengths and limits, briefs clearly, provides the
+right materials, says up front what good looks like, and reviews the result without
+redoing it. Working with an agent asks for the same habits.
+
+Questions that come up.
+
+- **Does this mean nobody verifies the output?** No. The check at the end is part of the
+  process, and skipping it means the process was not run. What changes is the form the
+  check takes as tasks grow.
+- **Is this official policy?** The framing comes from draft guidance in development at
+  the AI Innovation Hub. Until it is published, treat it as good practice rather than
+  policy.
+
+---
+
+## Slide 12 - Setup
+
+The word prompt tends to be read as the sentence typed into the box. In practice the
+prompt is everything handed to Claude. The typed instruction, the attached files, the
+pasted text, the link, the screenshot. Each of those is an input someone chose, and
+choosing to include it means vetting it.
+
+Vetting inputs is the most overlooked of the three habits. Two quick questions cover it.
+Where did this come from, and is it the right material for this task? Feed Claude the
+wrong document and it will summarize the wrong document perfectly, and nothing checked
+at the end will reveal the mistake, because the output is faithful to what it was given.
+The place to catch that is on the way in.
+
+The footnote about what the documents don't say matters most for agentic work across
+many files. Every document set carries unwritten context. A meeting that ran short and
+produced thin minutes, a "recommendation" that is by local convention a decision. Claude, reading
+the folder cold, cannot see any of that, so it goes in the brief.
+
+---
+
+## Slide 13 - Checking
+
+The rule of thumb on this slide does the sorting. When checking the input and output
+directly is quick, just check it. That is what due diligence looks like for a hundred-word
+announcement, and it takes under a minute. When a full check would take nearly the work
+Claude saved, effort moves to the points that carry the most weight and to how the
+work was done.
+
+Two techniques are worth naming. First, spot-check the things you already know. If two
+or three decisions you personally remember appear correctly in a briefing, that is a
+free sample of the work's accuracy. Second, ask Claude to explain its method. What did
+it compare, what did it assume, what did it leave out. An answer that does not hold up
+is a warning sign that skimming the output would miss.
+
+Even a strong setup makes a good result likely, not certain. These tools can produce
+fluent, confident, and wrong answers however well they are briefed, which is why the
+check at the end is never optional.
+
+---
+
+## Slide 14 - Two questions before you delegate
+
+Cornell's approval process, reflected in the Regulated Data Chart, answers a security
+question. Is the data protected under contract and handled to the university's standards?
+It does not answer whether AI is an appropriate way to do a given task. That holds for
+Claude and for every other approved tool. Both bars have to
+clear, and only the first one is cleared for you.
+
+The first card is about recognizing high-risk tasks. The recurring domains are
+employment, admissions, healthcare, finance, and legal or policy interpretation, because
+those are where a task can affect someone's rights, access, opportunity, safety, or the
+university's compliance obligations. Nobody is expected to resolve those cases at their
+desk. The expectation is to recognize them and raise them, starting with a manager or
+supervisor, before Claude sees anything.
+
+The second card is least privilege, an idea much older than AI. Give Claude the minimum
+access a task requires, for the minimum time it requires it. Sharing a folder means
+sharing everything in it, so the most sensitive file in the folder sets the bar for
+whether the folder gets shared. Permissions that let Claude change things, like sending
+a message or editing a record, deserve more attention than permissions that let it look.
+
+Questions that come up.
+
+- **Which tools are approved?** The Regulated Data Chart lists approved tools and the
+  data each is approved for. Approval applies to Cornell's enterprise versions only,
+  not personal accounts on the same products.
+- **Where do I go when unsure?** Your manager first. If they are unsure, the question
+  moves up the chain and reaches the right people.
+
+---
+
+## Slide 16 - What comes with the RAIS setup
 
 The installation is configured for third-party inference and comes with a few things
 specific to research administration work.
@@ -106,7 +233,7 @@ so this slide only names them.
 
 ---
 
-## Slide 14 - The interface
+## Slide 17 - The interface
 
 Projects are the part most worth understanding. A project bundles instructions and
 reference files, so a chat or task started inside one begins with the right context
@@ -118,7 +245,7 @@ covers the same ground with screenshots of all four windows.
 
 ---
 
-## Slide 16 - Workshop
+## Slide 19 - Workshop
 
 The examples run in order, and each one demonstrates a different kind of capability.
 
@@ -133,7 +260,7 @@ slide without entering it.
 
 ---
 
-## Slide 20 - Appendix, what the plugin produced
+## Slide 23 - Appendix, what the plugin produced
 
 Everything in this appendix came out of a single run of the plugin's contract-review
 skill, measured against Cornell's own materials, the OSP playbook and the standard
@@ -145,7 +272,7 @@ because they cannot be published openly.
 
 ---
 
-## Slide 21 - Appendix, six files
+## Slide 24 - Appendix, six files
 
 One run produced six output files, plus the contract exactly as it arrived.
 
@@ -155,7 +282,7 @@ handles the Cornell approval side, and the spreadsheet tracks every issue.
 
 ---
 
-## Slide 22 - Appendix, findings table
+## Slide 25 - Appendix, findings table
 
 This table is the spine of the review memo. Every issue is listed against the company's
 own section numbering, in their order, so the memo can be read side by side with the
@@ -163,7 +290,7 @@ contract. The pages after it explain each row in full.
 
 ---
 
-## Slide 23 - Appendix, tracked changes
+## Slide 26 - Appendix, tracked changes
 
 The page is shown as LibreOffice renders it, with insertions underlined and deletions
 struck through. In Word it looks much the same, with the editor's name shown in the
@@ -171,7 +298,7 @@ margin.
 
 ---
 
-## Slide 25 - Appendix, the nine asks
+## Slide 28 - Appendix, the nine asks
 
 The eighth ask concerns warranties and liability. Cornell cannot promise that research
 results will work, nor that they infringe no one's patents. The liability terms in the
@@ -180,14 +307,14 @@ research collaboration.
 
 ---
 
-## Slide 31 - Appendix, sequence
+## Slide 34 - Appendix, sequence
 
 Of the two questions that set the schedule, the start date is the one most likely to come
 back quickly, since the researchers want to begin work.
 
 ---
 
-## Slide 32 - Appendix, reviewing the output
+## Slide 35 - Appendix, reviewing the output
 
 If all three checks hold, the output is a reasonable starting point for the officer
 handling the award. It is a first pass and not a substitute for professional judgment.

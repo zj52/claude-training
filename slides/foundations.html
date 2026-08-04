@@ -160,6 +160,12 @@
       gap: 1rem;
       margin-top: 0.5rem;
     }
+    .slide.content .col-4 {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
     .slide.content .col-card {
       padding: 1.25rem 1.4rem;
       border-radius: var(--radius-md);
@@ -1100,7 +1106,7 @@
       <div class="slide-body">
         <ul>
           <li><strong>Why this training.</strong> Why another AI tool, whether we&rsquo;re allowed to have it, and what data can go in.</li>
-          <li><strong>How generative AI works.</strong> Probabilistic answers, working memory, and what an agent is.</li>
+          <li><strong>Working with AI.</strong> What an agent is, how Claude behaves, the process you own when you delegate work to it, and how to check the result.</li>
           <li><strong>Orientation to Claude.</strong> How it&rsquo;s set up, where it fits in the Cornell ecosystem, and the tools that come with the RAIS installation.</li>
           <li><strong>Workshop.</strong> Live web search, a live eCFR lookup, and contract review with the Legal Plugin.</li>
           <li><strong>Wrap-up.</strong> Questions, resources, and where Modules 2 and 3 go next.</li>
@@ -1437,67 +1443,17 @@
       </div>
     </section>
 
-    <!-- ─── Divider · Part 2 ─── -->
+    <!-- ─── Divider · Part 2 (ALT · responsible AI) ─── -->
     <section class="slide cornell-bg divider" data-bg="cornell">
       <span class="ghost" aria-hidden="true">02</span>
       <p class="eyebrow-light">Part 2</p>
-      <h1>How AI works.</h1>
-      <p class="byline">Three ideas: answers are probabilistic, working memory is limited, and an agent does the task rather than describing it.</p>
+      <h1>Working with AI.</h1>
+      <p class="byline">What an agent is, how Claude behaves, the process you own when you hand it real work, and how to check what comes back. The examples are Claude, but the habits hold for any AI tool.</p>
     </section>
 
-    <!-- ─── Slide 6 · Probabilistic AI ─── -->
+    <!-- ─── Slide · What agents are ─── -->
     <section class="slide content tinted" data-bg="light">
-      <p class="slide-eyebrow">How AI works</p>
-      <h2>Probabilistic, not deterministic.</h2>
-      <div class="slide-body">
-        <p>An LLM builds its answer one token at a time, picking among plausible next words by probability. There is no fixed right answer &mdash; only what&rsquo;s most likely given what came before.</p>
-        <p>That&rsquo;s why two runs of the same prompt can come back worded differently, and occasionally with different substance. It&rsquo;s a feature, not a bug &mdash; but it&rsquo;s why you read every answer critically and spot-check the things that matter.</p>
-        <p>It also answers even when it doesn&rsquo;t know. Where the model has a knowledge gap, prediction fills it with plausible-sounding text. That concentrates in the specifics &mdash; names, numbers, dates, citations &mdash; so those get checked first.</p>
-        <div class="token-row" aria-hidden="true">
-          <span class="pill">The</span>
-          <span class="pill">model</span>
-          <span class="pill">picks</span>
-          <span class="pill">each</span>
-          <span class="pill">next</span>
-          <span class="pill accent">word</span>
-          <span class="pill">by</span>
-          <span class="pill">probability</span>
-          <span class="pill">&hellip;</span>
-        </div>
-        <p class="footnote">Adapted from AI4RA &mdash; REACH Workshop 2026.</p>
-      </div>
-    </section>
-
-    <!-- ─── Slide 8 · Working memory ─── -->
-    <section class="slide content tinted" data-bg="light">
-      <p class="slide-eyebrow">How AI works</p>
-      <h2>Working memory is limited.</h2>
-      <div class="slide-body wide">
-        <p>Everything Claude is holding for you &mdash; your instructions, the files, the conversation so far &mdash; lives in one finite working memory called the context window. When it fills up, quality slips in predictable ways.</p>
-        <div class="col-3">
-          <article class="col-card">
-            <span class="step">Limited space</span>
-            <h3>It fills up</h3>
-            <p>Long documents and long chats compete for the same room. A fresh chat for a fresh task isn&rsquo;t a workaround; it&rsquo;s the right habit.</p>
-          </article>
-          <article class="col-card">
-            <span class="step">Buried details</span>
-            <h3>The middle fades</h3>
-            <p>Key information from the middle of a long session gets less attention than the start and the end. Repeat what matters when you change direction.</p>
-          </article>
-          <article class="col-card">
-            <span class="step">Drift</span>
-            <h3>Instructions wear off</h3>
-            <p>Rules you set early lose their grip as a session runs long, which can make a conversation hard to steer. Restate what matters, or start a new session and restate the task.</p>
-          </article>
-        </div>
-        <p class="footnote">Adapted from Anthropic&rsquo;s AI Capabilities and Limitations course.</p>
-      </div>
-    </section>
-
-    <!-- ─── Slide 9 · What agents are ─── -->
-    <section class="slide content tinted" data-bg="light">
-      <p class="slide-eyebrow">How AI works</p>
+      <p class="slide-eyebrow">Working with AI</p>
       <h2>A chatbot answers. An agent does the task.</h2>
       <div class="slide-body wide">
         <p>First-generation AI chat took one prompt and returned one answer. An agent works in a loop: it plans, uses tools, looks at what came back, and keeps going until the job is done.</p>
@@ -1519,6 +1475,141 @@
           </article>
         </div>
         <p class="footnote">Claude 3P is agentic. The contract review in today&rsquo;s workshop is one run of an agent, start to finish.</p>
+      </div>
+    </section>
+
+    <!-- ─── Slide · Claude's characteristics ─── -->
+    <section class="slide content tinted" data-bg="light">
+      <p class="slide-eyebrow">Working with AI</p>
+      <h2>Know what you&rsquo;re delegating to.</h2>
+      <div class="slide-body wide">
+        <p>Claude is a strong generalist with a few consistent characteristics. Learning them is the same move as learning a colleague&rsquo;s strengths and limits before handing work over, and each one points to a habit.</p>
+        <div class="col-4">
+          <article class="col-card">
+            <span class="step">Probabilistic</span>
+            <h3>Answers vary</h3>
+            <p>Claude builds each answer word by word, by probability. Two runs can differ, and knowledge gaps get filled with plausible text. Spot-check the specifics. Names, numbers, dates, citations.</p>
+          </article>
+          <article class="col-card">
+            <span class="step">Knowledge</span>
+            <h3>Trained to a cutoff</h3>
+            <p>Claude knows what it was trained on, up to a point in time. For anything recent, have it search the web and cite what it finds.</p>
+          </article>
+          <article class="col-card">
+            <span class="step">Working memory</span>
+            <h3>One finite window</h3>
+            <p>Your instructions, files, and conversation share one context window, and long sessions crowd it. Start a fresh chat for a fresh task.</p>
+          </article>
+          <article class="col-card">
+            <span class="step">Steerability</span>
+            <h3>Instructions wear off</h3>
+            <p>Rules set early lose their grip as a session runs long, which can make it hard to steer. Restate what matters, or restart and restate the task.</p>
+          </article>
+        </div>
+        <p class="footnote">Adapted from AI4RA and Anthropic&rsquo;s AI Capabilities and Limitations course.</p>
+      </div>
+    </section>
+
+    <!-- ─── Slide · The process you run ─── -->
+    <section class="slide content tinted wide-title" data-bg="light">
+      <p class="slide-eyebrow">Working with AI</p>
+      <h2>You&rsquo;re responsible for the process you run.</h2>
+      <div class="slide-body wide">
+        <p>Most of your influence over a result is spent before Claude writes a word. You write the brief, pick the files, and set the standard. That process is what you own, not every word Claude generates, and it works the same way delegating to a capable new colleague does.</p>
+        <div class="col-3">
+          <article class="col-card">
+            <span class="step">1 &middot; You set up</span>
+            <h3>Most of your leverage</h3>
+            <p>Write a clear brief, hand over the right materials, and say what a good result looks like. Everything that follows builds on this step.</p>
+          </article>
+          <article class="col-card">
+            <span class="step">2 &middot; Claude works</span>
+            <h3>A draft, not a deliverable</h3>
+            <p>The result reflects the instructions you gave and the files you provided. Until you&rsquo;ve checked it, treat it as a draft.</p>
+          </article>
+          <article class="col-card">
+            <span class="step">3 &middot; You check</span>
+            <h3>Then loop back</h3>
+            <p>Review with a care that matches the stakes. When something is off, the fastest fix is upstream. Sharpen the brief or swap the file and run it again.</p>
+          </article>
+        </div>
+        <p class="footnote">Drawn from draft agentic AI guidance in development at the AI Innovation Hub.</p>
+      </div>
+    </section>
+
+    <!-- ─── Slide · Setup ─── -->
+    <section class="slide content tinted" data-bg="light">
+      <p class="slide-eyebrow">Working with AI</p>
+      <h2>Setup is where the quality comes from.</h2>
+      <div class="slide-body wide">
+        <p>The prompt is everything you hand Claude. The sentence you type, the files you attach, the link you paste. Three habits make that setup work for you.</p>
+        <div class="col-3">
+          <article class="col-card">
+            <span class="step">The brief</span>
+            <h3>Say the goal and the audience</h3>
+            <p>State what you want done, who it&rsquo;s for, and the format and length you have in mind. The more you supply, the less Claude has to guess.</p>
+          </article>
+          <article class="col-card">
+            <span class="step">The materials</span>
+            <h3>Vet what goes in</h3>
+            <p>Is it the right file, the current version, from the right source? Hand over the wrong document and you&rsquo;ll get a faithful summary of the wrong document.</p>
+          </article>
+          <article class="col-card">
+            <span class="step">The target</span>
+            <h3>Define a good result</h3>
+            <p>One sentence up front. A good summary catches every policy change. It sharpens the brief now and becomes your checklist at the end.</p>
+          </article>
+        </div>
+        <p class="footnote">Add what the documents don&rsquo;t say. Shortened meetings, unwritten conventions, context only you have.</p>
+      </div>
+    </section>
+
+    <!-- ─── Slide · Checking ─── -->
+    <section class="slide content tinted" data-bg="light">
+      <p class="slide-eyebrow">Working with AI</p>
+      <h2>Check the method, not every line.</h2>
+      <div class="slide-body wide">
+        <p>When checking directly is quick, just check it. When a full check would cost the time Claude saved you, put your effort where the weight is.</p>
+        <div class="col-3">
+          <article class="col-card">
+            <span class="step">Spot-check</span>
+            <h3>The things it rests on</h3>
+            <p>Facts, names, numbers, dates, and citations. Start with things you already know. They&rsquo;re free samples of the work&rsquo;s accuracy.</p>
+          </article>
+          <article class="col-card">
+            <span class="step">Ask the method</span>
+            <h3>How did it get there?</h3>
+            <p>Ask Claude what it compared, what it assumed, and what it left out. A method that doesn&rsquo;t hold up is a warning sign you can catch without rereading everything.</p>
+          </article>
+          <article class="col-card">
+            <span class="step">Scale to stakes</span>
+            <h3>Diligence sized to the task</h3>
+            <p>A newsletter draft gets a one-minute read against your notes. A briefing your director will rely on gets traced citations and a methods conversation.</p>
+          </article>
+        </div>
+        <p class="footnote">A good setup makes a good result likely, not certain. The check at the end is never optional.</p>
+      </div>
+    </section>
+
+    <!-- ─── Slide · Two questions before you delegate ─── -->
+    <section class="slide content tinted wide-title" data-bg="light">
+      <p class="slide-eyebrow">Working with AI</p>
+      <h2>Approved covers the data. Two questions stay with you.</h2>
+      <div class="slide-body wide">
+        <p>Cornell&rsquo;s approval, and the data rules from Part 1, answer whether Claude is secure enough for the data you put in. Whether a task belongs in Claude at all, and how much Claude gets to see and do, are decisions you make each time.</p>
+        <div class="col-2">
+          <article class="col-card">
+            <span class="step">Is AI right for this task?</span>
+            <h3>Secure isn&rsquo;t the same as appropriate</h3>
+            <p>An approved tool can still be the wrong way to screen a candidate, score an applicant, or read a contract clause. When a task could affect someone&rsquo;s rights, opportunity, health, money, or records, raise it with your manager before Claude sees it. A question asked before acting is never a problem.</p>
+          </article>
+          <article class="col-card">
+            <span class="step">How much can it see and do?</span>
+            <h3>The minimum access the task needs</h3>
+            <p>Claude reads everything you point it at, including the files you forgot were in the folder. Share the folder the task needs, not your whole drive, and read what you&rsquo;re approving before you approve it. Permissions that let Claude change things deserve more attention than ones that let it look.</p>
+          </article>
+        </div>
+        <p class="footnote">Both questions get a fuller treatment in Module 2.</p>
       </div>
     </section>
 
